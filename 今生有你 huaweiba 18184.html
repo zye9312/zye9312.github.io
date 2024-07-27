@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>今生有你</title>
+    <link rel="stylesheet" href="video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+    </video>
+    <script>
+
+        var sources = [
+
+            { src: 'https://m3u.nikanba.live/share/ad1255bf83a84cbea539c740ba3f51fd.m3u8', title: '今生有你 番外' },
+
+            { src: 'https://m3u.nikanba.live/share/d3b9239cd6314b91847ddc9723dab593.m3u8', title: '今生有你 番外' },
+
+            { src: 'https://m3u.nikanba.live/share/72cc57c6adf94eeaa2ddf4e60201992d.m3u8', title: '今生有你 第01集' },
+
+            { src: 'https://m3u.nikanba.live/share/bda95cc73374482198b9549996c651bd.m3u8', title: '今生有你 第02集' },
+
+            { src: 'https://m3u.nikanba.live/share/a63b2f7a664d423a91a68c60cc70c522.m3u8', title: '今生有你 第03集' },
+
+            { src: 'https://m3u.nikanba.live/share/7f32d71257494a1a8cbe30c0d679cf2d.m3u8', title: '今生有你 第04集' },
+
+            { src: 'https://m3u.nikanba.live/share/bb728e4d7f6b42919f667a5fabdcfe48.m3u8', title: '今生有你 第05集' },
+
+            { src: 'https://m3u.nikanba.live/share/b8f8265a33e74beaac7873e7a28e995c.m3u8', title: '今生有你 第06集' },
+
+            { src: 'https://m3u.nikanba.live/share/13727f7fcabb4a56aec3b6a3085c261f.m3u8', title: '今生有你 第07集' },
+
+            { src: 'https://m3u.nikanba.live/share/51eca7f36da24a9caa83e517ff07f84a.m3u8', title: '今生有你 第08集' },
+
+            { src: 'https://m3u.nikanba.live/share/49cd4a69c4de40b59d35076a652145ea.m3u8', title: '今生有你 第09集' },
+
+            { src: 'https://m3u.nikanba.live/share/e54c561047c54eea852e956d620bedaf.m3u8', title: '今生有你 第10集' },
+
+            { src: 'https://m3u.nikanba.live/share/c9c516dc8b9041c4a4a6e0e42a496d51.m3u8', title: '今生有你 第11集' },
+
+            { src: 'https://m3u.nikanba.live/share/35826a4ff5e74fc382cfd2bc8b166518.m3u8', title: '今生有你 第12集' },
+
+            { src: 'https://m3u.nikanba.live/share/0b262b7022e6471eb59cfdef6e9edb95.m3u8', title: '今生有你 第13集' },
+
+            { src: 'https://m3u.nikanba.live/share/c6506367600741a0b0db8fc666bf56f6.m3u8', title: '今生有你 第14集' },
+
+            { src: 'https://m3u.nikanba.live/share/d9a74ba783894967b3f4f967762b6840.m3u8', title: '今生有你 第15集' },
+
+            { src: 'https://m3u.nikanba.live/share/e359617fe15e4f3cbdc79e7954be2131.m3u8', title: '今生有你 第16集' },
+
+            { src: 'https://m3u.nikanba.live/share/bfdb144724a54db7aa4e47b55906bc88.m3u8', title: '今生有你 第17集' },
+
+            { src: 'https://m3u.nikanba.live/share/27cc7d38e5834658a7d1d39bdb8d63c4.m3u8', title: '今生有你 第18集' },
+
+            { src: 'https://m3u.nikanba.live/share/bbb456baf96e45c98d63608b5ce105d3.m3u8', title: '今生有你 第19集' },
+
+            { src: 'https://m3u.nikanba.live/share/ae836c4a0a764b24a3bc67ff59806756.m3u8', title: '今生有你 第20集' },
+
+            { src: 'https://m3u.nikanba.live/share/8ec89caae0c04f349c681833e8b4bc0c.m3u8', title: '今生有你 第21集' },
+
+            { src: 'https://m3u.nikanba.live/share/763f3356f16c47f185bf4430cd8a99c9.m3u8', title: '今生有你 第22集' },
+
+            { src: 'https://m3u.nikanba.live/share/b7e25c3f714b438ab36d0f6ac32d2ae2.m3u8', title: '今生有你 第23集' },
+
+            { src: 'https://m3u.nikanba.live/share/86440fecfdd1432788f04e2e95005e61.m3u8', title: '今生有你 第24集' },
+
+            { src: 'https://m3u.nikanba.live/share/365e3ec1c9414937839d4516dc1666e9.m3u8', title: '今生有你 第25集' },
+
+            { src: 'https://m3u.nikanba.live/share/c012cedbbe2849629c6ab208b72cba73.m3u8', title: '今生有你 第26集' },
+
+            { src: 'https://m3u.nikanba.live/share/ede40ac613d24942a3c3867aef3e7f6b.m3u8', title: '今生有你 第27集' },
+
+            { src: 'https://m3u.nikanba.live/share/4081e243018d45e3b21ff08d95336d4a.m3u8', title: '今生有你 第28集' },
+
+            { src: 'https://m3u.nikanba.live/share/fcbad07eddcb4c5e9646741060d13dab.m3u8', title: '今生有你 第29集' },
+
+            { src: 'https://m3u.nikanba.live/share/ba7b93662433474f85292e16a1ef6f74.m3u8', title: '今生有你 第30集' },
+
+        ];
+
+        var startTime = 85; // Start time in seconds
+        var endTime = 140; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_18184";
+    </script>
+    <script src="cookie.js"></script>
+    <script src="player.js"></script>
+</body>
+</html>
