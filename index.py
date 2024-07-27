@@ -1,7 +1,10 @@
 from glob import glob
 import os
 
-os.chdir("/Users/yezhuo/TV-Related/zye9312.github.io/")
+GIT_PATH = "/Users/yezhuo/TV-Related/zye9312.github.io/"
+
+
+os.chdir(GIT_PATH)
 links_ = glob("*.html")
 links_.sort(key=os.path.getmtime, reverse=True)
 links_.remove("index.html")
@@ -42,3 +45,21 @@ index_html = f"""
 </html>
 """
 open("index.html", "w").write(index_html)
+
+# upload to git and commit
+try:
+    import subprocess
+
+    # Change directory to the Git repository root directory
+    subprocess.run(["cd", GIT_PATH], check=True)
+
+    # Stage all modified files
+    subprocess.run(["git", "add", "."], cwd=GIT_PATH, check=True)
+
+    # Commit the changes with a commit message
+    subprocess.run(["git", "commit", "-m", "Add"], cwd=GIT_PATH, check=True)
+
+    # Push the changes to the remote repository
+    subprocess.run(["git", "push", "origin", "main"], cwd=GIT_PATH, check=True)
+except:
+    pass
