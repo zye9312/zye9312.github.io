@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>十天之后回到现实</title>
+    <link rel="stylesheet" href="video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+    </video>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/67bd19fd6f704543b0c376edb7b7936c.m3u8', title: '十天之后回到现实 20240719(第1期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/6447e04cfb2c1674c74e53ed454c5715.m3u8', title: '十天之后回到现实 20240719(第1期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/240b9ef50ec8cfe9b7c2d9c5af9f96af.m3u8', title: '十天之后回到现实 20240720(生活篇第1期)' },
+        
+            {src: 'https://m3u.nikanba.live/share/a74565a6e9fe33211c924995999f2dec.m3u8', title: '十天之后回到现实 20240726(第2期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/84889dab7831ad60da3c77d25e5ef021.m3u8', title: '十天之后回到现实 20240726(第2期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/8dbd2a469490e888b7a1811e185c261a.m3u8', title: '十天之后回到现实 20240727(生活篇第2期)' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_185532";
+    </script>
+    <script src="cookie.js"></script>
+    <script src="player.js"></script>
+</body>
+</html>
