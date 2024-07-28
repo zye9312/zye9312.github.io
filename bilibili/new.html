@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bilibili Videos</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="new.js"></script>
     <script>
         function convertBilibiliUrl(url) {
             if (url.includes('bilibili.com/video/av')) {
@@ -59,8 +60,8 @@
             }
         }
 
-        async function loadVideos() {
-            let response = await fetch('bilibili_videos.json');
+        async function loadVideos(jsonFile) {
+            let response = await fetch(jsonFile);
             let videos = await response.json();
 
             let authorSet = new Set();
@@ -75,21 +76,31 @@
             });
 
             let authorSelect = document.getElementById("authorSelect");
+            authorSelect.innerHTML = '<option value="">All Authors</option>';
             authorSet.forEach(author => {
                 authorSelect.innerHTML += `<option value="${author}">${author}</option>`;
             });
         }
 
         window.onload = function () {
-            loadVideos();
-            document.getElementById("authorSelect").addEventListener("change", filterVideos);
+            document.getElementById("jsonSelect").addEventListener("change", function () {
+                let jsonFile = this.value;
+                loadVideos(jsonFile);
+            });
+            loadVideos(document.getElementById("jsonSelect").value);
         }
     </script>
 </head>
 <body>
     <h1>Bilibili Videos</h1>
+    <label for="jsonSelect">Select JSON File:</label>
+    <select id="jsonSelect">
+        <option value="bilibili_videos_author.json">By author</option>
+        <option value="bilibili_videos_date.json">By Date</option>
+    </select>
+    <br>
     <label for="authorSelect">Filter by author:</label>
-    <select id="authorSelect">
+    <select id="authorSelect" onchange="filterVideos()">
         <option value="">All Authors</option>
     </select>
     <select id="videoSelect" onchange="updateVideo()">
@@ -99,8 +110,7 @@
     <button onclick="prevVideo()">Previous Video</button>
     <button onclick="nextVideo()">Next Video</button>
     <hr>
-    <iframe id="videoPlayer" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"
-        width="800" height="450">
+    <iframe id="videoPlayer" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
     </iframe>
 </body>
 </html>

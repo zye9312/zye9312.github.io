@@ -36,7 +36,7 @@ index_html = f"""
     <nav>
         <ul id="nav-menu">
             {li_s}
-
+        <li><a href="bilibili/new.html">bilibili</a></li>
         </ul>
     </nav>
     <button id="random-button">Random Page</button>
