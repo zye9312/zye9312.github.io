@@ -4,7 +4,7 @@ import os
 GIT_PATH = "/Users/yezhuo/TV-Related/zye9312.github.io/"
 
 
-os.chdir(VIDEO_PATH)
+os.chdir(GIT_PATH)
 links_ = glob("video/*.html")
 links_.sort(key=os.path.getmtime, reverse=True)
 # links_.remove("index.html")
