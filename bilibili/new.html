@@ -10,10 +10,10 @@
         function convertBilibiliUrl(url) {
             if (url.includes('bilibili.com/video/av')) {
                 let aid = url.split('av')[1];
-                return `https://player.bilibili.com/player.html?isOutside=true&aid=${aid}`;
+                return `https://www.bilibili.com/blackboard/html5mobileplayer.html?isOutside=true&aid=${aid}&as_wide=1&high_quality=1&danmaku=0`;
             } else if (url.includes('b23.tv/')) {
                 let bvid = url.split('/').pop();
-                return `https://player.bilibili.com/player.html?isOutside=true&bvid=${bvid}`;
+                return `https://www.bilibili.com/blackboard/html5mobileplayer.html?isOutside=true&bvid=${bvid}&as_wide=1&high_quality=1&danmaku=0`;
             } else {
                 return url;
             }
@@ -110,7 +110,9 @@
     <button onclick="prevVideo()">Previous Video</button>
     <button onclick="nextVideo()">Next Video</button>
     <hr>
-    <iframe id="videoPlayer" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
-    </iframe>
+    <div style="position: relative; padding: 30% 45%;">
+        <iframe id="videoPlayer" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"
+            </iframe>
+    </div>
 </body>
 </html>
