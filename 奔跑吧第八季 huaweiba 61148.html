@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>奔跑吧第八季</title>
+    <link rel="stylesheet" href="video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+    </video>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/4e69be20d51949e5a0c52675e3e3cf8a.m3u8', title: '奔跑吧第八季 先导片' },
+        
+            {src: 'https://m3u.nikanba.live/share/f69354b76bd04090a82a4100db8a3815.m3u8', title: '奔跑吧第八季 第20240426期' },
+        
+            {src: 'https://m3u.nikanba.live/share/07308bf9b19a48dbb927846b1b261fb8.m3u8', title: '奔跑吧第八季 第20240428期' },
+        
+            {src: 'https://m3u.nikanba.live/share/dfe600eb38b94e9f8e6c80ada34d583c.m3u8', title: '奔跑吧第八季 第20240503期' },
+        
+            {src: 'https://m3u.nikanba.live/share/94480ea14c0944268b1e29f4b6ec2cf2.m3u8', title: '奔跑吧第八季 第20240510期' },
+        
+            {src: 'https://m3u.nikanba.live/share/d618007460434c25bf0b43334ba4ceee.m3u8', title: '奔跑吧第八季 第20240512期' },
+        
+            {src: 'https://m3u.nikanba.live/share/4023138f6e0b4b6b95ccd9540cd2acef.m3u8', title: '奔跑吧第八季 第20240517期' },
+        
+            {src: 'https://m3u.nikanba.live/share/a96b5fab00e4417dbdd351bfc8ba74e4.m3u8', title: '奔跑吧第八季 第20240519期' },
+        
+            {src: 'https://m3u.nikanba.live/share/0d3becbf2423428f8fb3c5ae69cd2884.m3u8', title: '奔跑吧第八季 第20240524期' },
+        
+            {src: 'https://m3u.nikanba.live/share/120126192ff74da9b96589186915cdff.m3u8', title: '奔跑吧第八季 第20240526期' },
+        
+            {src: 'https://m3u.nikanba.live/share/cfb3c2c5d73f4e84aec0172693be8e38.m3u8', title: '奔跑吧第八季 第20240531期' },
+        
+            {src: 'https://m3u.nikanba.live/share/fd34f408893f46a9883f3bf348fd5b88.m3u8', title: '奔跑吧第八季 第20240607期' },
+        
+            {src: 'https://m3u.nikanba.live/share/5bcaf07d4a5044ba95bb9596e1b6c148.m3u8', title: '奔跑吧第八季 第20240609期' },
+        
+            {src: 'https://m3u.nikanba.live/share/7b8c8d7b625841e9aa3b9ba4952717d1.m3u8', title: '奔跑吧第八季 20240614期' },
+        
+            {src: 'https://m3u.nikanba.live/share/aeb7754f4ac741fa8bac71cdddf17f4d.m3u8', title: '奔跑吧第八季 20240624期' },
+        
+            {src: 'https://m3u.nikanba.live/share/4df788ed1b4e4ff097d97e71268ea905.m3u8', title: '奔跑吧第八季 20240628期' },
+        
+            {src: 'https://m3u.nikanba.live/share/a570a595994fb701136c6f7a3726b6ea.m3u8', title: '奔跑吧第八季 20240708期' },
+        
+            {src: 'https://m3u.nikanba.live/share/0863600c4751f8a2cc85f61b1ac29f3e.m3u8', title: '奔跑吧第八季 20240625（特别加更）' },
+        
+            {src: 'https://m3u.nikanba.live/share/5c8c8b7161a69f0b6d51d1e748e6f970.m3u8', title: '奔跑吧第八季 20240628' },
+        
+            {src: 'https://m3u.nikanba.live/share/6558428744c16b2dcb8cd2ae81c1011a.m3u8', title: '奔跑吧第八季 20240630（加更版）' },
+        
+            {src: 'https://m3u.nikanba.live/share/152f4c9af154d7f201130bca203e7e17.m3u8', title: '奔跑吧第八季 20240712(收官特辑)' },
+        
+            {src: 'https://m3u.nikanba.live/share/485bb8b9296a06cce93cc3dc1c883288.m3u8', title: '奔跑吧第八季 20240712' },
+        
+            {src: 'https://m3u.nikanba.live/share/b124bafef593079e98fa1dbce85f4f4f.m3u8', title: '奔跑吧第八季 20240714(加更版)' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_61148";
+    </script>
+    <script src="cookie.js"></script>
+    <script src="player.js"></script>
+</body>
+</html>
