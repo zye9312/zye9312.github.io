@@ -4,10 +4,10 @@ import os
 GIT_PATH = "/Users/yezhuo/TV-Related/zye9312.github.io/"
 
 
-os.chdir(GIT_PATH)
-links_ = glob("*.html")
+os.chdir(VIDEO_PATH)
+links_ = glob("video/*.html")
 links_.sort(key=os.path.getmtime, reverse=True)
-links_.remove("index.html")
+# links_.remove("index.html")
 # links_ = sorted(links_)
 titles = [html.rsplit(" ", 2)[0].replace("_", " ") for html in links_]
 links = [link for link in links_]

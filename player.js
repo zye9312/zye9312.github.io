@@ -106,7 +106,7 @@ button.setAttribute("class", "button-style");
 // add an event listener to the button
 button.addEventListener("click", function () {
   saveIndexCookie();
-  window.location.href = "index.html";
+  window.location.href = "../index.html";
 });
 
 // append the button to the DOM

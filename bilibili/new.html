@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bilibili Videos</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="new.js"></script>
     <script>
         function convertBilibiliUrl(url) {
             if (url.includes('bilibili.com/video/av')) {
@@ -98,15 +96,10 @@
         <option value="bilibili_videos_author.json">By author</option>
         <option value="bilibili_videos_date.json">By Date</option>
     </select>
-    <br>
-    <label for="authorSelect">Filter by author:</label>
-    <select id="authorSelect" onchange="filterVideos()">
-        <option value="">All Authors</option>
-    </select>
     <select id="videoSelect" onchange="updateVideo()">
         <option value="">Select a video</option>
     </select>
-    <br>
+    <script src="new.js"></script>
     <button onclick="prevVideo()">Previous Video</button>
     <button onclick="nextVideo()">Next Video</button>
     <hr>
@@ -114,5 +107,6 @@
         <iframe id="videoPlayer" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"
             </iframe>
     </div>
+    <script src="new.js"></script>
 </body>
 </html>
