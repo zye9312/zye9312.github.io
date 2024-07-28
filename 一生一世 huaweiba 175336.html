@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -18,73 +17,76 @@
         </select>
     </div>
     <br>
-    <!-- https://stackoverflow.com/a/39223524 -->
-    <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
-    </video>
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+
     <script>
 
         var sources = [
 
-            {src: 'https://m3u.nikanba.live/share/b04e85383f7b4e09932feabe836d9593.m3u8', title: '一生一世 1' },
-        
-            {src: 'https://m3u.nikanba.live/share/f9d669b380824d52a246ff030456160f.m3u8', title: '一生一世 2' },
-        
-            {src: 'https://m3u.nikanba.live/share/9e9bee97cca847718407ad2aabefa021.m3u8', title: '一生一世 3' },
-        
-            {src: 'https://m3u.nikanba.live/share/31f63f2810b848b5b878672c3b4dfb3b.m3u8', title: '一生一世 4' },
-        
-            {src: 'https://m3u.nikanba.live/share/2ae033d8b4134e2689333553f7c08a07.m3u8', title: '一生一世 5' },
-        
-            {src: 'https://m3u.nikanba.live/share/a28d78f253a544acba39859c180bb2bd.m3u8', title: '一生一世 6' },
-        
-            {src: 'https://m3u.nikanba.live/share/9f8504a900b64e8b8389c27975cf4d32.m3u8', title: '一生一世 7' },
-        
-            {src: 'https://m3u.nikanba.live/share/88526515e2eb426790a6949e7385d225.m3u8', title: '一生一世 8' },
-        
-            {src: 'https://m3u.nikanba.live/share/ff61808501854c7eb19de29d005b7eef.m3u8', title: '一生一世 9' },
-        
-            {src: 'https://m3u.nikanba.live/share/805926285cb54fc6b3952b6fb400c24f.m3u8', title: '一生一世 10' },
-        
-            {src: 'https://m3u.nikanba.live/share/4243fa5cc1c34e03ab655261597a3835.m3u8', title: '一生一世 11' },
-        
-            {src: 'https://m3u.nikanba.live/share/104a01858fcb4900bb55e61bb90f1e2e.m3u8', title: '一生一世 12' },
-        
-            {src: 'https://m3u.nikanba.live/share/d55b268736764657af01cc3fdb987914.m3u8', title: '一生一世 13' },
-        
-            {src: 'https://m3u.nikanba.live/share/c5c1d05e5c334898b389f75479c3b62d.m3u8', title: '一生一世 14' },
-        
-            {src: 'https://m3u.nikanba.live/share/5010019dde7541548fb4a3ce835e2100.m3u8', title: '一生一世 15' },
-        
-            {src: 'https://m3u.nikanba.live/share/6f9c6c2d82e046b9bd1a48f5037526b7.m3u8', title: '一生一世 16' },
-        
-            {src: 'https://m3u.nikanba.live/share/1a6eaba9c440458383e8e27ab563a906.m3u8', title: '一生一世 17' },
-        
-            {src: 'https://m3u.nikanba.live/share/253107adaa384f9aba06aa14e7cd1dd9.m3u8', title: '一生一世 18' },
-        
-            {src: 'https://m3u.nikanba.live/share/d6d2d76f47bd4ce398b003373efa51b2.m3u8', title: '一生一世 19' },
-        
-            {src: 'https://m3u.nikanba.live/share/6bfcff73a13e4da9abe171d9a7c219c6.m3u8', title: '一生一世 20' },
-        
-            {src: 'https://m3u.nikanba.live/share/f6fb48a118eb4845abcdcf699d5e44c2.m3u8', title: '一生一世 21' },
-        
-            {src: 'https://m3u.nikanba.live/share/787ddbca0e454d44b2bbf84fd8705483.m3u8', title: '一生一世 22' },
-        
-            {src: 'https://m3u.nikanba.live/share/5ef62798337246b2ab2345ea6ff79d93.m3u8', title: '一生一世 23' },
-        
-            {src: 'https://m3u.nikanba.live/share/62d25fb1a78c44aeb5d99633394dd656.m3u8', title: '一生一世 24' },
-        
-            {src: 'https://m3u.nikanba.live/share/06efd01053a74ca1887b14bbe4c871a3.m3u8', title: '一生一世 25' },
-        
-            {src: 'https://m3u.nikanba.live/share/4a4a26d8d0734b4eb549174ff0e96fb1.m3u8', title: '一生一世 26' },
-        
-            {src: 'https://m3u.nikanba.live/share/841709ad7e154c74966a4e2d5467cd93.m3u8', title: '一生一世 27' },
-        
-            {src: 'https://m3u.nikanba.live/share/3aceb2b077da49c699509a9aa8c0f167.m3u8', title: '一生一世 28' },
-        
-            {src: 'https://m3u.nikanba.live/share/9274db49e0864159b31cb3a950068dc0.m3u8', title: '一生一世 29' },
-        
-            {src: 'https://m3u.nikanba.live/share/688ed9ff784a4adaa1eb67de81e3f44c.m3u8', title: '一生一世 30' },
-        
+            { src: 'https://m3u.nikanba.live/share/b04e85383f7b4e09932feabe836d9593.m3u8', title: '一生一世 1' },
+
+            { src: 'https://m3u.nikanba.live/share/f9d669b380824d52a246ff030456160f.m3u8', title: '一生一世 2' },
+
+            { src: 'https://m3u.nikanba.live/share/9e9bee97cca847718407ad2aabefa021.m3u8', title: '一生一世 3' },
+
+            { src: 'https://m3u.nikanba.live/share/31f63f2810b848b5b878672c3b4dfb3b.m3u8', title: '一生一世 4' },
+
+            { src: 'https://m3u.nikanba.live/share/2ae033d8b4134e2689333553f7c08a07.m3u8', title: '一生一世 5' },
+
+            { src: 'https://m3u.nikanba.live/share/a28d78f253a544acba39859c180bb2bd.m3u8', title: '一生一世 6' },
+
+            { src: 'https://m3u.nikanba.live/share/9f8504a900b64e8b8389c27975cf4d32.m3u8', title: '一生一世 7' },
+
+            { src: 'https://m3u.nikanba.live/share/88526515e2eb426790a6949e7385d225.m3u8', title: '一生一世 8' },
+
+            { src: 'https://m3u.nikanba.live/share/ff61808501854c7eb19de29d005b7eef.m3u8', title: '一生一世 9' },
+
+            { src: 'https://m3u.nikanba.live/share/805926285cb54fc6b3952b6fb400c24f.m3u8', title: '一生一世 10' },
+
+            { src: 'https://m3u.nikanba.live/share/4243fa5cc1c34e03ab655261597a3835.m3u8', title: '一生一世 11' },
+
+            { src: 'https://m3u.nikanba.live/share/104a01858fcb4900bb55e61bb90f1e2e.m3u8', title: '一生一世 12' },
+
+            { src: 'https://m3u.nikanba.live/share/d55b268736764657af01cc3fdb987914.m3u8', title: '一生一世 13' },
+
+            { src: 'https://m3u.nikanba.live/share/c5c1d05e5c334898b389f75479c3b62d.m3u8', title: '一生一世 14' },
+
+            { src: 'https://m3u.nikanba.live/share/5010019dde7541548fb4a3ce835e2100.m3u8', title: '一生一世 15' },
+
+            { src: 'https://m3u.nikanba.live/share/6f9c6c2d82e046b9bd1a48f5037526b7.m3u8', title: '一生一世 16' },
+
+            { src: 'https://m3u.nikanba.live/share/1a6eaba9c440458383e8e27ab563a906.m3u8', title: '一生一世 17' },
+
+            { src: 'https://m3u.nikanba.live/share/253107adaa384f9aba06aa14e7cd1dd9.m3u8', title: '一生一世 18' },
+
+            { src: 'https://m3u.nikanba.live/share/d6d2d76f47bd4ce398b003373efa51b2.m3u8', title: '一生一世 19' },
+
+            { src: 'https://m3u.nikanba.live/share/6bfcff73a13e4da9abe171d9a7c219c6.m3u8', title: '一生一世 20' },
+
+            { src: 'https://m3u.nikanba.live/share/f6fb48a118eb4845abcdcf699d5e44c2.m3u8', title: '一生一世 21' },
+
+            { src: 'https://m3u.nikanba.live/share/787ddbca0e454d44b2bbf84fd8705483.m3u8', title: '一生一世 22' },
+
+            { src: 'https://m3u.nikanba.live/share/5ef62798337246b2ab2345ea6ff79d93.m3u8', title: '一生一世 23' },
+
+            { src: 'https://m3u.nikanba.live/share/62d25fb1a78c44aeb5d99633394dd656.m3u8', title: '一生一世 24' },
+
+            { src: 'https://m3u.nikanba.live/share/06efd01053a74ca1887b14bbe4c871a3.m3u8', title: '一生一世 25' },
+
+            { src: 'https://m3u.nikanba.live/share/4a4a26d8d0734b4eb549174ff0e96fb1.m3u8', title: '一生一世 26' },
+
+            { src: 'https://m3u.nikanba.live/share/841709ad7e154c74966a4e2d5467cd93.m3u8', title: '一生一世 27' },
+
+            { src: 'https://m3u.nikanba.live/share/3aceb2b077da49c699509a9aa8c0f167.m3u8', title: '一生一世 28' },
+
+            { src: 'https://m3u.nikanba.live/share/9274db49e0864159b31cb3a950068dc0.m3u8', title: '一生一世 29' },
+
+            { src: 'https://m3u.nikanba.live/share/688ed9ff784a4adaa1eb67de81e3f44c.m3u8', title: '一生一世 30' },
+
         ];
 
         var startTime = 1; // Start time in seconds
