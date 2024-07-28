@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilibili Videos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function convertBilibiliUrl(url) {
+            if (url.includes('bilibili.com/video/av')) {
+                let aid = url.split('av')[1];
+                return `https://player.bilibili.com/player.html?isOutside=true&aid=${aid}`;
+            } else if (url.includes('b23.tv/')) {
+                let bvid = url.split('/').pop();
+                return `https://player.bilibili.com/player.html?isOutside=true&bvid=${bvid}`;
+            } else {
+                return url;
+            }
+        }
+
+        function updateVideo(index) {
+            let select = document.getElementById("videoSelect");
+            let iframe = document.getElementById("videoPlayer");
+            let currentIndex = select.selectedIndex;
+            let newIndex = index !== undefined ? index : currentIndex;
+
+            if (newIndex >= 0 && newIndex < select.options.length) {
+                select.selectedIndex = newIndex;
+                let selectedUrl = select.options[newIndex].value;
+                iframe.src = selectedUrl;
+            }
+        }
+
+        function nextVideo() {
+            let select = document.getElementById("videoSelect");
+            let currentIndex = select.selectedIndex;
+            updateVideo(currentIndex + 1);
+        }
+
+        function prevVideo() {
+            let select = document.getElementById("videoSelect");
+            let currentIndex = select.selectedIndex;
+            updateVideo(currentIndex - 1);
+        }
+
+        function filterVideos() {
+            let authorSelect = document.getElementById("authorSelect").value;
+            let videoSelect = document.getElementById("videoSelect");
+
+            for (let i = 0; i < videoSelect.options.length; i++) {
+                let option = videoSelect.options[i];
+                let videoAuthor = option.getAttribute("data-author");
+
+                if (authorSelect === "" || videoAuthor === authorSelect) {
+                    option.style.display = "block";
+                } else {
+                    option.style.display = "none";
+                }
+            }
+        }
+
+        async function loadVideos() {
+            let response = await fetch('bilibili_videos.json');
+            let videos = await response.json();
+
+            let authorSet = new Set();
+            let videoSelect = document.getElementById("videoSelect");
+            videoSelect.innerHTML = '<option value="">Select a video</option>';
+
+            videos.forEach(video => {
+                let embedUrl = convertBilibiliUrl(video.arcurl);
+                let pubdateStr = new Date(video.pubdate).toISOString().split('T')[0];
+                videoSelect.innerHTML += `<option value="${embedUrl}" data-author="${video.author}">${video.title} - ${video.author} - ${pubdateStr}</option>`;
+                authorSet.add(video.author);
+            });
+
+            let authorSelect = document.getElementById("authorSelect");
+            authorSet.forEach(author => {
+                authorSelect.innerHTML += `<option value="${author}">${author}</option>`;
+            });
+        }
+
+        window.onload = function () {
+            loadVideos();
+            document.getElementById("authorSelect").addEventListener("change", filterVideos);
+        }
+    </script>
+</head>
+<body>
+    <h1>Bilibili Videos</h1>
+    <label for="authorSelect">Filter by author:</label>
+    <select id="authorSelect">
+        <option value="">All Authors</option>
+    </select>
+    <select id="videoSelect" onchange="updateVideo()">
+        <option value="">Select a video</option>
+    </select>
+    <br>
+    <button onclick="prevVideo()">Previous Video</button>
+    <button onclick="nextVideo()">Next Video</button>
+    <hr>
+    <iframe id="videoPlayer" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"
+        width="800" height="450">
+    </iframe>
+</body>
+</html>
