@@ -9,7 +9,7 @@ links_ = glob("videos/*.html")
 links_.sort(key=os.path.getmtime, reverse=True)
 # links_.remove("index.html")
 # links_ = sorted(links_)
-titles = [html.rsplit(" ", 2)[0].replace("_", " ") for html in links_]
+titles = [html.rsplit(" ", 2)[0].replace("_", " ")[7:] for html in links_]
 links = [link for link in links_]
 li_s = "\n".join(
     [f'<li><a href="{link}">{title}</a></li>' for link, title in zip(links, titles)]
