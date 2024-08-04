@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五十公里桃花坞 第四季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/a84962b7b08f43ca9ec126a45462ecce.m3u8', title: '五十公里桃花坞 第四季 20240518（超前集结上）' },
+        
+            {src: 'https://m3u.nikanba.live/share/c3cccbbc97f44c44a8eafdf618c69c8b.m3u8', title: '五十公里桃花坞 第四季 20240518（超前集结下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/ddce2bf8233943e5b408c5b89b0ced83.m3u8', title: '五十公里桃花坞 第四季 20240525（第1期上）' },
+        
+            {src: 'https://m3u.nikanba.live/share/64f361132112459f8362c6ae804472f8.m3u8', title: '五十公里桃花坞 第四季 20240526（第1期下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/e6ba4cf62fab4e28ab15e97a9503953c.m3u8', title: '五十公里桃花坞 第四季 20240527（第1期加更上）' },
+        
+            {src: 'https://m3u.nikanba.live/share/02342a93cd88616d3ddd95b1ef29aced.m3u8', title: '五十公里桃花坞 第四季 20240528（第1期加更下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/9a6f99cb1d888f8e1c22e47b016a0e9e.m3u8', title: '五十公里桃花坞 第四季 20240528（第1期加更下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/eacd02bec6cdb7bfb4418a17a69c83b4.m3u8', title: '五十公里桃花坞 第四季 20240529（目标移民上）' },
+        
+            {src: 'https://m3u.nikanba.live/share/349fa29c7e23cf96d425a0405c8dedda.m3u8', title: '五十公里桃花坞 第四季 20240529（目标移民下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/a08565452d51c5f803ab9a55b31b002b.m3u8', title: '五十公里桃花坞 第四季 20240530（坞里都知道）' },
+        
+            {src: 'https://m3u.nikanba.live/share/64c79e7cd6a16e33280b8e87165d402d.m3u8', title: '五十公里桃花坞 第四季 20240601（第2期上）' },
+        
+            {src: 'https://m3u.nikanba.live/share/2233527e00c2a5a4544f32f7f0140026.m3u8', title: '五十公里桃花坞 第四季 20240602（第2期下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/d550122b6752822c14785117b70ecf98.m3u8', title: '五十公里桃花坞 第四季 20240603（第2期加更上）' },
+        
+            {src: 'https://m3u.nikanba.live/share/89ce3e56f66c3a46e6f704971bd910bd.m3u8', title: '五十公里桃花坞 第四季 20240604（第2期加更下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/6aeec4d78204cada9e7ca66ff72d0ba6.m3u8', title: '五十公里桃花坞 第四季 20240605（目标移民上）' },
+        
+            {src: 'https://m3u.nikanba.live/share/d58c55a1f10ff36beb5a4719d5c7fbc9.m3u8', title: '五十公里桃花坞 第四季 20240606（目标移民下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/68b8b3919acb6c44dba6ffea923c8f4d.m3u8', title: '五十公里桃花坞 第四季 20240608（第3期上）' },
+        
+            {src: 'https://m3u.nikanba.live/share/9c2c3897260c3e3991c3feeeefe1fd3b.m3u8', title: '五十公里桃花坞 第四季 20240609（第3期下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/2cab5925d5ca4e981fdc00ec9277f1c3.m3u8', title: '五十公里桃花坞 第四季 20240610（第3期加更上）' },
+        
+            {src: 'https://m3u.nikanba.live/share/5a3d3facf03eb4e7f081c157df45d366.m3u8', title: '五十公里桃花坞 第四季 20240611（第3期加更下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/c5e263077af7ef6d3620f85f6714e667.m3u8', title: '五十公里桃花坞 第四季 20240612（目标移民上）' },
+        
+            {src: 'https://m3u.nikanba.live/share/960e2ba639c2ebddb9b33fb04b5d6b14.m3u8', title: '五十公里桃花坞 第四季 20240612（目标移民下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/13f410cf57dc97a1b8cd7ec0379a936c.m3u8', title: '五十公里桃花坞 第四季 20240613（坞里都知道）' },
+        
+            {src: 'https://m3u.nikanba.live/share/31901eb84fa10967ba9fad2e2b76fcbb.m3u8', title: '五十公里桃花坞 第四季 20240615（第4期上）' },
+        
+            {src: 'https://m3u.nikanba.live/share/17899c351ae5118e21bd9571cb9cc567.m3u8', title: '五十公里桃花坞 第四季 20240616（第4期下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/4cf93bc31bde0d3b2dc2d669425209cd.m3u8', title: '五十公里桃花坞 第四季 20240617（第4期加更）' },
+        
+            {src: 'https://m3u.nikanba.live/share/5e4b9c35e9f5e38f609b9310dd056f6a.m3u8', title: '五十公里桃花坞 第四季 20240618（第4期加更下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/e2b234690c49f4cdfdf8927c7e41722e.m3u8', title: '五十公里桃花坞 第四季 20240619（目标移民）' },
+        
+            {src: 'https://m3u.nikanba.live/share/8df748dcd563bb1c8655c060b51f551b.m3u8', title: '五十公里桃花坞 第四季 20240620（坞里都知道）' },
+        
+            {src: 'https://m3u.nikanba.live/share/809f582784261b5424e5bcddba900ab5.m3u8', title: '五十公里桃花坞 第四季 20240622（第5期上）' },
+        
+            {src: 'https://m3u.nikanba.live/share/02607014be99c4058518b3511e0523d4.m3u8', title: '五十公里桃花坞 第四季 20240623（第5期下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/c71627becc2eb7594d54e6629ad0ca47.m3u8', title: '五十公里桃花坞 第四季 20240624（第5期加更上）' },
+        
+            {src: 'https://m3u.nikanba.live/share/33248a54fcca0f0b3e26c4bda23b31d0.m3u8', title: '五十公里桃花坞 第四季 20240625（第5期加更下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/e6680c1439cb0975e9e16902717c6db7.m3u8', title: '五十公里桃花坞 第四季 20240626（目标坞民上）' },
+        
+            {src: 'https://m3u.nikanba.live/share/021ee0cfd28adb0e58d5088608b0a8be.m3u8', title: '五十公里桃花坞 第四季 20240626（目标坞民下）' },
+        
+            {src: 'https://m3u.nikanba.live/share/bf84e47135d98a0067a8f69492c6a32b.m3u8', title: '五十公里桃花坞 第四季 20240627（坞里都知道）' },
+        
+            {src: 'https://m3u.nikanba.live/share/910e7e3f59af1764f232e72c770b29cd.m3u8', title: '五十公里桃花坞 第四季 20240629(上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/cdb9bb8fe26915793cce1293c9fcaef7.m3u8', title: '五十公里桃花坞 第四季 20240630(下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/a660c2730ae580f478c47f2c2ea2f890.m3u8', title: '五十公里桃花坞 第四季 20240701(加更版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/340889298d1d7c1c13945da1ba84ba36.m3u8', title: '五十公里桃花坞 第四季 20240702(加更版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/47c7b008164abf56c255e919c784c526.m3u8', title: '五十公里桃花坞 第四季 20240703' },
+        
+            {src: 'https://m3u.nikanba.live/share/70f82d2acf2c13c0b66593e38a324cb6.m3u8', title: '五十公里桃花坞 第四季 20240704' },
+        
+            {src: 'https://m3u.nikanba.live/share/d475b315094810ff04710b137742da13.m3u8', title: '五十公里桃花坞 第四季 20240706(上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/12fe9820c0307ca328b42333036170a1.m3u8', title: '五十公里桃花坞 第四季 20240707(下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/1429e373520ec139c8b57d934fbe9e17.m3u8', title: '五十公里桃花坞 第四季 20240708(加更版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/27940a0a261c6b21c2458e3867706489.m3u8', title: '五十公里桃花坞 第四季 20240709(加更版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/1c34fc3aa891c48c32809f474ca84ee3.m3u8', title: '五十公里桃花坞 第四季 20240710' },
+        
+            {src: 'https://m3u.nikanba.live/share/3f19410bb800f9f949188149692e9468.m3u8', title: '五十公里桃花坞 第四季 20240711' },
+        
+            {src: 'https://m3u.nikanba.live/share/01062bbf69e17130b4cea16e11b197b5.m3u8', title: '五十公里桃花坞 第四季 20240712(加更版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/949cd426cc00601020300c229ec9f822.m3u8', title: '五十公里桃花坞 第四季 20240713(上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/1e379f44846e32cb388d803f35a9cac2.m3u8', title: '五十公里桃花坞 第四季 20240714(下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/12f26e5231059bf161979b2e03538ce9.m3u8', title: '五十公里桃花坞 第四季 20240715(加更版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/af3dc0fb6c441095bea41ce30cd48a65.m3u8', title: '五十公里桃花坞 第四季 20240716(加更版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/b712882f8ff72d8559ee23ef4372a98d.m3u8', title: '五十公里桃花坞 第四季 20240717' },
+        
+            {src: 'https://m3u.nikanba.live/share/e60385f28965787c65084c216ae22b27.m3u8', title: '五十公里桃花坞 第四季 20240718' },
+        
+            {src: 'https://m3u.nikanba.live/share/0beb3fef037c93474a307a0eb0a947e8.m3u8', title: '五十公里桃花坞 第四季 20240719' },
+        
+            {src: 'https://m3u.nikanba.live/share/3b74d3d42cb09988bfddd7c363f8cf32.m3u8', title: '五十公里桃花坞 第四季 20240719(加更版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/cc3a40330a2a68526f36693bc7fdb62f.m3u8', title: '五十公里桃花坞 第四季 20240720(上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/aa446fa1aac177931e78c9103799f4b0.m3u8', title: '五十公里桃花坞 第四季 20240721(下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/ab0ed8c370b6c83ab116632eeac2e587.m3u8', title: '五十公里桃花坞 第四季 20240722(加更版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/addedba14035c805183cd98ea2c24c18.m3u8', title: '五十公里桃花坞 第四季 20240723(加更版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/9d053b94d9714cab137936592f0dd054.m3u8', title: '五十公里桃花坞 第四季 20240724' },
+        
+            {src: 'https://m3u.nikanba.live/share/612574647e4cc46634d6b13680779dea.m3u8', title: '五十公里桃花坞 第四季 20240725' },
+        
+            {src: 'https://m3u.nikanba.live/share/47a3639ae3ef97ab97c6da204ba8260f.m3u8', title: '五十公里桃花坞 第四季 20240726' },
+        
+            {src: 'https://m3u.nikanba.live/share/6bfda005789797e2b8e83f17d67c4412.m3u8', title: '五十公里桃花坞 第四季 20240726(加更版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/7e04170498afdc32d6fc169c82fed5e5.m3u8', title: '五十公里桃花坞 第四季 20240727(上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/1196c5a3b8c202609480eab5961e1e22.m3u8', title: '五十公里桃花坞 第四季 20240728(下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/920146a8b6dacf8f3dd86ae5cce902a9.m3u8', title: '五十公里桃花坞 第四季 20240728' },
+        
+            {src: 'https://m3u.nikanba.live/share/2128499ab18f8817174edfa0b41a572c.m3u8', title: '五十公里桃花坞 第四季 20240729(加更版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/a61047ca696a5d31c5891cddeb29864d.m3u8', title: '五十公里桃花坞 第四季 20240730(加更版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/7d46bce9ba71144dd50104e56e264259.m3u8', title: '五十公里桃花坞 第四季 20240731' },
+        
+            {src: 'https://m3u.nikanba.live/share/0e1f458ab20ba6f4a9b5e9d89e3c4628.m3u8', title: '五十公里桃花坞 第四季 20240731(加更版)' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_164506";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
