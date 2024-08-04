@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天真派：武林外传</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u8.heimuertv.com/play/afaf04621b5247b1bd90a446edd0dde3.m3u8', title: '天真派：武林外传 01' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/eb0652dee57c42abbfce21136d4e3edc.m3u8', title: '天真派：武林外传 02' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/b024d8d9eb36412aa5344b60a5cce81c.m3u8', title: '天真派：武林外传 03' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/8209b1614e294c208f9de6cb94a05a23.m3u8', title: '天真派：武林外传 04' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/afc3bd51b90c42cab84842e8108c30d4.m3u8', title: '天真派：武林外传 05' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/aa9b4d8788214172912f184143c7375e.m3u8', title: '天真派：武林外传 06' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/0fb29a7661d5464888fad386705141b8.m3u8', title: '天真派：武林外传 07' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/70d698529dbf4b4abf75f54d64840045.m3u8', title: '天真派：武林外传 08' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/73806466ec144096af6f9d0e23ef412a.m3u8', title: '天真派：武林外传 09' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/11f2e149734b491989f9b5f3aafade2e.m3u8', title: '天真派：武林外传 10' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/89b2cc4f27bf41f18255c92feb600af7.m3u8', title: '天真派：武林外传 11' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/9ffa0296d6ed4c0380b50f4bd31b268b.m3u8', title: '天真派：武林外传 12' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/f7168af9de584932909c01dd95c7bdff.m3u8', title: '天真派：武林外传 13' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/f51c84aeb1364a318d8621f4d2c23928.m3u8', title: '天真派：武林外传 14' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/9f60701382504269b65841bf6d921629.m3u8', title: '天真派：武林外传 15' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/aea75e721cb1435a9bb0504ec278d528.m3u8', title: '天真派：武林外传 16' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/bcc7365424ed49e58ea04a3af3d6934f.m3u8', title: '天真派：武林外传 17' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/127ddd63340f4975a22b79b62543247e.m3u8', title: '天真派：武林外传 18' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_heimuer_33931";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
