@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>十天之后回到现实</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u8.heimuertv.com/play/a1de9c99aeec49a89c3686257aede260.m3u8', title: '十天之后回到现实 20240719(第一期下)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/879c77c232e64d939ee46cadfb8da326.m3u8', title: '十天之后回到现实 20240719(第一期上)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/254cd60baac243df97ffa6105178b6bb.m3u8', title: '十天之后回到现实 20240720(生活篇第1期)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/09d5922be1894827825722e5f5be984b.m3u8', title: '十天之后回到现实 20240726(第2期上)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/eed3dbf1ee814e0ea914ead880a3ff1e.m3u8', title: '十天之后回到现实 20240726(第2期下)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/29fa2f07f0e041388a08a80b28503e0c.m3u8', title: '十天之后回到现实 20240727(生活篇第2期)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/015b030a290d433f9f0094f2b20138d8.m3u8', title: '十天之后回到现实 20240802(第3期下)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/efce3001f70742b4abb139677d505a06.m3u8', title: '十天之后回到现实 20240802(第3期上)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/e999c6963f274250a6fa6658bf439dde.m3u8', title: '十天之后回到现实 20240803(生活篇第3期)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/bb6e86b5d8f4421fa37f531c3c7758b1.m3u8', title: '十天之后回到现实 20240804(复活赛第1期)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/5bae6f9488c44c339c1be9c0daaf6c6f.m3u8', title: '十天之后回到现实 20240809(第4期上)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/80110c65a26e4b7890585924d23d6828.m3u8', title: '十天之后回到现实 20240809(第4期下)' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_heimuer_42288";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
