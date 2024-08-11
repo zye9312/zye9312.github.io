@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -18,28 +19,44 @@
         </select>
     </div>
     <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
     <div class="video-container">
         <!-- https://stackoverflow.com/a/39223524 -->
         <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
         </video>
     </div>
-
     <script>
 
         var sources = [
 
-            { src: 'https://m3u.nikanba.live/share/67bd19fd6f704543b0c376edb7b7936c.m3u8', title: '十天之后回到现实 20240719(第1期上)' },
-
-            { src: 'https://m3u.nikanba.live/share/6447e04cfb2c1674c74e53ed454c5715.m3u8', title: '十天之后回到现实 20240719(第1期下)' },
-
-            { src: 'https://m3u.nikanba.live/share/240b9ef50ec8cfe9b7c2d9c5af9f96af.m3u8', title: '十天之后回到现实 20240720(生活篇第1期)' },
-
-            { src: 'https://m3u.nikanba.live/share/a74565a6e9fe33211c924995999f2dec.m3u8', title: '十天之后回到现实 20240726(第2期上)' },
-
-            { src: 'https://m3u.nikanba.live/share/84889dab7831ad60da3c77d25e5ef021.m3u8', title: '十天之后回到现实 20240726(第2期下)' },
-
-            { src: 'https://m3u.nikanba.live/share/8dbd2a469490e888b7a1811e185c261a.m3u8', title: '十天之后回到现实 20240727(生活篇第2期)' },
-
+            {src: 'https://m3u.nikanba.live/share/67bd19fd6f704543b0c376edb7b7936c.m3u8', title: '十天之后回到现实 20240719(第1期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/6447e04cfb2c1674c74e53ed454c5715.m3u8', title: '十天之后回到现实 20240719(第1期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/240b9ef50ec8cfe9b7c2d9c5af9f96af.m3u8', title: '十天之后回到现实 20240720(生活篇第1期)' },
+        
+            {src: 'https://m3u.nikanba.live/share/a74565a6e9fe33211c924995999f2dec.m3u8', title: '十天之后回到现实 20240726(第2期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/84889dab7831ad60da3c77d25e5ef021.m3u8', title: '十天之后回到现实 20240726(第2期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/8dbd2a469490e888b7a1811e185c261a.m3u8', title: '十天之后回到现实 20240727(生活篇第2期)' },
+        
+            {src: 'https://m3u.nikanba.live/share/d635d3404f77b254da2858658e3ed2c3.m3u8', title: '十天之后回到现实 20240802(第3期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/3f9c8f70c1cb7f061140461c8274dec3.m3u8', title: '十天之后回到现实 20240802(第3期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/e82970e28496aabec6489e051710d104.m3u8', title: '十天之后回到现实 20240803(生活篇第3期)' },
+        
+            {src: 'https://m3u.nikanba.live/share/c70b573daca563f6829c4286bac4c956.m3u8', title: '十天之后回到现实 20240804(复活岛第1期)' },
+        
+            {src: 'https://m3u.nikanba.live/share/054cf1d746103d0e95ca3abb9aadc376.m3u8', title: '十天之后回到现实 20240809(第4期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/7303461c3fe30b2aa600fbfce9a913f9.m3u8', title: '十天之后回到现实 20240809(第4期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/53dfabf2b36badfe571785c6625fd771.m3u8', title: '十天之后回到现实 20240810(生活篇第4期)' },
+        
+            {src: 'https://m3u.nikanba.live/share/b094dd68614cbe78160328bb3351a1d9.m3u8', title: '十天之后回到现实 20240811(复活岛第2期)' },
+        
         ];
 
         var startTime = 1; // Start time in seconds
