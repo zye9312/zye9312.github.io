@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我们在黑夜中相拥</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/fd036efb6843f117f57e7c843e0cea38.m3u8', title: '我们在黑夜中相拥 01' },
+        
+            {src: 'https://m3u.nikanba.live/share/6957e58a26d99238dc9af95819c175ab.m3u8', title: '我们在黑夜中相拥 02' },
+        
+            {src: 'https://m3u.nikanba.live/share/7b3f557bdff5da98cbad5a61c512623c.m3u8', title: '我们在黑夜中相拥 03' },
+        
+            {src: 'https://m3u.nikanba.live/share/8b8b5c278e1676da2038fff04e89ac86.m3u8', title: '我们在黑夜中相拥 04' },
+        
+            {src: 'https://m3u.nikanba.live/share/5f4e4441ae18401832688aaa0acd41d6.m3u8', title: '我们在黑夜中相拥 05' },
+        
+            {src: 'https://m3u.nikanba.live/share/4eccb26e547cc024fb8e9f61de2a3494.m3u8', title: '我们在黑夜中相拥 06' },
+        
+            {src: 'https://m3u.nikanba.live/share/fd2fd02bece5fb1e14cf88d62bc34694.m3u8', title: '我们在黑夜中相拥 07' },
+        
+            {src: 'https://m3u.nikanba.live/share/6bb8b58ce9545f3a63cb0934d118dd95.m3u8', title: '我们在黑夜中相拥 08' },
+        
+            {src: 'https://m3u.nikanba.live/share/b9dfd3d6a9ae3d039495a9054097a877.m3u8', title: '我们在黑夜中相拥 09' },
+        
+            {src: 'https://m3u.nikanba.live/share/3d59ebcb45f28e9a1d0039f953312a62.m3u8', title: '我们在黑夜中相拥 10' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_190468";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
