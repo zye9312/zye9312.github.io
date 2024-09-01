@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灵魂摆渡</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/9a0c0854e4c14685ae2d3b927ee1a45e.m3u8', title: '灵魂摆渡 第01集' },
+        
+            {src: 'https://m3u.nikanba.live/share/63fb4dd90b094643819b1adc0a5b5b5b.m3u8', title: '灵魂摆渡 第02集' },
+        
+            {src: 'https://m3u.nikanba.live/share/ac545796211d453aa6cf0fecd46c6d8f.m3u8', title: '灵魂摆渡 第03集' },
+        
+            {src: 'https://m3u.nikanba.live/share/a9476c85bc8742c78d698808a420c81d.m3u8', title: '灵魂摆渡 第04集' },
+        
+            {src: 'https://m3u.nikanba.live/share/c66e8f873ae44a108c98b59a93c0ead3.m3u8', title: '灵魂摆渡 第05集' },
+        
+            {src: 'https://m3u.nikanba.live/share/4a78c01be4cb4ad2bb92d8d600d9d108.m3u8', title: '灵魂摆渡 第06集' },
+        
+            {src: 'https://m3u.nikanba.live/share/e6295b243d5744b1aee55c0e77b5e404.m3u8', title: '灵魂摆渡 第07集' },
+        
+            {src: 'https://m3u.nikanba.live/share/0c637834a6ce48588c773a4dce152cb3.m3u8', title: '灵魂摆渡 第08集' },
+        
+            {src: 'https://m3u.nikanba.live/share/3fc3e004431e45d6b2cf77c88ada1def.m3u8', title: '灵魂摆渡 第09集' },
+        
+            {src: 'https://m3u.nikanba.live/share/7d7fc93ed1114bdc9cceff259f84e923.m3u8', title: '灵魂摆渡 第10集' },
+        
+            {src: 'https://m3u.nikanba.live/share/09f2bd6a5e024f728aaaa4a30ecfdb1f.m3u8', title: '灵魂摆渡 第11集' },
+        
+            {src: 'https://m3u.nikanba.live/share/0641933fd3874ec3acbea519be251055.m3u8', title: '灵魂摆渡 第12集' },
+        
+            {src: 'https://m3u.nikanba.live/share/ec9cb542063b44e199ed69f7e2c9dfd6.m3u8', title: '灵魂摆渡 第13集' },
+        
+            {src: 'https://m3u.nikanba.live/share/e70e73f355654b9da6d83d15c1b23375.m3u8', title: '灵魂摆渡 第14集' },
+        
+            {src: 'https://m3u.nikanba.live/share/be2788dc06fb48d2a6ca4b4d84642d3a.m3u8', title: '灵魂摆渡 第15集' },
+        
+            {src: 'https://m3u.nikanba.live/share/3b4a572f4de147259fc737c431f3b4dc.m3u8', title: '灵魂摆渡 第16集' },
+        
+            {src: 'https://m3u.nikanba.live/share/e03b0c3194fd4b078c3437b23072c2cf.m3u8', title: '灵魂摆渡 第17集' },
+        
+            {src: 'https://m3u.nikanba.live/share/f3a5b9c29064416e97212e4c12affdd7.m3u8', title: '灵魂摆渡 第18集' },
+        
+            {src: 'https://m3u.nikanba.live/share/2dc1e0cc5f24417892081c6d83a20506.m3u8', title: '灵魂摆渡 第19集' },
+        
+            {src: 'https://m3u.nikanba.live/share/972d066087e04df7b79b56ebee689cac.m3u8', title: '灵魂摆渡 第20集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_40426";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
