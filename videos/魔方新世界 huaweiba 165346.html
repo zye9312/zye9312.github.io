@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魔方新世界</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/5530f2d932b64f4893f802be0416b19d.m3u8', title: '魔方新世界 20240514(彩蛋篇)' },
+        
+            {src: 'https://m3u.nikanba.live/share/33a8fda805d144168dc6f5ad8787f6ce.m3u8', title: '魔方新世界 20240515(第1期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/299580708f2e4bbcb852c280482b89e9.m3u8', title: '魔方新世界 20240515(训练营)' },
+        
+            {src: 'https://m3u.nikanba.live/share/19f9ec21092f4d75ae8eae36a54b6901.m3u8', title: '魔方新世界 20240515(第1期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/126709b0465144228d5c255f0a203104.m3u8', title: '魔方新世界 20240515' },
+        
+            {src: 'https://m3u.nikanba.live/share/ffe440b98b3b49e1858411df49158a8c.m3u8', title: '魔方新世界 20240521(超前彩蛋)' },
+        
+            {src: 'https://m3u.nikanba.live/share/aa0946be55dd422ab02df3a930bde0ed.m3u8', title: '魔方新世界 20240522(第2期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/08d505dbe1f34424bd41c7f868d12387.m3u8', title: '魔方新世界 20240522(训练营)' },
+        
+            {src: 'https://m3u.nikanba.live/share/208de345bffd4e328c0360313d4aae5f.m3u8', title: '魔方新世界 20240522(第2期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/ba706b2988414c4fa56058163c986a72.m3u8', title: '魔方新世界 20240522' },
+        
+            {src: 'https://m3u.nikanba.live/share/6297b06a12864bc78b569dd85da55d1d.m3u8', title: '魔方新世界 20240523(会员Plus版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/4435a9a504a9a77317a600b0dd1acca7.m3u8', title: '魔方新世界 20240528(超前彩蛋)' },
+        
+            {src: 'https://m3u.nikanba.live/share/142228b42be24cd88ceab7bb02806c4a.m3u8', title: '魔方新世界 20240529(第3期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/b8fe70c1a6a2b79d6110e006a83153b2.m3u8', title: '魔方新世界 20240529(第3期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/0594ce74facd77870261c4f78868d615.m3u8', title: '魔方新世界 20240529(训练营上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/bf475be0de2c4f9190abf9c82b746388.m3u8', title: '魔方新世界 20240529(训练营下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/82b6c95938c14d3e80b862a09252af8d.m3u8', title: '魔方新世界 20240529' },
+        
+            {src: 'https://m3u.nikanba.live/share/49f7ae5d900d41e4bca4b32b66771f0e.m3u8', title: '魔方新世界 20240530(会员Plus版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/9ecf3250bece179654b3f5fb3f23cd5b.m3u8', title: '魔方新世界 20240604(超前彩蛋)' },
+        
+            {src: 'https://m3u.nikanba.live/share/d10ca28039c26055a58dae0f9f364963.m3u8', title: '魔方新世界 20240605(第4期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/871b7350a4d899b50eea10f0d667eb42.m3u8', title: '魔方新世界 20240605(第4期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/4b3d773da4f616cfa89bb9086835d1f7.m3u8', title: '魔方新世界 20240605(训练营上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/1c30fd70508b883bad1dd0ee4702abc7.m3u8', title: '魔方新世界 20240605(训练营下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/346c350c080bb6406657fb33503bc391.m3u8', title: '魔方新世界 20240605' },
+        
+            {src: 'https://m3u.nikanba.live/share/2082b725ca49bc713e8cd4ed28c4b276.m3u8', title: '魔方新世界 20240606(会员Plus版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/8a98b8c4abc1da8568c9b8cef2470cf1.m3u8', title: '魔方新世界 20240606(训练营Plus)' },
+        
+            {src: 'https://m3u.nikanba.live/share/a27c9650e1a89cd69af7a506a98d0dca.m3u8', title: '魔方新世界 20240611(超前彩蛋)' },
+        
+            {src: 'https://m3u.nikanba.live/share/ea1823ecf019ece9083bba87ce5c0e1b.m3u8', title: '魔方新世界 20240612(第5期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/6bc86ad5659ffbdf1d80919622070a2b.m3u8', title: '魔方新世界 20240612(第5期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/ab40bd9a79fc47b1f6a0e411790b72e1.m3u8', title: '魔方新世界 20240612(训练营上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/69983cc9b98be8a62a6918716637a291.m3u8', title: '魔方新世界 20240612(训练营下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/94cd02807051644b54aedda63bdb0623.m3u8', title: '魔方新世界 20240612' },
+        
+            {src: 'https://m3u.nikanba.live/share/b10828485ce302ee4685457bcd8890d1.m3u8', title: '魔方新世界 20240613(会员Plus版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/ee60df0502ff6c79e93df7a611040ff3.m3u8', title: '魔方新世界 20240613(训练营Plus)' },
+        
+            {src: 'https://m3u.nikanba.live/share/1f0e4e1559c497647c1ce969c2bbc07e.m3u8', title: '魔方新世界 20240618(超前彩蛋)' },
+        
+            {src: 'https://m3u.nikanba.live/share/5aeb87bf5a386bb443e7b19d28cfe47c.m3u8', title: '魔方新世界 20240619(第6期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/48990543a57b93cf6da306d762efb469.m3u8', title: '魔方新世界 20240619(第6期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/067d8721b1b124187acdff19e0e6826c.m3u8', title: '魔方新世界 20240619(训练营上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/0e20e515b03586221c24a8db8b9c7060.m3u8', title: '魔方新世界 20240619(训练营下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/eedf366f1f80edc1c46f9ab5803a8351.m3u8', title: '魔方新世界 20240619' },
+        
+            {src: 'https://m3u.nikanba.live/share/a9a1d1f7011902140f28fc6dd06ee090.m3u8', title: '魔方新世界 20240620(会员Plus版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/9413807e5290ebc50c5dd9699caedc0e.m3u8', title: '魔方新世界 20240620(训练营Plus)' },
+        
+            {src: 'https://m3u.nikanba.live/share/2e9e95a8eed89728bc68b4ef106a882f.m3u8', title: '魔方新世界 20240625(超前彩蛋)' },
+        
+            {src: 'https://m3u.nikanba.live/share/f42ebe624ce2156d087648faeae9c6c8.m3u8', title: '魔方新世界 20240626(第7期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/630de79e8ad0a302c108fd03a7b6102b.m3u8', title: '魔方新世界 20240626(第7期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/7c5973c073c71b37149d789083ab7ab9.m3u8', title: '魔方新世界 20240626(训练营上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/f1c8430ccc37b70ca6055e99a1215495.m3u8', title: '魔方新世界 20240626(训练营下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/df5d760a10d6f636819fc1571e132487.m3u8', title: '魔方新世界 20240626' },
+        
+            {src: 'https://m3u.nikanba.live/share/250ce21b887b48b401b12cce44805a59.m3u8', title: '魔方新世界 20240627(训练营Plus)' },
+        
+            {src: 'https://m3u.nikanba.live/share/25b8e64459c7ba439e8c964eb7507512.m3u8', title: '魔方新世界 20240627(会员Plus版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/fa0c12b97dda5012db82657984718b3a.m3u8', title: '魔方新世界 20240702(超前彩蛋)' },
+        
+            {src: 'https://m3u.nikanba.live/share/3b78428541e389c5e3c3ecf5981c9cd6.m3u8', title: '魔方新世界 20240703(第8期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/fbf97602196fb4c47339876e8eed7dc4.m3u8', title: '魔方新世界 20240703(第8期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/01b5ebf425e71706022815a0ed5bfe4e.m3u8', title: '魔方新世界 20240703(训练营上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/a0992ea749457ba1e179ed653416b64f.m3u8', title: '魔方新世界 20240703(训练营下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/b0f2fbd730b0d636e08b51f67ac8819c.m3u8', title: '魔方新世界 20240703' },
+        
+            {src: 'https://m3u.nikanba.live/share/786a022f9b783a9d9ba855a1078391ec.m3u8', title: '魔方新世界 20240704' },
+        
+            {src: 'https://m3u.nikanba.live/share/b3c787e7c92c0e9a45b266d92e136e66.m3u8', title: '魔方新世界 20240704(会员Plus版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/e6d0bc90f9ed3f6461f7579b73bb6150.m3u8', title: '魔方新世界 20240704(训练营Plus)' },
+        
+            {src: 'https://m3u.nikanba.live/share/9e3bc598e023cf9148ab58304f5b7700.m3u8', title: '魔方新世界 20240709(超前彩蛋)' },
+        
+            {src: 'https://m3u.nikanba.live/share/2b05ce003d29c34e4dc78a9264612910.m3u8', title: '魔方新世界 20240710(第9期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/350cff37e9ebd3b131b29afd8714b5cb.m3u8', title: '魔方新世界 20240710(第9期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/e2cc5b9aeff1a474c4a39169a54acb9a.m3u8', title: '魔方新世界 20240710(训练营上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/fcd5cc58b172d33cffc7c4418ceeedc0.m3u8', title: '魔方新世界 20240710(训练营下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/a7b62f4f46013044206cad36b525b5a7.m3u8', title: '魔方新世界 20240710' },
+        
+            {src: 'https://m3u.nikanba.live/share/cf95d549ea6a245a54bc752ba8609be7.m3u8', title: '魔方新世界 20240711(会员Plus版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/bacfb60ad6611f979514ff74fd9e8941.m3u8', title: '魔方新世界 20240711(训练营Plus)' },
+        
+            {src: 'https://m3u.nikanba.live/share/fff129a15cdd1999709557ee560f39f9.m3u8', title: '魔方新世界 20240716(超前彩蛋)' },
+        
+            {src: 'https://m3u.nikanba.live/share/fe2ea81fbd98ce86ac2db895a3bb34eb.m3u8', title: '魔方新世界 20240717(第10期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/eb1759448d37ab3203de7df0b9fd84b3.m3u8', title: '魔方新世界 20240717(第10期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/664c152c9e15ae4ace790b2b1ca4e5e2.m3u8', title: '魔方新世界 20240717(训练营上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/b3c0c39d0c3e529d19f667deb931fe71.m3u8', title: '魔方新世界 20240717(训练营下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/874ca2b748d0db2bb57381faa9febb9b.m3u8', title: '魔方新世界 20240717' },
+        
+            {src: 'https://m3u.nikanba.live/share/14ce736c65776e76b4afe6affbe80f4a.m3u8', title: '魔方新世界 20240718(会员Plus版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/3d79f434180ea5a776eab03941fb29dd.m3u8', title: '魔方新世界 20240718(训练营Plus)' },
+        
+            {src: 'https://m3u.nikanba.live/share/1347dec6f8bd6a89d09325e7afc0f302.m3u8', title: '魔方新世界 20240723(超前彩蛋)' },
+        
+            {src: 'https://m3u.nikanba.live/share/46c8d1c8d62da1a89e3d1481dfff6328.m3u8', title: '魔方新世界 20240724(第11期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/22033f9c66760ac652d08c1518bbab32.m3u8', title: '魔方新世界 20240724(第11期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/d417ec5598120ff6c739888779a5c044.m3u8', title: '魔方新世界 20240724(训练营下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/94f1fa66fad63cb87fe49a9f41d7211f.m3u8', title: '魔方新世界 20240724(训练营上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/c4b02de5f4febf5eb0277ab79a9051e6.m3u8', title: '魔方新世界 20240724' },
+        
+            {src: 'https://m3u.nikanba.live/share/37acc4a10df0f4fbee8cc8afb0aba982.m3u8', title: '魔方新世界 20240725(会员Plus版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/5507c48cbf86f32cefec09048c4bbf51.m3u8', title: '魔方新世界 20240725(训练营Plus)' },
+        
+            {src: 'https://m3u.nikanba.live/share/a29f5a00d133ff72f9c9371ef53d5e84.m3u8', title: '魔方新世界 20240730(超前彩蛋)' },
+        
+            {src: 'https://m3u.nikanba.live/share/ef7ba20d7c30797cd3c47bf46db5cdb6.m3u8', title: '魔方新世界 20240731(第12期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/7f76330235f755e528f20c3a56435b7f.m3u8', title: '魔方新世界 20240731(第12期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/9762344e54fc1c65123993905a591d36.m3u8', title: '魔方新世界 20240731(训练营上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/1272f9e1ab61b29ad5afb63173f9e1c1.m3u8', title: '魔方新世界 20240731(训练营下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/81e1bb06b7c84169a6630f9419fafbe8.m3u8', title: '魔方新世界 20240731' },
+        
+            {src: 'https://m3u.nikanba.live/share/a9812b361784f73f832a3bbae701bde9.m3u8', title: '魔方新世界 20240801(会员Plus版)' },
+        
+            {src: 'https://m3u.nikanba.live/share/e1f974bd20d1bd1137481ab3fc0b1f5c.m3u8', title: '魔方新世界 20240801(训练营Plus)' },
+        
+            {src: 'https://m3u.nikanba.live/share/7ece9ff8635d39362c289f0b123cd057.m3u8', title: '魔方新世界 20240806(超前彩蛋)' },
+        
+            {src: 'https://m3u.nikanba.live/share/362fd293d6cb9733aff61cc0de60eff3.m3u8', title: '魔方新世界 20240807(第13期上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/f3da80cf62e44a28567fea1d62c3cf13.m3u8', title: '魔方新世界 20240807(第13期下)' },
+        
+            {src: 'https://m3u.nikanba.live/share/bbae5c87e4b7598922852b1e47a4427f.m3u8', title: '魔方新世界 20240807' },
+        
+            {src: 'https://m3u.nikanba.live/share/8107fcb7b67fe3bd8e4f757f6a7c6753.m3u8', title: '魔方新世界 20240807(训练营上)' },
+        
+            {src: 'https://m3u.nikanba.live/share/c85176acd4b237cf5748864c9de44d2b.m3u8', title: '魔方新世界 20240807(训练营下)' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_165346";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
