@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>边水往事</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/681a330d0c657d8f8cab5051071a5b4a.m3u8', title: '边水往事 01' },
+        
+            {src: 'https://m3u.nikanba.live/share/2741d7ccad8f70dde04fd0747de8c8ff.m3u8', title: '边水往事 02' },
+        
+            {src: 'https://m3u.nikanba.live/share/4533c60580a2a36658b9846400e12b2b.m3u8', title: '边水往事 03' },
+        
+            {src: 'https://m3u.nikanba.live/share/713ff861337448c7736f72b3bcc829a3.m3u8', title: '边水往事 04' },
+        
+            {src: 'https://m3u.nikanba.live/share/f8a26677f99666f4f5721d6d7b1e16b8.m3u8', title: '边水往事 05' },
+        
+            {src: 'https://m3u.nikanba.live/share/1725fb35831d3a8c4816924fb6aedce7.m3u8', title: '边水往事 06' },
+        
+            {src: 'https://m3u.nikanba.live/share/69f01144c045c3d82fb51bd9b52f2c72.m3u8', title: '边水往事 07' },
+        
+            {src: 'https://m3u.nikanba.live/share/ed40ab216174bf68399e32d892f16787.m3u8', title: '边水往事 08' },
+        
+            {src: 'https://m3u.nikanba.live/share/1218ffdcaf9f22b9b13a9c3242a16f56.m3u8', title: '边水往事 09' },
+        
+            {src: 'https://m3u.nikanba.live/share/0f411a9cfced4f61e6000321ae917b29.m3u8', title: '边水往事 10' },
+        
+            {src: 'https://m3u.nikanba.live/share/c8117b893703b6caa6bf9a9b4247885b.m3u8', title: '边水往事 11' },
+        
+            {src: 'https://m3u.nikanba.live/share/8e18769f5b1b3eff81f6657bdaaa7b3e.m3u8', title: '边水往事 12' },
+        
+            {src: 'https://m3u.nikanba.live/share/9e22f5f19afef9c45f7f69b558f512fd.m3u8', title: '边水往事 13' },
+        
+            {src: 'https://m3u.nikanba.live/share/a7124be50ce9f39a2a999f627492ab68.m3u8', title: '边水往事 14' },
+        
+            {src: 'https://m3u.nikanba.live/share/b81bb85c1d1b10808597ecff8944956c.m3u8', title: '边水往事 15' },
+        
+            {src: 'https://m3u.nikanba.live/share/574bc41394e36165e6dfb8887524533f.m3u8', title: '边水往事 16' },
+        
+            {src: 'https://m3u.nikanba.live/share/304a8327c748c70db9a8d139f105c91c.m3u8', title: '边水往事 17' },
+        
+            {src: 'https://m3u.nikanba.live/share/1e421acb58154d1355b5c95375fb62be.m3u8', title: '边水往事 18' },
+        
+            {src: 'https://m3u.nikanba.live/share/e804debeeb057dbc12647782e66427f9.m3u8', title: '边水往事 19' },
+        
+            {src: 'https://m3u.nikanba.live/share/f025e3e46d54a2e2f173556658b28872.m3u8', title: '边水往事 20' },
+        
+            {src: 'https://m3u.nikanba.live/share/e05da02aa9446f8f0a3520a8987e8a3e.m3u8', title: '边水往事 21' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_190588";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
