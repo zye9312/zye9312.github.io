@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大宋提刑官2</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/f25576f282c04adc92cf491c6a0d8c03.m3u8', title: '大宋提刑官2 1' },
+        
+            {src: 'https://m3u.nikanba.live/share/088965da323048fcae568c435a4fcb8e.m3u8', title: '大宋提刑官2 2' },
+        
+            {src: 'https://m3u.nikanba.live/share/e528f15c1b31463598b2af6d6fcbfde1.m3u8', title: '大宋提刑官2 3' },
+        
+            {src: 'https://m3u.nikanba.live/share/d4753f89f5a74aec8b75513bce485744.m3u8', title: '大宋提刑官2 4' },
+        
+            {src: 'https://m3u.nikanba.live/share/6fb8b8e858104f6caa97fa42d9fc7643.m3u8', title: '大宋提刑官2 5' },
+        
+            {src: 'https://m3u.nikanba.live/share/fe2ae765f3e64682a35efdddaa08ed7f.m3u8', title: '大宋提刑官2 6' },
+        
+            {src: 'https://m3u.nikanba.live/share/8a10aaba8f4746fbbc2c97540b0fd6dc.m3u8', title: '大宋提刑官2 7' },
+        
+            {src: 'https://m3u.nikanba.live/share/a861d6eb8b6140069d61cf553307ff43.m3u8', title: '大宋提刑官2 8' },
+        
+            {src: 'https://m3u.nikanba.live/share/e7db7159beda47b19cfe58d530e2f56c.m3u8', title: '大宋提刑官2 9' },
+        
+            {src: 'https://m3u.nikanba.live/share/44cef983fcab4387a1a49b81a6644d61.m3u8', title: '大宋提刑官2 10' },
+        
+            {src: 'https://m3u.nikanba.live/share/1073915b4c804467a5a51d3ef86b7505.m3u8', title: '大宋提刑官2 11' },
+        
+            {src: 'https://m3u.nikanba.live/share/6bf9a9a73f8742c3b44d7565bcc4f1ee.m3u8', title: '大宋提刑官2 12' },
+        
+            {src: 'https://m3u.nikanba.live/share/a8785ce503a2460eb8eeed8398ca94b2.m3u8', title: '大宋提刑官2 13' },
+        
+            {src: 'https://m3u.nikanba.live/share/7dc10e6275bc4a03ae853c1e32de1e8b.m3u8', title: '大宋提刑官2 14' },
+        
+            {src: 'https://m3u.nikanba.live/share/218475a1abd64002ab9f8f71d80ea2d3.m3u8', title: '大宋提刑官2 15' },
+        
+            {src: 'https://m3u.nikanba.live/share/35f0ba6b00024161badc99a24cca6b02.m3u8', title: '大宋提刑官2 16' },
+        
+            {src: 'https://m3u.nikanba.live/share/aebb6c0d557e49db85214893bf1d8e8f.m3u8', title: '大宋提刑官2 17' },
+        
+            {src: 'https://m3u.nikanba.live/share/85b2a28900cd4cc9b090772b397ee73a.m3u8', title: '大宋提刑官2 18' },
+        
+            {src: 'https://m3u.nikanba.live/share/35e1f3f9fe1a4dd396543ada513a39d5.m3u8', title: '大宋提刑官2 19' },
+        
+            {src: 'https://m3u.nikanba.live/share/9d91300a99b14b3b80c00a5eb6473d74.m3u8', title: '大宋提刑官2 20' },
+        
+            {src: 'https://m3u.nikanba.live/share/dffcee9c50724aff8fe225bcc30ec76b.m3u8', title: '大宋提刑官2 21' },
+        
+            {src: 'https://m3u.nikanba.live/share/e5fbe8643f074f59b663c633e146fd7b.m3u8', title: '大宋提刑官2 22' },
+        
+            {src: 'https://m3u.nikanba.live/share/7a9717d007bd4e5ebd510173e9c6dbbf.m3u8', title: '大宋提刑官2 23' },
+        
+            {src: 'https://m3u.nikanba.live/share/d5a14ed67102493b83dbbd3f3cf10800.m3u8', title: '大宋提刑官2 24' },
+        
+            {src: 'https://m3u.nikanba.live/share/46abeda754444d7eaf67515f30a7f9d8.m3u8', title: '大宋提刑官2 25' },
+        
+            {src: 'https://m3u.nikanba.live/share/dcfd74e320314521a046d46beb223c8c.m3u8', title: '大宋提刑官2 26' },
+        
+            {src: 'https://m3u.nikanba.live/share/6affdd11a9d24a6196e2cd886d195a9f.m3u8', title: '大宋提刑官2 27' },
+        
+            {src: 'https://m3u.nikanba.live/share/64f0165266cb4e109749552fcb050dcf.m3u8', title: '大宋提刑官2 28' },
+        
+            {src: 'https://m3u.nikanba.live/share/75a262b974dd40bd885cd4bd8034c7ee.m3u8', title: '大宋提刑官2 29' },
+        
+            {src: 'https://m3u.nikanba.live/share/10e8dfb0b3594ac1abcb4528e2e2b799.m3u8', title: '大宋提刑官2 30' },
+        
+            {src: 'https://m3u.nikanba.live/share/55890d7e631e4ea29b78c325387caaae.m3u8', title: '大宋提刑官2 31' },
+        
+            {src: 'https://m3u.nikanba.live/share/c047ea0186074cc58cc2e564406d8111.m3u8', title: '大宋提刑官2 32' },
+        
+            {src: 'https://m3u.nikanba.live/share/a9c5e63753634b408e2a10557d41e584.m3u8', title: '大宋提刑官2 33' },
+        
+            {src: 'https://m3u.nikanba.live/share/addf44225ea64d9ebb57700e13c5edda.m3u8', title: '大宋提刑官2 34' },
+        
+            {src: 'https://m3u.nikanba.live/share/e576235c1505467793b258edd38cd972.m3u8', title: '大宋提刑官2 35' },
+        
+            {src: 'https://m3u.nikanba.live/share/5919cd756a3c4bfab85574fe7f0c4df7.m3u8', title: '大宋提刑官2 36' },
+        
+            {src: 'https://m3u.nikanba.live/share/654e7e6311b14fb7a3974c06d5ad2c66.m3u8', title: '大宋提刑官2 37' },
+        
+            {src: 'https://m3u.nikanba.live/share/c913deb46e4f438eae151dcc1e175a27.m3u8', title: '大宋提刑官2 38' },
+        
+            {src: 'https://m3u.nikanba.live/share/784ef61218a44e90a739cc7a3f3942aa.m3u8', title: '大宋提刑官2 39' },
+        
+            {src: 'https://m3u.nikanba.live/share/129ac949aa5747769e95d0a0d9274f9e.m3u8', title: '大宋提刑官2 40' },
+        
+            {src: 'https://m3u.nikanba.live/share/8fe52e054d1649088cb32ea79e817931.m3u8', title: '大宋提刑官2 41' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_15484";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大宋提刑官</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/348b1d3189a54a23bb71594d1a376783.m3u8', title: '大宋提刑官 01' },
+        
+            {src: 'https://m3u.nikanba.live/share/735f7ccaafe84fa0a27aaeada888921a.m3u8', title: '大宋提刑官 02' },
+        
+            {src: 'https://m3u.nikanba.live/share/f930e177eedc48aa9303236f3fefb60c.m3u8', title: '大宋提刑官 03' },
+        
+            {src: 'https://m3u.nikanba.live/share/7deff5665f0249a493ac3aaf2e5771e8.m3u8', title: '大宋提刑官 04' },
+        
+            {src: 'https://m3u.nikanba.live/share/85a72ec0b4d347739caa3e0981928cf2.m3u8', title: '大宋提刑官 05' },
+        
+            {src: 'https://m3u.nikanba.live/share/7af87f4cf095406886f6baf26bd6db28.m3u8', title: '大宋提刑官 06' },
+        
+            {src: 'https://m3u.nikanba.live/share/1cba28f6202e495db5b38961ca042241.m3u8', title: '大宋提刑官 07' },
+        
+            {src: 'https://m3u.nikanba.live/share/a22d78509cb840ada210d78b3ad7aefb.m3u8', title: '大宋提刑官 08' },
+        
+            {src: 'https://m3u.nikanba.live/share/ccfbbbbefc774bd4abf95f3ecb9c3ae6.m3u8', title: '大宋提刑官 09' },
+        
+            {src: 'https://m3u.nikanba.live/share/c8ce28a90bf14136906c133341c892de.m3u8', title: '大宋提刑官 10' },
+        
+            {src: 'https://m3u.nikanba.live/share/7f6eb7fa5fa14ed49e20ba24e5672f1d.m3u8', title: '大宋提刑官 11' },
+        
+            {src: 'https://m3u.nikanba.live/share/9537588d0b304a80a8fccaf0ec8b6eb8.m3u8', title: '大宋提刑官 12' },
+        
+            {src: 'https://m3u.nikanba.live/share/4e87a26ae82e4a5bb04ecc68f92a67ea.m3u8', title: '大宋提刑官 13' },
+        
+            {src: 'https://m3u.nikanba.live/share/c88887a2a7de4fb9ad0ef2293c5b7a27.m3u8', title: '大宋提刑官 14' },
+        
+            {src: 'https://m3u.nikanba.live/share/260b7f5e22834fc9a383ee20906393cd.m3u8', title: '大宋提刑官 15' },
+        
+            {src: 'https://m3u.nikanba.live/share/91ff42da8644461d95869d88c75e792d.m3u8', title: '大宋提刑官 16' },
+        
+            {src: 'https://m3u.nikanba.live/share/c1278ff8af454452b4874a15adb89dad.m3u8', title: '大宋提刑官 17' },
+        
+            {src: 'https://m3u.nikanba.live/share/b1b4d03f442d4cd4b2dd2c327223522c.m3u8', title: '大宋提刑官 18' },
+        
+            {src: 'https://m3u.nikanba.live/share/bd2bd2d9aff843c0bd9a7236dd258b17.m3u8', title: '大宋提刑官 19' },
+        
+            {src: 'https://m3u.nikanba.live/share/717d20414b8a4c359a48a9d59b5e4d13.m3u8', title: '大宋提刑官 20' },
+        
+            {src: 'https://m3u.nikanba.live/share/6203aed2ff064a0e8e8683aa64bbb7a8.m3u8', title: '大宋提刑官 21' },
+        
+            {src: 'https://m3u.nikanba.live/share/7766cbecd7d343ba89bcf0a4a7b67eea.m3u8', title: '大宋提刑官 22' },
+        
+            {src: 'https://m3u.nikanba.live/share/9749f982681746098bf791c3569187c1.m3u8', title: '大宋提刑官 23' },
+        
+            {src: 'https://m3u.nikanba.live/share/6fe6bf52931d4895a56bc886030b619c.m3u8', title: '大宋提刑官 24' },
+        
+            {src: 'https://m3u.nikanba.live/share/fa24b9e219634e83a3498e2d9cf7c48a.m3u8', title: '大宋提刑官 25' },
+        
+            {src: 'https://m3u.nikanba.live/share/7b8f160d5f1044ca921f2bc4351e3ebb.m3u8', title: '大宋提刑官 26' },
+        
+            {src: 'https://m3u.nikanba.live/share/d7ec040a09084e4d84d9256c9c089791.m3u8', title: '大宋提刑官 27' },
+        
+            {src: 'https://m3u.nikanba.live/share/e9a31dbab2604681bc11693d85e213de.m3u8', title: '大宋提刑官 28' },
+        
+            {src: 'https://m3u.nikanba.live/share/4d9883eecffb4feca69d4eb8f1d6e6b1.m3u8', title: '大宋提刑官 29' },
+        
+            {src: 'https://m3u.nikanba.live/share/da7839260d08490bbb1d9b7680616fd9.m3u8', title: '大宋提刑官 30' },
+        
+            {src: 'https://m3u.nikanba.live/share/c13ea78b94354b3d8127b05c2473200d.m3u8', title: '大宋提刑官 31' },
+        
+            {src: 'https://m3u.nikanba.live/share/fb0f54dd7b6244fbbf2698544d3dbf31.m3u8', title: '大宋提刑官 32' },
+        
+            {src: 'https://m3u.nikanba.live/share/f86d863ff4db4a7b9ca8186f82be7ce2.m3u8', title: '大宋提刑官 33' },
+        
+            {src: 'https://m3u.nikanba.live/share/d7916d69a1a64a0da83d63484705dca3.m3u8', title: '大宋提刑官 34' },
+        
+            {src: 'https://m3u.nikanba.live/share/5f8ebace919c4e0f9f700e67e71cf7cd.m3u8', title: '大宋提刑官 35' },
+        
+            {src: 'https://m3u.nikanba.live/share/abe4cad6dc3e499caf12fd39955fe596.m3u8', title: '大宋提刑官 36' },
+        
+            {src: 'https://m3u.nikanba.live/share/ee850df3f7e6482fab87a009735bce0c.m3u8', title: '大宋提刑官 37' },
+        
+            {src: 'https://m3u.nikanba.live/share/64db9381d5f7429e839b97729f0fe312.m3u8', title: '大宋提刑官 38' },
+        
+            {src: 'https://m3u.nikanba.live/share/7b97c4d016054ac38231f6dc41f05e4c.m3u8', title: '大宋提刑官 39' },
+        
+            {src: 'https://m3u.nikanba.live/share/9da6e769f69f4cc2a276619e864726a2.m3u8', title: '大宋提刑官 40' },
+        
+            {src: 'https://m3u.nikanba.live/share/02c620586ff74c8ebc8c5beefd6622b1.m3u8', title: '大宋提刑官 41' },
+        
+            {src: 'https://m3u.nikanba.live/share/08841b927d7b411bb6c8d6635d5cbf2e.m3u8', title: '大宋提刑官 42' },
+        
+            {src: 'https://m3u.nikanba.live/share/457407de4d1b4b39a645f704ded84c2f.m3u8', title: '大宋提刑官 43' },
+        
+            {src: 'https://m3u.nikanba.live/share/8fddf66f11a84579ac850fc2f847a324.m3u8', title: '大宋提刑官 44' },
+        
+            {src: 'https://m3u.nikanba.live/share/f06eaedc79d445bd807bd07254a7cdc6.m3u8', title: '大宋提刑官 45' },
+        
+            {src: 'https://m3u.nikanba.live/share/be843991aba04ab0ac418fdd6b7900b9.m3u8', title: '大宋提刑官 46' },
+        
+            {src: 'https://m3u.nikanba.live/share/0d6196b609bf47a590166c57a948c281.m3u8', title: '大宋提刑官 47' },
+        
+            {src: 'https://m3u.nikanba.live/share/1f0b8885bfa8402cba6c8d2f8ac84853.m3u8', title: '大宋提刑官 48' },
+        
+            {src: 'https://m3u.nikanba.live/share/36dab725ebab4109aa994582f3545279.m3u8', title: '大宋提刑官 49' },
+        
+            {src: 'https://m3u.nikanba.live/share/a81308e112294a5397e922ee6960f422.m3u8', title: '大宋提刑官 50' },
+        
+            {src: 'https://m3u.nikanba.live/share/9d8c2fa6c41f4dbda430118093aee755.m3u8', title: '大宋提刑官 51' },
+        
+            {src: 'https://m3u.nikanba.live/share/2abba439a0824456ad681d188bc0b76e.m3u8', title: '大宋提刑官 52' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_52874";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
