@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新闻女王（国）</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/4c90c3592b664c67ba207208de811ba2.m3u8', title: '新闻女王（国） 1' },
+        
+            {src: 'https://m3u.nikanba.live/share/775392bf9d6547599b6c65da53872d8b.m3u8', title: '新闻女王（国） 2' },
+        
+            {src: 'https://m3u.nikanba.live/share/0b2020df9e2d498d960c34c1b5a4d645.m3u8', title: '新闻女王（国） 3' },
+        
+            {src: 'https://m3u.nikanba.live/share/088be4282dbb431f9d2483a51ed60835.m3u8', title: '新闻女王（国） 4' },
+        
+            {src: 'https://m3u.nikanba.live/share/76186dc54c4540268a4294f45b0ca6fc.m3u8', title: '新闻女王（国） 5' },
+        
+            {src: 'https://m3u.nikanba.live/share/4b6d3492d2e940db9d276d4603e64d5e.m3u8', title: '新闻女王（国） 6' },
+        
+            {src: 'https://m3u.nikanba.live/share/2aafbbf37c994178a31bf63024648bf6.m3u8', title: '新闻女王（国） 7' },
+        
+            {src: 'https://m3u.nikanba.live/share/e22ff9212b894b818fa7565a8d09227d.m3u8', title: '新闻女王（国） 8' },
+        
+            {src: 'https://m3u.nikanba.live/share/942aeeffcb094d33bc23a7146ecbf2bd.m3u8', title: '新闻女王（国） 9' },
+        
+            {src: 'https://m3u.nikanba.live/share/6845fa87455a4819a9d69d423dfc3bef.m3u8', title: '新闻女王（国） 10' },
+        
+            {src: 'https://m3u.nikanba.live/share/5bc0ea4545154850b393ade393c22152.m3u8', title: '新闻女王（国） 11' },
+        
+            {src: 'https://m3u.nikanba.live/share/83d6661b6839479ea879334209f3f3e6.m3u8', title: '新闻女王（国） 12' },
+        
+            {src: 'https://m3u.nikanba.live/share/7fab30220ac144f89d01c2a3279111a3.m3u8', title: '新闻女王（国） 13' },
+        
+            {src: 'https://m3u.nikanba.live/share/e0e542686c6b4a55820a51f5114b71e1.m3u8', title: '新闻女王（国） 14' },
+        
+            {src: 'https://m3u.nikanba.live/share/0c050376f6f1463b9f7ec2cda408f179.m3u8', title: '新闻女王（国） 15' },
+        
+            {src: 'https://m3u.nikanba.live/share/e7ff300f4f854b0499db7c5caea4ee49.m3u8', title: '新闻女王（国） 16' },
+        
+            {src: 'https://m3u.nikanba.live/share/728ca9925a474adb94c19909a4ce5ed7.m3u8', title: '新闻女王（国） 17' },
+        
+            {src: 'https://m3u.nikanba.live/share/88294f7e61384074807c4a58965ef58e.m3u8', title: '新闻女王（国） 18' },
+        
+            {src: 'https://m3u.nikanba.live/share/be49746b7f7540aca3dea942d5901097.m3u8', title: '新闻女王（国） 19' },
+        
+            {src: 'https://m3u.nikanba.live/share/a55a8eb3b35e4cdc93c2a955e3ff8084.m3u8', title: '新闻女王（国） 20' },
+        
+            {src: 'https://m3u.nikanba.live/share/1692bbf26ce344cc9f1fc158e27efc18.m3u8', title: '新闻女王（国） 21' },
+        
+            {src: 'https://m3u.nikanba.live/share/af1475678c864ef399c1f64e850c0b7d.m3u8', title: '新闻女王（国） 22' },
+        
+            {src: 'https://m3u.nikanba.live/share/18e287dcabcf40e1a2221800bba7d72a.m3u8', title: '新闻女王（国） 23' },
+        
+            {src: 'https://m3u.nikanba.live/share/25ff7b56a82943e8b1ca41b8b28207d4.m3u8', title: '新闻女王（国） 24' },
+        
+            {src: 'https://m3u.nikanba.live/share/ef97f756cc914aada7df5fb790212d5a.m3u8', title: '新闻女王（国） 25' },
+        
+            {src: 'https://m3u.nikanba.live/share/8a64439135754598946fe219ce694be5.m3u8', title: '新闻女王（国） 26' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_176292";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
