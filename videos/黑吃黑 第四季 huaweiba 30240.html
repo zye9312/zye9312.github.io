@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黑吃黑 第四季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/d5ac1633cdb5485da78e47a5bf427980.m3u8', title: '黑吃黑 第四季 01' },
+        
+            {src: 'https://m3u.nikanba.live/share/3cc493982f72413ca2eb8780844d6dcb.m3u8', title: '黑吃黑 第四季 02' },
+        
+            {src: 'https://m3u.nikanba.live/share/3081062b627641aa8622e32b7e6765cc.m3u8', title: '黑吃黑 第四季 03' },
+        
+            {src: 'https://m3u.nikanba.live/share/91d02be6218e43f3abca957e72a25cd8.m3u8', title: '黑吃黑 第四季 04' },
+        
+            {src: 'https://m3u.nikanba.live/share/181a6f033e8341b99462cc84d45d11c6.m3u8', title: '黑吃黑 第四季 05' },
+        
+            {src: 'https://m3u.nikanba.live/share/10dfb447985a43cd8925626570ffe3e2.m3u8', title: '黑吃黑 第四季 06' },
+        
+            {src: 'https://m3u.nikanba.live/share/b31dae9d89e84f318a5358c9c6c8186c.m3u8', title: '黑吃黑 第四季 07' },
+        
+            {src: 'https://m3u.nikanba.live/share/3958df2784c84c34a102b105ccb87035.m3u8', title: '黑吃黑 第四季 08' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_30240";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>

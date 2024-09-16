@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黑吃黑 第二季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/54a07bf526c740d88877d7f62c8ab653.m3u8', title: '黑吃黑 第二季 01' },
+        
+            {src: 'https://m3u.nikanba.live/share/a6ff45018fe5472aaf238ab08036e0ba.m3u8', title: '黑吃黑 第二季 02' },
+        
+            {src: 'https://m3u.nikanba.live/share/58f7f618c56740bdb0abc22fd28e442f.m3u8', title: '黑吃黑 第二季 03' },
+        
+            {src: 'https://m3u.nikanba.live/share/27f131611162402395751ebdb77c66b5.m3u8', title: '黑吃黑 第二季 04' },
+        
+            {src: 'https://m3u.nikanba.live/share/fa49726998b94f23afb203e8a6497d7a.m3u8', title: '黑吃黑 第二季 05' },
+        
+            {src: 'https://m3u.nikanba.live/share/11efcaed68f7468a87ee6167ec8f5da9.m3u8', title: '黑吃黑 第二季 06' },
+        
+            {src: 'https://m3u.nikanba.live/share/bb23ba9c516149709d7879315f183ac1.m3u8', title: '黑吃黑 第二季 07' },
+        
+            {src: 'https://m3u.nikanba.live/share/e991e132b1dd408fb7b7d37c97c40efc.m3u8', title: '黑吃黑 第二季 08' },
+        
+            {src: 'https://m3u.nikanba.live/share/22483fafc9bd4ae49056598a40535d6d.m3u8', title: '黑吃黑 第二季 09' },
+        
+            {src: 'https://m3u.nikanba.live/share/81fd8b2f602f4fba8f8c52247aefaf1c.m3u8', title: '黑吃黑 第二季 10' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_30508";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>

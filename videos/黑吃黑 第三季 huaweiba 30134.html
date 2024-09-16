@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黑吃黑 第三季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/70b92df3bee947eb8d15a1af63247605.m3u8', title: '黑吃黑 第三季 01' },
+        
+            {src: 'https://m3u.nikanba.live/share/49a13a1f45f942be8c5c0450a169d366.m3u8', title: '黑吃黑 第三季 02' },
+        
+            {src: 'https://m3u.nikanba.live/share/5de3f3a4cc3f42a5b538b84256736335.m3u8', title: '黑吃黑 第三季 03' },
+        
+            {src: 'https://m3u.nikanba.live/share/a8e3fda633164b239d62ff66034d4d60.m3u8', title: '黑吃黑 第三季 04' },
+        
+            {src: 'https://m3u.nikanba.live/share/08e0f111df244c3e9c502879c58cc24e.m3u8', title: '黑吃黑 第三季 05' },
+        
+            {src: 'https://m3u.nikanba.live/share/bfb0db4d3c684f7bbe71f81f98b5abef.m3u8', title: '黑吃黑 第三季 06' },
+        
+            {src: 'https://m3u.nikanba.live/share/03ab8fc05b21479c91975fac1f1ea401.m3u8', title: '黑吃黑 第三季 07' },
+        
+            {src: 'https://m3u.nikanba.live/share/8f55f1d17a7a4ebf82029a07b0910035.m3u8', title: '黑吃黑 第三季 08' },
+        
+            {src: 'https://m3u.nikanba.live/share/89c0f0972db54087891ba4da14b646da.m3u8', title: '黑吃黑 第三季 09' },
+        
+            {src: 'https://m3u.nikanba.live/share/4a9367a64c0a4674bc31932aaa1eda00.m3u8', title: '黑吃黑 第三季 10' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_30134";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
