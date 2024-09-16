@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>白莲花度假村 第一季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/b2231e1a96934522813a97ff8ba79e0b.m3u8', title: '白莲花度假村 第一季 01' },
+        
+            {src: 'https://m3u.nikanba.live/share/bfdada67d86940f0a87f756774d6482e.m3u8', title: '白莲花度假村 第一季 02' },
+        
+            {src: 'https://m3u.nikanba.live/share/f546da7dc0cb4714ac49f68c4c5ce045.m3u8', title: '白莲花度假村 第一季 03' },
+        
+            {src: 'https://m3u.nikanba.live/share/afa1f9c396984bf6a9c579282d7f5dac.m3u8', title: '白莲花度假村 第一季 04' },
+        
+            {src: 'https://m3u.nikanba.live/share/31acb096cd924f96b274b2b96db5c485.m3u8', title: '白莲花度假村 第一季 05' },
+        
+            {src: 'https://m3u.nikanba.live/share/df9f66089032447587f019791f7ff2e2.m3u8', title: '白莲花度假村 第一季 06' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_22738";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
