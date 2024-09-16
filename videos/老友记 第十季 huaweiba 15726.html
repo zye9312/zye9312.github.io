@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老友记 第十季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/02a71ba7b0f74e41a4f658a216ccb2bd.m3u8', title: '老友记 第十季 1' },
+        
+            {src: 'https://m3u.nikanba.live/share/da0f2d43ba084a47b122025da2655292.m3u8', title: '老友记 第十季 2' },
+        
+            {src: 'https://m3u.nikanba.live/share/e8c57349845b401aad5bff4918c27904.m3u8', title: '老友记 第十季 3' },
+        
+            {src: 'https://m3u.nikanba.live/share/69a17a8ec89a4f82a426827cbe08d842.m3u8', title: '老友记 第十季 4' },
+        
+            {src: 'https://m3u.nikanba.live/share/eedd076faffd46198004b0faaee3a9f3.m3u8', title: '老友记 第十季 5' },
+        
+            {src: 'https://m3u.nikanba.live/share/f6f66da40cb041dc9ffad371d32015df.m3u8', title: '老友记 第十季 6' },
+        
+            {src: 'https://m3u.nikanba.live/share/14b5543a75c44ca881f579dcf67b5d5e.m3u8', title: '老友记 第十季 7' },
+        
+            {src: 'https://m3u.nikanba.live/share/5f48b698265347ce847b4c829303fd4a.m3u8', title: '老友记 第十季 8' },
+        
+            {src: 'https://m3u.nikanba.live/share/5255a7e3cffe4ba5847c2456fe0991e5.m3u8', title: '老友记 第十季 9' },
+        
+            {src: 'https://m3u.nikanba.live/share/ff6791c4ed084feeadc84c3c5d150daa.m3u8', title: '老友记 第十季 10' },
+        
+            {src: 'https://m3u.nikanba.live/share/26640fe89a8e4027944d9c46477e3e92.m3u8', title: '老友记 第十季 11' },
+        
+            {src: 'https://m3u.nikanba.live/share/49206e115a224dbc99ec4e0b1a2ae7c0.m3u8', title: '老友记 第十季 12' },
+        
+            {src: 'https://m3u.nikanba.live/share/c900a7e2d49a4d2ebbe181277f7ada47.m3u8', title: '老友记 第十季 13' },
+        
+            {src: 'https://m3u.nikanba.live/share/5c383458c35c46a383245a3f8587c099.m3u8', title: '老友记 第十季 14' },
+        
+            {src: 'https://m3u.nikanba.live/share/877e54e2386e411cbc95bd14c6cdc7e1.m3u8', title: '老友记 第十季 15' },
+        
+            {src: 'https://m3u.nikanba.live/share/255c6ee3d05c4f0a8b0639bf06e3c8bd.m3u8', title: '老友记 第十季 16' },
+        
+            {src: 'https://m3u.nikanba.live/share/5f08a020b3d34ad28f0f89166fd851fb.m3u8', title: '老友记 第十季 17-18' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_15726";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
