@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老友记  第五季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/cb68314b039a443f9dd6e0fbba4fa178.m3u8', title: '老友记  第五季 1' },
+        
+            {src: 'https://m3u.nikanba.live/share/7a078736637942a58f4d54ac41350b44.m3u8', title: '老友记  第五季 2' },
+        
+            {src: 'https://m3u.nikanba.live/share/a0e797a962cc4e078349d27525133256.m3u8', title: '老友记  第五季 3' },
+        
+            {src: 'https://m3u.nikanba.live/share/7f7c0ac0bed44b16906dec3d604023b1.m3u8', title: '老友记  第五季 4' },
+        
+            {src: 'https://m3u.nikanba.live/share/fa546554467e4cb3a40694635080a4fb.m3u8', title: '老友记  第五季 5' },
+        
+            {src: 'https://m3u.nikanba.live/share/cf440db2f599498fac0f2b61030176fe.m3u8', title: '老友记  第五季 6' },
+        
+            {src: 'https://m3u.nikanba.live/share/ce0f0abd75e6401982bdc6f8cbbfa832.m3u8', title: '老友记  第五季 7' },
+        
+            {src: 'https://m3u.nikanba.live/share/4d567e07025841228f0173c173e4ec5d.m3u8', title: '老友记  第五季 8' },
+        
+            {src: 'https://m3u.nikanba.live/share/60365ccfd57448a2b3a17c8fe93db4b0.m3u8', title: '老友记  第五季 9' },
+        
+            {src: 'https://m3u.nikanba.live/share/76a5c00492374488b3cebbfb49ba2523.m3u8', title: '老友记  第五季 10' },
+        
+            {src: 'https://m3u.nikanba.live/share/c1cacd545f964369913399f71fde4d66.m3u8', title: '老友记  第五季 11' },
+        
+            {src: 'https://m3u.nikanba.live/share/6fa54332ead347c8b0dcbfe1d617b827.m3u8', title: '老友记  第五季 12' },
+        
+            {src: 'https://m3u.nikanba.live/share/f359c92deac04a13b2b5a3915e8d71bf.m3u8', title: '老友记  第五季 13' },
+        
+            {src: 'https://m3u.nikanba.live/share/efe7fd91b518404ca5ca03392de9d8d5.m3u8', title: '老友记  第五季 14' },
+        
+            {src: 'https://m3u.nikanba.live/share/b43322316b614652b4e7383c3a4eb416.m3u8', title: '老友记  第五季 15' },
+        
+            {src: 'https://m3u.nikanba.live/share/cd3921f9fb37486bade4d6a18ed9d709.m3u8', title: '老友记  第五季 16' },
+        
+            {src: 'https://m3u.nikanba.live/share/9b18e6ef82534817840accd774e6bf25.m3u8', title: '老友记  第五季 17' },
+        
+            {src: 'https://m3u.nikanba.live/share/245221a2944c4227a8e32eff9133a69d.m3u8', title: '老友记  第五季 18' },
+        
+            {src: 'https://m3u.nikanba.live/share/b6240829dd1245778f574a6ca8dd168e.m3u8', title: '老友记  第五季 19' },
+        
+            {src: 'https://m3u.nikanba.live/share/b9b0e81fe9684128acb2d204780ea013.m3u8', title: '老友记  第五季 20' },
+        
+            {src: 'https://m3u.nikanba.live/share/86a888d3ec2243f78a9f82068753a35a.m3u8', title: '老友记  第五季 21' },
+        
+            {src: 'https://m3u.nikanba.live/share/1b97db2307ea4e98a794bd0e8de7c66e.m3u8', title: '老友记  第五季 22' },
+        
+            {src: 'https://m3u.nikanba.live/share/c367603ef88f4f61b507ef66519d524f.m3u8', title: '老友记  第五季 23' },
+        
+            {src: 'https://m3u.nikanba.live/share/e4849f2626ef4740b1fea037d2f5dc89.m3u8', title: '老友记  第五季 24' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_16046";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>

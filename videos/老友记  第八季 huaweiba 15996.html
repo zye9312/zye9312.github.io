@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老友记  第八季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/97007e4c2a78431790ff7b5c2c4f7571.m3u8', title: '老友记  第八季 1' },
+        
+            {src: 'https://m3u.nikanba.live/share/859c58d4e5884f5f819efb4974d33f6a.m3u8', title: '老友记  第八季 2' },
+        
+            {src: 'https://m3u.nikanba.live/share/14a38f2dcc044b8dbfc2fddd285e9c2f.m3u8', title: '老友记  第八季 3' },
+        
+            {src: 'https://m3u.nikanba.live/share/ccddbab91b094174b0ac98c8359c9acc.m3u8', title: '老友记  第八季 4' },
+        
+            {src: 'https://m3u.nikanba.live/share/1e3d719eaf6c4acc85db640a9b51ce64.m3u8', title: '老友记  第八季 5' },
+        
+            {src: 'https://m3u.nikanba.live/share/dc2f17a00f84478d81b5184b727c4ff3.m3u8', title: '老友记  第八季 6' },
+        
+            {src: 'https://m3u.nikanba.live/share/52fd31cbcffa4084b62a6f86510e3080.m3u8', title: '老友记  第八季 7' },
+        
+            {src: 'https://m3u.nikanba.live/share/8860fe42a11b40b2ba4feb5db996c3b7.m3u8', title: '老友记  第八季 8' },
+        
+            {src: 'https://m3u.nikanba.live/share/cd047f5a80b241b783093f4a1fc63719.m3u8', title: '老友记  第八季 9' },
+        
+            {src: 'https://m3u.nikanba.live/share/62f0d0315cab456da8afbe51ac018150.m3u8', title: '老友记  第八季 10' },
+        
+            {src: 'https://m3u.nikanba.live/share/1065988ab2f344419875a98fb382145e.m3u8', title: '老友记  第八季 11' },
+        
+            {src: 'https://m3u.nikanba.live/share/45b291a42922431e86e20199bcc2b1c7.m3u8', title: '老友记  第八季 12' },
+        
+            {src: 'https://m3u.nikanba.live/share/80e7e8d37c1c42b6855d3035cd9835f0.m3u8', title: '老友记  第八季 13' },
+        
+            {src: 'https://m3u.nikanba.live/share/8f1c2ec2f2594039b73c20cc21fa50e6.m3u8', title: '老友记  第八季 14' },
+        
+            {src: 'https://m3u.nikanba.live/share/2d32ac2cef66446bb6ca2e25b740d4fa.m3u8', title: '老友记  第八季 15' },
+        
+            {src: 'https://m3u.nikanba.live/share/63ee38b5732c4b9bb5bf7bc39db27e36.m3u8', title: '老友记  第八季 16' },
+        
+            {src: 'https://m3u.nikanba.live/share/f77206d8c4d24645a3bfc957c3b4830d.m3u8', title: '老友记  第八季 17' },
+        
+            {src: 'https://m3u.nikanba.live/share/2c2d5797864a4269b8739762d8cf9087.m3u8', title: '老友记  第八季 18' },
+        
+            {src: 'https://m3u.nikanba.live/share/bf56c2e8e72f49028a119567b6331b75.m3u8', title: '老友记  第八季 19' },
+        
+            {src: 'https://m3u.nikanba.live/share/19cd048c91bc4bb2b4719e73314e71d4.m3u8', title: '老友记  第八季 20' },
+        
+            {src: 'https://m3u.nikanba.live/share/01b7d4ed1c8a4b4f9843c2367996acb3.m3u8', title: '老友记  第八季 21' },
+        
+            {src: 'https://m3u.nikanba.live/share/f312ca7d40b94640861fe9e0de109d5c.m3u8', title: '老友记  第八季 22' },
+        
+            {src: 'https://m3u.nikanba.live/share/01c79d62b56b4950a1fe059f1030095e.m3u8', title: '老友记  第八季 23' },
+        
+            {src: 'https://m3u.nikanba.live/share/ec487c2351304377980e3f5791691bc0.m3u8', title: '老友记  第八季 24' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_15996";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>

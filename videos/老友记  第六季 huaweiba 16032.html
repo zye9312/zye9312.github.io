@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老友记  第六季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/995efba6749348f7abb1f032e28cb3a3.m3u8', title: '老友记  第六季 1' },
+        
+            {src: 'https://m3u.nikanba.live/share/1a4e7c801cbd49dcbfc47b431828a3ea.m3u8', title: '老友记  第六季 2' },
+        
+            {src: 'https://m3u.nikanba.live/share/0f98d30ac31a4093b3ab1cbca908a01c.m3u8', title: '老友记  第六季 3' },
+        
+            {src: 'https://m3u.nikanba.live/share/386ab904559940d993f7f72b2c7f5eb3.m3u8', title: '老友记  第六季 4' },
+        
+            {src: 'https://m3u.nikanba.live/share/77ed637bdffd4010a41549892c7c6089.m3u8', title: '老友记  第六季 5' },
+        
+            {src: 'https://m3u.nikanba.live/share/8deee92f8a8544ce8b1531d5719c9e65.m3u8', title: '老友记  第六季 6' },
+        
+            {src: 'https://m3u.nikanba.live/share/f85a17f6db574b9592967ad4e4a15ac3.m3u8', title: '老友记  第六季 7' },
+        
+            {src: 'https://m3u.nikanba.live/share/52380219241941b0b8c55797e0e4d9e4.m3u8', title: '老友记  第六季 8' },
+        
+            {src: 'https://m3u.nikanba.live/share/f1686f5b658443c1a6cc572b1ce273b4.m3u8', title: '老友记  第六季 9' },
+        
+            {src: 'https://m3u.nikanba.live/share/5f12d7877d3d4f72a0017766220ca329.m3u8', title: '老友记  第六季 10' },
+        
+            {src: 'https://m3u.nikanba.live/share/fe29e73950f2414bafb8402a4a8e7e27.m3u8', title: '老友记  第六季 11' },
+        
+            {src: 'https://m3u.nikanba.live/share/e8d49fa28fa44e93a81275a00f663e32.m3u8', title: '老友记  第六季 12' },
+        
+            {src: 'https://m3u.nikanba.live/share/ae9907fd88cf4d58a7503b73ddd0faec.m3u8', title: '老友记  第六季 13' },
+        
+            {src: 'https://m3u.nikanba.live/share/08e8e1b2942449afa94a4fd3acae13fb.m3u8', title: '老友记  第六季 14' },
+        
+            {src: 'https://m3u.nikanba.live/share/bc0163353da54f519cecea48b65b0b82.m3u8', title: '老友记  第六季 15' },
+        
+            {src: 'https://m3u.nikanba.live/share/bb75a71ec6fb49e088bc9ff1d83358b7.m3u8', title: '老友记  第六季 16' },
+        
+            {src: 'https://m3u.nikanba.live/share/f93cbaf916484c91b2d3283a21918929.m3u8', title: '老友记  第六季 17' },
+        
+            {src: 'https://m3u.nikanba.live/share/19285d733dd04d2bbe6d2a7c9c729320.m3u8', title: '老友记  第六季 18' },
+        
+            {src: 'https://m3u.nikanba.live/share/e20c163c589d419aad1b4b749aa17b0e.m3u8', title: '老友记  第六季 19' },
+        
+            {src: 'https://m3u.nikanba.live/share/8d8e803c7ef845beb20d20593bfe7266.m3u8', title: '老友记  第六季 20' },
+        
+            {src: 'https://m3u.nikanba.live/share/4bc2ffd1ee66477aa24801425964b7ef.m3u8', title: '老友记  第六季 21' },
+        
+            {src: 'https://m3u.nikanba.live/share/bc2b0b1f510f497c96ffeeb705641fc3.m3u8', title: '老友记  第六季 22' },
+        
+            {src: 'https://m3u.nikanba.live/share/f3529c61d6924c1884ee681e645525ff.m3u8', title: '老友记  第六季 23' },
+        
+            {src: 'https://m3u.nikanba.live/share/3feff80793b348c68769f8a1841d6d63.m3u8', title: '老友记  第六季 24' },
+        
+            {src: 'https://m3u.nikanba.live/share/5f74526edf914296a72401229c5f3b3a.m3u8', title: '老友记  第六季 25' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_16032";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
