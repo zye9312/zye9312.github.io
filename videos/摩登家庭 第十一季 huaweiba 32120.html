@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摩登家庭 第十一季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/1b543b49366047de94f5af03a7e27cdf.m3u8', title: '摩登家庭 第十一季 20190224' },
+        
+            {src: 'https://m3u.nikanba.live/share/f33dc343351544b3822c4ee410a1f9cd.m3u8', title: '摩登家庭 第十一季 20190303' },
+        
+            {src: 'https://m3u.nikanba.live/share/a128285f914840e5991f9525d1d99405.m3u8', title: '摩登家庭 第十一季 20190310' },
+        
+            {src: 'https://m3u.nikanba.live/share/9b7ad28fb32b4f50b5ccc4f5a5810096.m3u8', title: '摩登家庭 第十一季 20190317' },
+        
+            {src: 'https://m3u.nikanba.live/share/e0d68e395ba44cf4ac18069b0c81d156.m3u8', title: '摩登家庭 第十一季 20190324' },
+        
+            {src: 'https://m3u.nikanba.live/share/b9a952bf259245368671a466a240184f.m3u8', title: '摩登家庭 第十一季 20190331' },
+        
+            {src: 'https://m3u.nikanba.live/share/1ce000e984e244dab8cf772564975af2.m3u8', title: '摩登家庭 第十一季 20190407' },
+        
+            {src: 'https://m3u.nikanba.live/share/2d350ead680d4cc8a0b74de52ea2b716.m3u8', title: '摩登家庭 第十一季 20190414' },
+        
+            {src: 'https://m3u.nikanba.live/share/3f8ae7a690244fbd874b4c0569718ab8.m3u8', title: '摩登家庭 第十一季 20190421' },
+        
+            {src: 'https://m3u.nikanba.live/share/2c4f197c007c4d27bb95f36e192ec346.m3u8', title: '摩登家庭 第十一季 20190428' },
+        
+            {src: 'https://m3u.nikanba.live/share/663fd5facf9549568e41ee0cde57a208.m3u8', title: '摩登家庭 第十一季 20190505' },
+        
+            {src: 'https://m3u.nikanba.live/share/8500d37a9c0847099ece137f0714f74a.m3u8', title: '摩登家庭 第十一季 20190512' },
+        
+            {src: 'https://m3u.nikanba.live/share/84a48d4fc43f4cd5ba886b1fc090ea27.m3u8', title: '摩登家庭 第十一季 20190519' },
+        
+            {src: 'https://m3u.nikanba.live/share/4ddfdfa9ba3c431381f51f32741ceacf.m3u8', title: '摩登家庭 第十一季 20190526' },
+        
+            {src: 'https://m3u.nikanba.live/share/32cbc08364ba48eebfe6c6b420db2044.m3u8', title: '摩登家庭 第十一季 20190602' },
+        
+            {src: 'https://m3u.nikanba.live/share/29fe618a1b43425e919fc2b5d65e30cc.m3u8', title: '摩登家庭 第十一季 20190609' },
+        
+            {src: 'https://m3u.nikanba.live/share/cfe0dad7df9d4fe0a3601615a928e7a5.m3u8', title: '摩登家庭 第十一季 20190616' },
+        
+            {src: 'https://m3u.nikanba.live/share/d1423cc0274c47a08eb945af4f480b92.m3u8', title: '摩登家庭 第十一季 20190623' },
+        
+            {src: 'https://m3u.nikanba.live/share/4028c9ebb50943299d48c90f256a3ad4.m3u8', title: '摩登家庭 第十一季 20190630' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_32120";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>

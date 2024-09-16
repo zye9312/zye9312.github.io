@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摩登家庭</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/55297f4fdc534752ac5b46cc3cd63cea.m3u8', title: '摩登家庭 01' },
+        
+            {src: 'https://m3u.nikanba.live/share/e9fcbbf1779a4b68900e9ed097e2980e.m3u8', title: '摩登家庭 02' },
+        
+            {src: 'https://m3u.nikanba.live/share/8c539eb6489f4b0aa01bd3ae4effd44c.m3u8', title: '摩登家庭 03' },
+        
+            {src: 'https://m3u.nikanba.live/share/2eea7dfd768b49d38689c3679f8c16d6.m3u8', title: '摩登家庭 04' },
+        
+            {src: 'https://m3u.nikanba.live/share/60345f2106384ce9a0d1e8f5c256c573.m3u8', title: '摩登家庭 05' },
+        
+            {src: 'https://m3u.nikanba.live/share/9af0833e544340c7a1f51ecf65cdf224.m3u8', title: '摩登家庭 06' },
+        
+            {src: 'https://m3u.nikanba.live/share/b06cc991a2c54f35921b7b0f1298e5e3.m3u8', title: '摩登家庭 07' },
+        
+            {src: 'https://m3u.nikanba.live/share/33a6105b0e0b45edb079a39736757b7d.m3u8', title: '摩登家庭 08' },
+        
+            {src: 'https://m3u.nikanba.live/share/61efa0d5019a45729d10facebba11945.m3u8', title: '摩登家庭 09' },
+        
+            {src: 'https://m3u.nikanba.live/share/8294e2b738e44610bf45b0538387b31e.m3u8', title: '摩登家庭 10' },
+        
+            {src: 'https://m3u.nikanba.live/share/53d9175ae8294794b81d602b2091e8a2.m3u8', title: '摩登家庭 11' },
+        
+            {src: 'https://m3u.nikanba.live/share/17718994f0ed40c5aac1ca9fd8945f4c.m3u8', title: '摩登家庭 12' },
+        
+            {src: 'https://m3u.nikanba.live/share/61b385cf6961419d97cd35522fe3443b.m3u8', title: '摩登家庭 13' },
+        
+            {src: 'https://m3u.nikanba.live/share/b5b5d32d74ba4981aa7b251bf6017068.m3u8', title: '摩登家庭 14' },
+        
+            {src: 'https://m3u.nikanba.live/share/2919210db4a44c3f9256299ca8f29a5f.m3u8', title: '摩登家庭 15' },
+        
+            {src: 'https://m3u.nikanba.live/share/ead20149138446fabb34b36878889f5c.m3u8', title: '摩登家庭 16' },
+        
+            {src: 'https://m3u.nikanba.live/share/2c1ddeba6c414379b633bcecd4d42ab6.m3u8', title: '摩登家庭 17' },
+        
+            {src: 'https://m3u.nikanba.live/share/3a3db8b0d86c409b94fcc81cc408fc52.m3u8', title: '摩登家庭 18' },
+        
+            {src: 'https://m3u.nikanba.live/share/d64cba178f324dd98aa916fa25f0cad5.m3u8', title: '摩登家庭 19' },
+        
+            {src: 'https://m3u.nikanba.live/share/af200da9078f44729fabc12f406c70c8.m3u8', title: '摩登家庭 20' },
+        
+            {src: 'https://m3u.nikanba.live/share/7892aa6c7284493e8570b9858e0477c0.m3u8', title: '摩登家庭 21' },
+        
+            {src: 'https://m3u.nikanba.live/share/10d89c189462425cb1cc8d86e1822c55.m3u8', title: '摩登家庭 22' },
+        
+            {src: 'https://m3u.nikanba.live/share/27543d54bb35414fb56f7e032031f7e1.m3u8', title: '摩登家庭 23' },
+        
+            {src: 'https://m3u.nikanba.live/share/68652a3c163545d3afab637dfe8f4058.m3u8', title: '摩登家庭 24' },
+        
+            {src: 'https://m3u.nikanba.live/share/8d85708b404b4c8b832d7a3d46319213.m3u8', title: '摩登家庭 25' },
+        
+            {src: 'https://m3u.nikanba.live/share/b19e5634bf7d4e0e912e48f09f193c6c.m3u8', title: '摩登家庭 26' },
+        
+            {src: 'https://m3u.nikanba.live/share/56e7361aac6842f6a286fabd0fed2e57.m3u8', title: '摩登家庭 27' },
+        
+            {src: 'https://m3u.nikanba.live/share/30ce70c9c6204ca5a316c517cdf14eca.m3u8', title: '摩登家庭 28' },
+        
+            {src: 'https://m3u.nikanba.live/share/ef4ba836b2cb4b5e8464fc084ab3b0b0.m3u8', title: '摩登家庭 29' },
+        
+            {src: 'https://m3u.nikanba.live/share/65ea3a9cfc5b435ea8812671e740a008.m3u8', title: '摩登家庭 30' },
+        
+            {src: 'https://m3u.nikanba.live/share/be8ef032486f486bb54195eb9f6916fd.m3u8', title: '摩登家庭 31' },
+        
+            {src: 'https://m3u.nikanba.live/share/84273ff97b5a4c79897c68ae574dd3cd.m3u8', title: '摩登家庭 32' },
+        
+            {src: 'https://m3u.nikanba.live/share/9045fdfaf88f484eb1cfb13da52c32b3.m3u8', title: '摩登家庭 33' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_24726";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>

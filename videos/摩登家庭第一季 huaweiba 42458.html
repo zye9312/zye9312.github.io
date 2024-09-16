@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摩登家庭第一季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/9ccd933a5c8a496f8abd965050f25005.m3u8', title: '摩登家庭第一季 第01集' },
+        
+            {src: 'https://m3u.nikanba.live/share/cf7cab91088c4f69800b7865cbd2a109.m3u8', title: '摩登家庭第一季 第02集' },
+        
+            {src: 'https://m3u.nikanba.live/share/639b129b8d704a2c843795b3a7abed69.m3u8', title: '摩登家庭第一季 第03集' },
+        
+            {src: 'https://m3u.nikanba.live/share/17ecd214f3c446689a0f423a161c01b6.m3u8', title: '摩登家庭第一季 第04集' },
+        
+            {src: 'https://m3u.nikanba.live/share/8fcce94a2a324b34a30a2acc9e88e741.m3u8', title: '摩登家庭第一季 第05集' },
+        
+            {src: 'https://m3u.nikanba.live/share/827e5f611dd44231affad8372e24cc0f.m3u8', title: '摩登家庭第一季 第06集' },
+        
+            {src: 'https://m3u.nikanba.live/share/557ca932481d451d90fd3daa1a3c4b9b.m3u8', title: '摩登家庭第一季 第07集' },
+        
+            {src: 'https://m3u.nikanba.live/share/add3f0b2a31248d8baac1521af33998b.m3u8', title: '摩登家庭第一季 第08集' },
+        
+            {src: 'https://m3u.nikanba.live/share/3124ad52b492417bb2dda333a20fd2c1.m3u8', title: '摩登家庭第一季 第09集' },
+        
+            {src: 'https://m3u.nikanba.live/share/5144304efa934cafb8c2aa6ea6d9d3eb.m3u8', title: '摩登家庭第一季 第10集' },
+        
+            {src: 'https://m3u.nikanba.live/share/547ce36a29f542179d31d69c0c06bb28.m3u8', title: '摩登家庭第一季 第11集' },
+        
+            {src: 'https://m3u.nikanba.live/share/e49ed789d64b49b2950fc4c8747289e5.m3u8', title: '摩登家庭第一季 第12集' },
+        
+            {src: 'https://m3u.nikanba.live/share/bfe5056c9ec84fc181b06bec0387497b.m3u8', title: '摩登家庭第一季 第13集' },
+        
+            {src: 'https://m3u.nikanba.live/share/8b5b26bd83e043fe90109671b3ae7808.m3u8', title: '摩登家庭第一季 第14集' },
+        
+            {src: 'https://m3u.nikanba.live/share/101b2c2b969046ad87ccbd4f19baa061.m3u8', title: '摩登家庭第一季 第15集' },
+        
+            {src: 'https://m3u.nikanba.live/share/56207e1993dc49d882870214a4cb2f17.m3u8', title: '摩登家庭第一季 第16集' },
+        
+            {src: 'https://m3u.nikanba.live/share/53c74837a3694d5aaa68fbc21943f635.m3u8', title: '摩登家庭第一季 第17集' },
+        
+            {src: 'https://m3u.nikanba.live/share/17a4faf457db4b9496b1a8adaaa6eebd.m3u8', title: '摩登家庭第一季 第18集' },
+        
+            {src: 'https://m3u.nikanba.live/share/28af8a36843640fbb6a09421bf340038.m3u8', title: '摩登家庭第一季 第19集' },
+        
+            {src: 'https://m3u.nikanba.live/share/4dfddf7f58c442ecbaf2fee73998f610.m3u8', title: '摩登家庭第一季 第20集' },
+        
+            {src: 'https://m3u.nikanba.live/share/5937995b51d947ceb0d1c974a19789ad.m3u8', title: '摩登家庭第一季 第21集' },
+        
+            {src: 'https://m3u.nikanba.live/share/559cd95936a14e4581fcd0ded71727a8.m3u8', title: '摩登家庭第一季 第22集' },
+        
+            {src: 'https://m3u.nikanba.live/share/acea2683fde547eabf26687f79592392.m3u8', title: '摩登家庭第一季 第23集' },
+        
+            {src: 'https://m3u.nikanba.live/share/b18b123217c843ebadb8fd06d2610e56.m3u8', title: '摩登家庭第一季 第24集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_42458";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>

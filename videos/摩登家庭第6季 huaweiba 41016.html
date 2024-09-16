@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摩登家庭第6季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/4b5c7895c3224e3ca4f13a974d3ce2ab.m3u8', title: '摩登家庭第6季 01' },
+        
+            {src: 'https://m3u.nikanba.live/share/24da5b5a32a84f2c9b807efec8227601.m3u8', title: '摩登家庭第6季 02' },
+        
+            {src: 'https://m3u.nikanba.live/share/9dd71876f31f4d9e91c0dec6305a1ad5.m3u8', title: '摩登家庭第6季 03' },
+        
+            {src: 'https://m3u.nikanba.live/share/7008258aa2c043eab28381f3ff7a71b2.m3u8', title: '摩登家庭第6季 04' },
+        
+            {src: 'https://m3u.nikanba.live/share/64c26c5b84e8412b9d2e921e4e31966e.m3u8', title: '摩登家庭第6季 05' },
+        
+            {src: 'https://m3u.nikanba.live/share/05c20c87476c42d381459c7fdd582410.m3u8', title: '摩登家庭第6季 06' },
+        
+            {src: 'https://m3u.nikanba.live/share/4dea5029a5d540728953bafcbe12f5bc.m3u8', title: '摩登家庭第6季 07' },
+        
+            {src: 'https://m3u.nikanba.live/share/0b8f76b44c0e42afb42d3a9aade7c696.m3u8', title: '摩登家庭第6季 08' },
+        
+            {src: 'https://m3u.nikanba.live/share/e9c628ad5e294653814f3b6eac1b995f.m3u8', title: '摩登家庭第6季 09' },
+        
+            {src: 'https://m3u.nikanba.live/share/2f90db86ec4f42ea8e5dc2eb689854f1.m3u8', title: '摩登家庭第6季 10' },
+        
+            {src: 'https://m3u.nikanba.live/share/e54e4a7838684424b14ba83854685e49.m3u8', title: '摩登家庭第6季 11' },
+        
+            {src: 'https://m3u.nikanba.live/share/b8df1e9c43d64ab0b69886059c2254c5.m3u8', title: '摩登家庭第6季 12' },
+        
+            {src: 'https://m3u.nikanba.live/share/945ed54ae9b54371bda613c10d3538bc.m3u8', title: '摩登家庭第6季 13' },
+        
+            {src: 'https://m3u.nikanba.live/share/236cfc8c73a5471da1bf317c2ca21599.m3u8', title: '摩登家庭第6季 14' },
+        
+            {src: 'https://m3u.nikanba.live/share/cd09ab9d593644a68a1f53324ff7d6f8.m3u8', title: '摩登家庭第6季 15' },
+        
+            {src: 'https://m3u.nikanba.live/share/58c898f1344d44faaf376803ec9ba78d.m3u8', title: '摩登家庭第6季 16' },
+        
+            {src: 'https://m3u.nikanba.live/share/cf72dac3c5a9452089972b4c0f6d12ee.m3u8', title: '摩登家庭第6季 17' },
+        
+            {src: 'https://m3u.nikanba.live/share/bf18b9351121430fa0b1d9a27ff8c04b.m3u8', title: '摩登家庭第6季 18' },
+        
+            {src: 'https://m3u.nikanba.live/share/323acfaf7e79494eb0e001ca78e5d475.m3u8', title: '摩登家庭第6季 19' },
+        
+            {src: 'https://m3u.nikanba.live/share/11bf59fc6cf647d7a7e56c0a981432c1.m3u8', title: '摩登家庭第6季 20' },
+        
+            {src: 'https://m3u.nikanba.live/share/7c320bb82ad24da9b4a4f17c67b20f94.m3u8', title: '摩登家庭第6季 21' },
+        
+            {src: 'https://m3u.nikanba.live/share/05c2ca0f89fa430ca1983c81dfb8084b.m3u8', title: '摩登家庭第6季 22' },
+        
+            {src: 'https://m3u.nikanba.live/share/9747f27c16bb48ba8fdfc8806f37e5c2.m3u8', title: '摩登家庭第6季 23' },
+        
+            {src: 'https://m3u.nikanba.live/share/e9d2cc85cbb84865b7c5224d43839fe9.m3u8', title: '摩登家庭第6季 24' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_41016";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>

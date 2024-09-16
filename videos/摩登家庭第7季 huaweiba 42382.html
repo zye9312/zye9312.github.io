@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摩登家庭第7季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/d05be22603a34151a5661b041bb5a44c.m3u8', title: '摩登家庭第7季 01' },
+        
+            {src: 'https://m3u.nikanba.live/share/be80879e4fad41528be75b371a4913f8.m3u8', title: '摩登家庭第7季 02' },
+        
+            {src: 'https://m3u.nikanba.live/share/642f907099f74bfd95afbc5ea46d2763.m3u8', title: '摩登家庭第7季 03' },
+        
+            {src: 'https://m3u.nikanba.live/share/581af1a887074ea9b34cd2d75145037e.m3u8', title: '摩登家庭第7季 04' },
+        
+            {src: 'https://m3u.nikanba.live/share/9d8aaf2de8494cee945cf50afa1136e6.m3u8', title: '摩登家庭第7季 05' },
+        
+            {src: 'https://m3u.nikanba.live/share/f0cbf8c7a7f347d8867288fd5d9d3682.m3u8', title: '摩登家庭第7季 06' },
+        
+            {src: 'https://m3u.nikanba.live/share/59f8c8a8d07f4d129df8cd13437b76df.m3u8', title: '摩登家庭第7季 07' },
+        
+            {src: 'https://m3u.nikanba.live/share/277eb6ce0f4d47fab5d35cbe69708797.m3u8', title: '摩登家庭第7季 08' },
+        
+            {src: 'https://m3u.nikanba.live/share/06b87be1462e4291a7b3d641e894d2f1.m3u8', title: '摩登家庭第7季 09' },
+        
+            {src: 'https://m3u.nikanba.live/share/b0e311ec1769430097dc53f39bfe4f74.m3u8', title: '摩登家庭第7季 10' },
+        
+            {src: 'https://m3u.nikanba.live/share/f15a7a0533bb444f81e272d187e7db9f.m3u8', title: '摩登家庭第7季 11' },
+        
+            {src: 'https://m3u.nikanba.live/share/750ff10826e0461a901226ad012440b4.m3u8', title: '摩登家庭第7季 12' },
+        
+            {src: 'https://m3u.nikanba.live/share/51c29611540c48be8e6a9f3458e87385.m3u8', title: '摩登家庭第7季 13' },
+        
+            {src: 'https://m3u.nikanba.live/share/89806ffe97a04cbd9993fc6869e16975.m3u8', title: '摩登家庭第7季 14' },
+        
+            {src: 'https://m3u.nikanba.live/share/b38c5e1080b74e5f90fbe507ea7f2aa6.m3u8', title: '摩登家庭第7季 15' },
+        
+            {src: 'https://m3u.nikanba.live/share/d568235dd5f64b07a6acbd2aa8e7039a.m3u8', title: '摩登家庭第7季 16' },
+        
+            {src: 'https://m3u.nikanba.live/share/6fd530c78eae4665948eb057c514d1a6.m3u8', title: '摩登家庭第7季 17' },
+        
+            {src: 'https://m3u.nikanba.live/share/ef45e1df43944ab5ba05ae08fde2a840.m3u8', title: '摩登家庭第7季 18' },
+        
+            {src: 'https://m3u.nikanba.live/share/987fb626289a48bdb758dd01d6413509.m3u8', title: '摩登家庭第7季 19' },
+        
+            {src: 'https://m3u.nikanba.live/share/9b883c1975c04b7980b9588bf69bd133.m3u8', title: '摩登家庭第7季 20' },
+        
+            {src: 'https://m3u.nikanba.live/share/8aac13e7809a47c8bdea983b7d69b2be.m3u8', title: '摩登家庭第7季 21' },
+        
+            {src: 'https://m3u.nikanba.live/share/b644a28c340a415698a715196d1fe2df.m3u8', title: '摩登家庭第7季 22' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_42382";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
