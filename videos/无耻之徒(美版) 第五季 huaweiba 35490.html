@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无耻之徒(美版) 第五季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/20ec8b71fe3049bc9c2cb94174765ae1.m3u8', title: '无耻之徒(美版) 第五季 第01集' },
+        
+            {src: 'https://m3u.nikanba.live/share/af395f296d4a453faf93e2d4c4a35446.m3u8', title: '无耻之徒(美版) 第五季 第02集' },
+        
+            {src: 'https://m3u.nikanba.live/share/51ba2a200fc84019a35a82cc8bc8df5f.m3u8', title: '无耻之徒(美版) 第五季 第03集' },
+        
+            {src: 'https://m3u.nikanba.live/share/01b55cb2340d417b8aa8d84c91f61883.m3u8', title: '无耻之徒(美版) 第五季 第04集' },
+        
+            {src: 'https://m3u.nikanba.live/share/d66108d13958498db13a8329522075a3.m3u8', title: '无耻之徒(美版) 第五季 第05集' },
+        
+            {src: 'https://m3u.nikanba.live/share/1905f25ce23b4a5fa41c381315553ad3.m3u8', title: '无耻之徒(美版) 第五季 第06集' },
+        
+            {src: 'https://m3u.nikanba.live/share/840f0ad8139340dbad88f91ea038d558.m3u8', title: '无耻之徒(美版) 第五季 第07集' },
+        
+            {src: 'https://m3u.nikanba.live/share/1e8dc09cc5924d6fa71602b56c150dce.m3u8', title: '无耻之徒(美版) 第五季 第08集' },
+        
+            {src: 'https://m3u.nikanba.live/share/7685bd508985426d81cfe6ae80bd3082.m3u8', title: '无耻之徒(美版) 第五季 第09集' },
+        
+            {src: 'https://m3u.nikanba.live/share/2fbfd60550f64e43a48ceab889fc9971.m3u8', title: '无耻之徒(美版) 第五季 第10集' },
+        
+            {src: 'https://m3u.nikanba.live/share/eeae65c291874e79ad56823cab395792.m3u8', title: '无耻之徒(美版) 第五季 第11集' },
+        
+            {src: 'https://m3u.nikanba.live/share/da59ff3281434865afb3bfe16c3a977f.m3u8', title: '无耻之徒(美版) 第五季 第12集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_35490";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>

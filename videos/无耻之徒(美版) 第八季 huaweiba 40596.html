@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无耻之徒(美版) 第八季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/466a64ee839e4360b9f1fd5b8a28e6b9.m3u8', title: '无耻之徒(美版) 第八季 第01集' },
+        
+            {src: 'https://m3u.nikanba.live/share/e77e85d736fb4d13971f68bd2842b901.m3u8', title: '无耻之徒(美版) 第八季 第02集' },
+        
+            {src: 'https://m3u.nikanba.live/share/d52ad8b1df0e4555a55a4ea8fd842a36.m3u8', title: '无耻之徒(美版) 第八季 第03集' },
+        
+            {src: 'https://m3u.nikanba.live/share/5fd8361aacf64f1c82c13031517634d7.m3u8', title: '无耻之徒(美版) 第八季 第04集' },
+        
+            {src: 'https://m3u.nikanba.live/share/b9740e3c91c446df977fd4eb88d2b93f.m3u8', title: '无耻之徒(美版) 第八季 第05集' },
+        
+            {src: 'https://m3u.nikanba.live/share/959606dada2c4217b540476fbe6e8d5e.m3u8', title: '无耻之徒(美版) 第八季 第06集' },
+        
+            {src: 'https://m3u.nikanba.live/share/07bde071d1b64b69b6f291895c40ac4d.m3u8', title: '无耻之徒(美版) 第八季 第07集' },
+        
+            {src: 'https://m3u.nikanba.live/share/496c304753744266b98c2c12301540da.m3u8', title: '无耻之徒(美版) 第八季 第08集' },
+        
+            {src: 'https://m3u.nikanba.live/share/9933e590faf04550bd289070f9c33dbd.m3u8', title: '无耻之徒(美版) 第八季 第09集' },
+        
+            {src: 'https://m3u.nikanba.live/share/d295b2349ad24ea9bea503eaa01b6c5f.m3u8', title: '无耻之徒(美版) 第八季 第10集' },
+        
+            {src: 'https://m3u.nikanba.live/share/f3d2be29c387445f8eddcbf8d429ef69.m3u8', title: '无耻之徒(美版) 第八季 第11集' },
+        
+            {src: 'https://m3u.nikanba.live/share/bda7ac0e7a6145bea82720cffdd2a63f.m3u8', title: '无耻之徒(美版) 第八季 第12集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_40596";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>

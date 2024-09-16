@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无耻之徒  第二季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/549473e0dd004801ba46d423d2935364.m3u8', title: '无耻之徒  第二季 01' },
+        
+            {src: 'https://m3u.nikanba.live/share/cb6eb9dade4047bea4fd90919856e6cc.m3u8', title: '无耻之徒  第二季 02' },
+        
+            {src: 'https://m3u.nikanba.live/share/0f1c9a502b2248f988515dc347c06f80.m3u8', title: '无耻之徒  第二季 03' },
+        
+            {src: 'https://m3u.nikanba.live/share/dff3936baa8b4bfdaba9d4edf7bcb598.m3u8', title: '无耻之徒  第二季 04' },
+        
+            {src: 'https://m3u.nikanba.live/share/0be21be1ec8a4dc79734819932a8a692.m3u8', title: '无耻之徒  第二季 05' },
+        
+            {src: 'https://m3u.nikanba.live/share/efbde99a98614e27876254c3085a1686.m3u8', title: '无耻之徒  第二季 06' },
+        
+            {src: 'https://m3u.nikanba.live/share/55b1e8adfe47416ba2480269328a4fb3.m3u8', title: '无耻之徒  第二季 07' },
+        
+            {src: 'https://m3u.nikanba.live/share/06809d26b2294db799b60be6e8e6bba0.m3u8', title: '无耻之徒  第二季 08' },
+        
+            {src: 'https://m3u.nikanba.live/share/af76e51fba59477f8bb122b136e59ed0.m3u8', title: '无耻之徒  第二季 09' },
+        
+            {src: 'https://m3u.nikanba.live/share/367f4bf90e3642d99be2754ff05ed112.m3u8', title: '无耻之徒  第二季 10' },
+        
+            {src: 'https://m3u.nikanba.live/share/5b5f678fffe24a2caa3bb2641804a6bc.m3u8', title: '无耻之徒  第二季 11' },
+        
+            {src: 'https://m3u.nikanba.live/share/6365710972fc4d1194416ddab48f0715.m3u8', title: '无耻之徒  第二季 12' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_35718";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>

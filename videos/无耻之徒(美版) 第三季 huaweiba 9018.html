@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无耻之徒(美版) 第三季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/cef701c7144c41ee9c653ddd4133198c.m3u8', title: '无耻之徒(美版) 第三季 第01集' },
+        
+            {src: 'https://m3u.nikanba.live/share/0bdf2d9805a446b7a20cdab021bc5a0b.m3u8', title: '无耻之徒(美版) 第三季 第02集' },
+        
+            {src: 'https://m3u.nikanba.live/share/f1c113d8f8e648939b289b37fff2a7ab.m3u8', title: '无耻之徒(美版) 第三季 第03集' },
+        
+            {src: 'https://m3u.nikanba.live/share/c36d4f8a99014d7999ab55a6843a2135.m3u8', title: '无耻之徒(美版) 第三季 第04集' },
+        
+            {src: 'https://m3u.nikanba.live/share/416216b248364c379a194d955fe17ba2.m3u8', title: '无耻之徒(美版) 第三季 第05集' },
+        
+            {src: 'https://m3u.nikanba.live/share/b3fc9a7cbfce46d6861b50c70deb193e.m3u8', title: '无耻之徒(美版) 第三季 第06集' },
+        
+            {src: 'https://m3u.nikanba.live/share/37cb27257fc949cc8e0972342c2fd696.m3u8', title: '无耻之徒(美版) 第三季 第07集' },
+        
+            {src: 'https://m3u.nikanba.live/share/cbe2e50031984fc69e98a49958702a43.m3u8', title: '无耻之徒(美版) 第三季 第08集' },
+        
+            {src: 'https://m3u.nikanba.live/share/697a550519b9498aa8db66f59d6fdc40.m3u8', title: '无耻之徒(美版) 第三季 第09集' },
+        
+            {src: 'https://m3u.nikanba.live/share/c33599fdddc94230ac24b270700d280e.m3u8', title: '无耻之徒(美版) 第三季 第10集' },
+        
+            {src: 'https://m3u.nikanba.live/share/9a060c97ce2841b6ae98c6f3fc4ed1ce.m3u8', title: '无耻之徒(美版) 第三季 第11集' },
+        
+            {src: 'https://m3u.nikanba.live/share/d6377fedb0b640ae97cfbcae8b5dac4d.m3u8', title: '无耻之徒(美版) 第三季 第12集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_9018";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
