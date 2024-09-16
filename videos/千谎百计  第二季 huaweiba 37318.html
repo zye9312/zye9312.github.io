@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>千谎百计  第二季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/4149894e93e342b5b86ee6ff4a0948f3.m3u8', title: '千谎百计  第二季 01' },
+        
+            {src: 'https://m3u.nikanba.live/share/e8f11607dbc44d0d9a1ee27ac6856c35.m3u8', title: '千谎百计  第二季 02' },
+        
+            {src: 'https://m3u.nikanba.live/share/e58ea8a893754186b6cc1e0830acb523.m3u8', title: '千谎百计  第二季 03' },
+        
+            {src: 'https://m3u.nikanba.live/share/a74b945d48c444d8a2eb8a0a9726f898.m3u8', title: '千谎百计  第二季 04' },
+        
+            {src: 'https://m3u.nikanba.live/share/46c162fc8b0d49d49cfd355c75700463.m3u8', title: '千谎百计  第二季 05' },
+        
+            {src: 'https://m3u.nikanba.live/share/17d799a5fb0d43db8408e008f31c1108.m3u8', title: '千谎百计  第二季 06' },
+        
+            {src: 'https://m3u.nikanba.live/share/2421f79229284d308a63d880a32e8d92.m3u8', title: '千谎百计  第二季 07' },
+        
+            {src: 'https://m3u.nikanba.live/share/0c82ffac43154219b851e65e71902457.m3u8', title: '千谎百计  第二季 08' },
+        
+            {src: 'https://m3u.nikanba.live/share/4d2b33649ce34cb2afd6088f4220a7cc.m3u8', title: '千谎百计  第二季 09' },
+        
+            {src: 'https://m3u.nikanba.live/share/00e93fff26684eed99a9cfd6ccacb4ee.m3u8', title: '千谎百计  第二季 10' },
+        
+            {src: 'https://m3u.nikanba.live/share/535b44d51ea746daa0e4008db712fdea.m3u8', title: '千谎百计  第二季 11' },
+        
+            {src: 'https://m3u.nikanba.live/share/b5c01dc8290644399633949f9b297507.m3u8', title: '千谎百计  第二季 12' },
+        
+            {src: 'https://m3u.nikanba.live/share/4a51ff7077f5400287dd1925bc48ca18.m3u8', title: '千谎百计  第二季 13' },
+        
+            {src: 'https://m3u.nikanba.live/share/adc57f78a5d44dd4a7e7e5cd7c62489b.m3u8', title: '千谎百计  第二季 14' },
+        
+            {src: 'https://m3u.nikanba.live/share/2e423eb4be804b8490d1bca32503963c.m3u8', title: '千谎百计  第二季 15' },
+        
+            {src: 'https://m3u.nikanba.live/share/ab30b60b212a4eaca05365e06aed8cbf.m3u8', title: '千谎百计  第二季 16' },
+        
+            {src: 'https://m3u.nikanba.live/share/0183f9d3036e41aeb326156ea8a7a6e1.m3u8', title: '千谎百计  第二季 17' },
+        
+            {src: 'https://m3u.nikanba.live/share/15b2dbddb75b48e2a115b8fde8b42eb7.m3u8', title: '千谎百计  第二季 18' },
+        
+            {src: 'https://m3u.nikanba.live/share/d86b1fb7a51347fcb5fa2dd559c8c49b.m3u8', title: '千谎百计  第二季 19' },
+        
+            {src: 'https://m3u.nikanba.live/share/f7d897544bc84b2690355902d5e919a7.m3u8', title: '千谎百计  第二季 20' },
+        
+            {src: 'https://m3u.nikanba.live/share/59b137e6c2754efbb6e10c9af87dfaee.m3u8', title: '千谎百计  第二季 21' },
+        
+            {src: 'https://m3u.nikanba.live/share/bf316f59826e4801bc4686703ddbe2b3.m3u8', title: '千谎百计  第二季 22' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_37318";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>

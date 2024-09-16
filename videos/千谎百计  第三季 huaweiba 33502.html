@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>千谎百计  第三季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u.nikanba.live/share/4dfdaf878bf24068a8c877150245df85.m3u8', title: '千谎百计  第三季 01' },
+        
+            {src: 'https://m3u.nikanba.live/share/dc98004f556e4beba5b86d1c151869ea.m3u8', title: '千谎百计  第三季 02' },
+        
+            {src: 'https://m3u.nikanba.live/share/460b43e9e77e4165bb959b72e112f8e6.m3u8', title: '千谎百计  第三季 03' },
+        
+            {src: 'https://m3u.nikanba.live/share/43a366b86c37438f939406416e89a429.m3u8', title: '千谎百计  第三季 04' },
+        
+            {src: 'https://m3u.nikanba.live/share/9e31f0cfd5c04c2d8746f4ad8dc19640.m3u8', title: '千谎百计  第三季 05' },
+        
+            {src: 'https://m3u.nikanba.live/share/24c3a01033c94db6abac5b900c9c0e02.m3u8', title: '千谎百计  第三季 06' },
+        
+            {src: 'https://m3u.nikanba.live/share/d496054dc17c4e3281f32a3acf7f2265.m3u8', title: '千谎百计  第三季 07' },
+        
+            {src: 'https://m3u.nikanba.live/share/84836fc806c14aeab57116146f9069c8.m3u8', title: '千谎百计  第三季 08' },
+        
+            {src: 'https://m3u.nikanba.live/share/60373ffe37734188bebb95b6b4b320e2.m3u8', title: '千谎百计  第三季 09' },
+        
+            {src: 'https://m3u.nikanba.live/share/4c2b8958629b41068033d481c6b66f9c.m3u8', title: '千谎百计  第三季 10' },
+        
+            {src: 'https://m3u.nikanba.live/share/7b0042a979cf4d679ed995c46ccab738.m3u8', title: '千谎百计  第三季 11' },
+        
+            {src: 'https://m3u.nikanba.live/share/e30fa65888f24f79b49daae59c5ac160.m3u8', title: '千谎百计  第三季 12' },
+        
+            {src: 'https://m3u.nikanba.live/share/804b6504ac394bd789bbf348b1cd3166.m3u8', title: '千谎百计  第三季 13' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_33502";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
