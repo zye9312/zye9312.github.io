@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密室大逃脱第六季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://v.lzcdn23.com/20240725/2870_3b95f980/index.m3u8', title: '密室大逃脱第六季 20240725超前聚会' },
+        
+            {src: 'https://v.cdnlz18.com/20240725/14772_afc86a4a/index.m3u8', title: '密室大逃脱第六季 20240725大神版超前聚会' },
+        
+            {src: 'https://v.cdnlz18.com/20240730/15059_fe61f052/index.m3u8', title: '密室大逃脱第六季 20240730超前彩蛋' },
+        
+            {src: 'https://v.cdnlz18.com/20240730/15079_8271e887/index.m3u8', title: '密室大逃脱第六季 20240730大神版超前彩蛋' },
+        
+            {src: 'https://v.cdnlz18.com/20240731/15111_a8d21b06/index.m3u8', title: '密室大逃脱第六季 20240731' },
+        
+            {src: 'https://v.cdnlz18.com/20240731/15118_c68cf9f7/index.m3u8', title: '密室大逃脱第六季 20240731大神版' },
+        
+            {src: 'https://v.cdnlz18.com/20240801/15165_c496478e/index.m3u8', title: '密室大逃脱第六季 20240801会员plus版' },
+        
+            {src: 'https://v.cdnlz18.com/20240801/15188_4030fcff/index.m3u8', title: '密室大逃脱第六季 20240801大神版会员Plus版' },
+        
+            {src: 'https://v.lzcdn23.com/20240807/3384_1d566704/index.m3u8', title: '密室大逃脱第六季 20240807超前彩蛋' },
+        
+            {src: 'https://v.lzcdn23.com/20240808/3448_4ed73a2c/index.m3u8', title: '密室大逃脱第六季 20240808大神版动感地带芒果卡竖屏特辑' },
+        
+            {src: 'https://v.cdnlz18.com/20240808/15263_398414a0/index.m3u8', title: '密室大逃脱第六季 20240808大神版下' },
+        
+            {src: 'https://v.cdnlz18.com/20240808/15269_d19a9b63/index.m3u8', title: '密室大逃脱第六季 20240808下' },
+        
+            {src: 'https://v.lzcdn23.com/20240809/3521_5eccb82d/index.m3u8', title: '密室大逃脱第六季 20240809会员plus版' },
+        
+            {src: 'https://v.lzcdn23.com/20240809/3565_9d3cff57/index.m3u8', title: '密室大逃脱第六季 20240809大神版会员Plus版' },
+        
+            {src: 'https://v.cdnlz18.com/20240814/15371_43e7f9dc/index.m3u8', title: '密室大逃脱第六季 20240814超前彩蛋' },
+        
+            {src: 'https://v.cdnlz18.com/20240814/15389_39c3b215/index.m3u8', title: '密室大逃脱第六季 20240814大神版超前彩蛋' },
+        
+            {src: 'https://v.cdnlz18.com/20240815/15426_6407d376/index.m3u8', title: '密室大逃脱第六季 20240815上' },
+        
+            {src: 'https://v.cdnlz18.com/20240815/15427_4f627085/index.m3u8', title: '密室大逃脱第六季 20240815大神版上' },
+        
+            {src: 'https://v.cdnlz18.com/20240822/15757_fd3e7795/index.m3u8', title: '密室大逃脱第六季 20240815大神版动感地带芒果卡竖屏特辑' },
+        
+            {src: 'https://v.cdnlz18.com/20240816/15468_727aa44c/index.m3u8', title: '密室大逃脱第六季 20240816会员plus版' },
+        
+            {src: 'https://v.cdnlz18.com/20240816/15500_7a3198e3/index.m3u8', title: '密室大逃脱第六季 20240816大神版会员Plus版' },
+        
+            {src: 'https://v.cdnlz18.com/20240821/15700_69b92c4d/index.m3u8', title: '密室大逃脱第六季 20240821超前彩蛋' },
+        
+            {src: 'https://v.cdnlz18.com/20240821/15730_cfa5e5c5/index.m3u8', title: '密室大逃脱第六季 20240821大神版超前彩蛋' },
+        
+            {src: 'https://v.cdnlz18.com/20240822/15759_b8f05578/index.m3u8', title: '密室大逃脱第六季 20240822' },
+        
+            {src: 'https://v.cdnlz18.com/20240822/15756_1f35e0d7/index.m3u8', title: '密室大逃脱第六季 20240822大神版动感地带芒果卡竖屏特辑' },
+        
+            {src: 'https://v.cdnlz18.com/20240822/15765_9f473d36/index.m3u8', title: '密室大逃脱第六季 20240822大神版' },
+        
+            {src: 'https://v.cdnlz18.com/20240823/15813_a32b7ebe/index.m3u8', title: '密室大逃脱第六季 20240823会员plus版' },
+        
+            {src: 'https://v.cdnlz18.com/20240823/15850_51bd68c1/index.m3u8', title: '密室大逃脱第六季 20240823大神版会员Plus版' },
+        
+            {src: 'https://v.cdnlz18.com/20240828/16055_71f20eff/index.m3u8', title: '密室大逃脱第六季 20240828超前彩蛋' },
+        
+            {src: 'https://v.cdnlz18.com/20240828/16087_f4654eb1/index.m3u8', title: '密室大逃脱第六季 20240828大神版超前彩蛋' },
+        
+            {src: 'https://v.cdnlz18.com/20240829/16099_6dd0bdc0/index.m3u8', title: '密室大逃脱第六季 20240829' },
+        
+            {src: 'https://v.cdnlz18.com/20240829/16098_e68c8a1c/index.m3u8', title: '密室大逃脱第六季 20240829大神版' },
+        
+            {src: 'https://v.cdnlz18.com/20240829/16120_e77fb894/index.m3u8', title: '密室大逃脱第六季 20240829大神版动感地带芒果卡竖屏特辑' },
+        
+            {src: 'https://v.cdnlz18.com/20240830/16149_f43963fc/index.m3u8', title: '密室大逃脱第六季 20240830会员plus版' },
+        
+            {src: 'https://v.cdnlz18.com/20240830/16168_cdc8b4f3/index.m3u8', title: '密室大逃脱第六季 20240830大神版会员Plus版' },
+        
+            {src: 'https://v.cdnlz18.com/20240904/16412_fc6753a2/index.m3u8', title: '密室大逃脱第六季 20240904超前彩蛋' },
+        
+            {src: 'https://v.cdnlz18.com/20240904/16427_51fec943/index.m3u8', title: '密室大逃脱第六季 20240904大神版超前彩蛋' },
+        
+            {src: 'https://v.cdnlz18.com/20240905/16476_21d293c6/index.m3u8', title: '密室大逃脱第六季 20240905大神版动感地带芒果卡竖屏特辑上' },
+        
+            {src: 'https://v.cdnlz18.com/20240905/16477_ec6c13a4/index.m3u8', title: '密室大逃脱第六季 20240905大神版下' },
+        
+            {src: 'https://v.cdnlz18.com/20240905/16478_13199371/index.m3u8', title: '密室大逃脱第六季 20240905下' },
+        
+            {src: 'https://v.cdnlz18.com/20240906/16525_f57a467d/index.m3u8', title: '密室大逃脱第六季 20240906会员plus版' },
+        
+            {src: 'https://v.cdnlz18.com/20240906/16531_44f9303d/index.m3u8', title: '密室大逃脱第六季 20240906大神版会员Plus版' },
+        
+            {src: 'https://v.cdnlz18.com/20240911/16797_225ef435/index.m3u8', title: '密室大逃脱第六季 20240911超前彩蛋' },
+        
+            {src: 'https://v.cdnlz18.com/20240911/16811_25d8e1b0/index.m3u8', title: '密室大逃脱第六季 20240911大神版' },
+        
+            {src: 'https://v.cdnlz18.com/20240912/16855_7b18e9ae/index.m3u8', title: '密室大逃脱第六季 20240912大神版上' },
+        
+            {src: 'https://v.cdnlz18.com/20240912/16854_3af39437/index.m3u8', title: '密室大逃脱第六季 20240912大神版动感地带芒果卡竖屏特辑' },
+        
+            {src: 'https://v.cdnlz18.com/20240912/16856_52b35d86/index.m3u8', title: '密室大逃脱第六季 20240912上' },
+        
+            {src: 'https://v.cdnlz18.com/20240913/16892_db3d3060/index.m3u8', title: '密室大逃脱第六季 20240913会员plus版' },
+        
+            {src: 'https://v.cdnlz18.com/20240913/16915_b62676f0/index.m3u8', title: '密室大逃脱第六季 20240913大神版' },
+        
+            {src: 'https://v.cdnlz18.com/20240918/17114_eea123ef/index.m3u8', title: '密室大逃脱第六季 20240918超前彩蛋' },
+        
+            {src: 'https://v.cdnlz18.com/20240918/17131_0670c961/index.m3u8', title: '密室大逃脱第六季 20240918大神版超前彩蛋' },
+        
+            {src: 'https://v.cdnlz18.com/20240919/17166_4103edec/index.m3u8', title: '密室大逃脱第六季 20240919大神版动感地带芒果卡竖屏特辑' },
+        
+            {src: 'https://v.cdnlz18.com/20240919/17167_e3aad28a/index.m3u8', title: '密室大逃脱第六季 20240919大神版下' },
+        
+            {src: 'https://v.cdnlz18.com/20240919/17168_dab65c17/index.m3u8', title: '密室大逃脱第六季 20240919下' },
+        
+            {src: 'https://v.cdnlz18.com/20240920/17198_67f7e880/index.m3u8', title: '密室大逃脱第六季 20240920会员plus版' },
+        
+            {src: 'https://v.cdnlz18.com/20240920/17222_c8cf4ea3/index.m3u8', title: '密室大逃脱第六季 20240920大神版会员Plus版' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_lzizy_91784";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
