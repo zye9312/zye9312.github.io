@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>火线 第一季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://cos.m3u8hw8.com/share/cdccab1e1ba54546a0d2e9f36ead0e1f.m3u8', title: '火线 第一季 01' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/fc02a1ab02fd4ecbad43d552dc36524f.m3u8', title: '火线 第一季 02' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/1193b78cdf734128acce295aa02ddea2.m3u8', title: '火线 第一季 03' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/3a184f67a4e247b3bcc4a8a25ec56c88.m3u8', title: '火线 第一季 04' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/aaccf9b828ff471a9bb6d55188c15984.m3u8', title: '火线 第一季 05' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/c51a1865adf34afda40f8874b8553018.m3u8', title: '火线 第一季 06' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/a3d89b00612a475da69a997f55661942.m3u8', title: '火线 第一季 07' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/78b514e41dfe4154bcd23b400c278ff7.m3u8', title: '火线 第一季 08' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/3181b24721dc4ab18cd5aa8d4f55a86b.m3u8', title: '火线 第一季 09' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/6e97a05e2cbe4d61bc8e1e703f3d3838.m3u8', title: '火线 第一季 10' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/c01c13a198a4461ba306f1ef62a209b4.m3u8', title: '火线 第一季 11' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/d3b57f6900ae4c14a620ddfa25311a0a.m3u8', title: '火线 第一季 12' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/8096fb8d0f824b06a3131f43c4d0aad0.m3u8', title: '火线 第一季 13' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_33432";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
