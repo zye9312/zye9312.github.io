@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>琅琊榜之风起长林</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u8.heimuertv.com/play/800aa168d00e481a8bac326f2891bfde.m3u8', title: '琅琊榜之风起长林 01' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/84437dbaeddb494193abd8ab6ceacdb3.m3u8', title: '琅琊榜之风起长林 02' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/0ce3b47facdd4332b4e8e9fdc229a734.m3u8', title: '琅琊榜之风起长林 03' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/005f869c75454802b67210911ea0832f.m3u8', title: '琅琊榜之风起长林 04' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/ed2329870ef546778fcd9aa37bc6368c.m3u8', title: '琅琊榜之风起长林 05' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/01d6f21a07334054932027c28db4c0b9.m3u8', title: '琅琊榜之风起长林 06' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/65e6f0dc7e5543f7990f4429ad6d8851.m3u8', title: '琅琊榜之风起长林 07' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/1409e88a71f844c189a3fed0e3ec3f08.m3u8', title: '琅琊榜之风起长林 08' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/2a31a6f1d33e44f494f9287eed7e8af7.m3u8', title: '琅琊榜之风起长林 09' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/dfb201a815394fa8a6d7f77b77c58c25.m3u8', title: '琅琊榜之风起长林 10' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/ef9a5c335f954f1daf4de928eb2d9317.m3u8', title: '琅琊榜之风起长林 11' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/b8f2d70f5435496086f5cd69b290f125.m3u8', title: '琅琊榜之风起长林 12' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/560b4e9ed540488c9e92f99c73be274b.m3u8', title: '琅琊榜之风起长林 13' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/3dee0fcdcbbb485e9bb434fc8aff920f.m3u8', title: '琅琊榜之风起长林 14' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/0b7bad3858f44d5da0d7e81f4f43f54d.m3u8', title: '琅琊榜之风起长林 15' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/acd0b5d24e4b49ed8a1038a534874b61.m3u8', title: '琅琊榜之风起长林 16' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/f386f6f2d88841438b52f03dc42e95c9.m3u8', title: '琅琊榜之风起长林 17' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/6cd30868a98f4729b1386431d73b876e.m3u8', title: '琅琊榜之风起长林 18' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/f4de52da865c4312ae19a6a50f9e9ac5.m3u8', title: '琅琊榜之风起长林 19' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/2bb5878e3b694b50948c7376d298f28b.m3u8', title: '琅琊榜之风起长林 20' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/23757646ecac4cf4bfbe79022303f708.m3u8', title: '琅琊榜之风起长林 21' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/f38503d680064f4da0239fb73e2573d2.m3u8', title: '琅琊榜之风起长林 22' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/1f528880486347b895fb3a94a5f24b51.m3u8', title: '琅琊榜之风起长林 23' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/81c373862f254b9eb145d0cb126539eb.m3u8', title: '琅琊榜之风起长林 24' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/22dea8af7bea4742b92cac80442b1363.m3u8', title: '琅琊榜之风起长林 25' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/bc54704fbe6240e2af170e543e03eba4.m3u8', title: '琅琊榜之风起长林 26' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/b1e4ce0c420047f888c401d79f126d80.m3u8', title: '琅琊榜之风起长林 27' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/823fa0c14e184b6ab2ab4c408b8dc118.m3u8', title: '琅琊榜之风起长林 28' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/0efd15b37e794f60bc58f35e2b653755.m3u8', title: '琅琊榜之风起长林 29' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/4ff165e3e7214c76a203cf2d27b47ad4.m3u8', title: '琅琊榜之风起长林 30' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/db3b51d0c8b541a88e834fdd1acebd6f.m3u8', title: '琅琊榜之风起长林 31' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/c33e1bbd7f844960a70eef817a32845c.m3u8', title: '琅琊榜之风起长林 32' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/192440a63d0043aebaf086a330d2a92b.m3u8', title: '琅琊榜之风起长林 33' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/a9b82a822f2f4633822fbf181f99421f.m3u8', title: '琅琊榜之风起长林 34' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/a1ce306f5bfc4b0ba7a7b10402d761c5.m3u8', title: '琅琊榜之风起长林 35' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/8b17e62435c547eb87e7ba6bf84894c6.m3u8', title: '琅琊榜之风起长林 36' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/6d9ea1b3a9574acdbb91027d0e30f4cd.m3u8', title: '琅琊榜之风起长林 37' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/c9e2102e58a54c8eb6097b264887be87.m3u8', title: '琅琊榜之风起长林 38' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/b871464964d24f02a0f61122042372c5.m3u8', title: '琅琊榜之风起长林 39' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/5f96d5ccfa95413fa0e19cdac5179ced.m3u8', title: '琅琊榜之风起长林 40' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/d53c5967bb344404aabc1ad277ba739a.m3u8', title: '琅琊榜之风起长林 41' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/1d246c4e370d45ed921c38d2feb04b28.m3u8', title: '琅琊榜之风起长林 42' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/d198863eaa5f4d75b0a07e56697242fc.m3u8', title: '琅琊榜之风起长林 43' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/ba28b524f9764583beed0802c8c16d49.m3u8', title: '琅琊榜之风起长林 44' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/25005592e5f14658ad2f47e13f2df09a.m3u8', title: '琅琊榜之风起长林 45' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/58e862b0f71248d4a4aebbb2c5c990c8.m3u8', title: '琅琊榜之风起长林 46' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/220768ee7e8c45d4b3c78720f3261d6b.m3u8', title: '琅琊榜之风起长林 47' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/5b1b20c640044a569bbec852a4cbdb8c.m3u8', title: '琅琊榜之风起长林 48' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/15070a43694f4d38a84a99225cd612ad.m3u8', title: '琅琊榜之风起长林 49' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/4b81a46d9c5a4562961d9f21a0b6ed3b.m3u8', title: '琅琊榜之风起长林 50' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_heimuer_3136";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
