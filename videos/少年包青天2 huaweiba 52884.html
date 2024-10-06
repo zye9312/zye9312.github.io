@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>少年包青天2</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://cos.m3u8hw8.com/share/21601157a1354e679da0c7f843606d24.m3u8', title: '少年包青天2 第01集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/b9dbd08e2e33463eba61ade3d625a52e.m3u8', title: '少年包青天2 第02集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/6702469669984338858a65f3ec55281d.m3u8', title: '少年包青天2 第03集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/52b5637c607b4c9b9406a9bd92e6cdfc.m3u8', title: '少年包青天2 第04集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/41a94918c60c4507a8019a089eeecd3e.m3u8', title: '少年包青天2 第05集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/964fb55539224468af279d8120d804c6.m3u8', title: '少年包青天2 第06集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/089242f669d3429e83c241a923aae94f.m3u8', title: '少年包青天2 第07集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/dc2ebc0ce32348bd9871a033d8008d3a.m3u8', title: '少年包青天2 第08集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/3327e153e6cd4750869fb7062cd1d6c1.m3u8', title: '少年包青天2 第09集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/8b75419d40df41ea83042ba11fc2f462.m3u8', title: '少年包青天2 第10集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/ef7ca0c83e334fcfbd9b2bb991c0f66b.m3u8', title: '少年包青天2 第11集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/439c72a6cb274fc990743580eb8bbe15.m3u8', title: '少年包青天2 第12集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/e9fcc72234e547e1a8a74faf07cc36a9.m3u8', title: '少年包青天2 第13集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/4a2606a063654e7bbcac130628ffad42.m3u8', title: '少年包青天2 第14集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/da8b7ca3e21246e18f9e6174cd73096d.m3u8', title: '少年包青天2 第15集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/f39cbc2ff90a451b821fda44f092f47b.m3u8', title: '少年包青天2 第16集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/2493ce525d7c4a7a9500221227832258.m3u8', title: '少年包青天2 第17集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/19c5bdbd26674941b6fb399dae7539c6.m3u8', title: '少年包青天2 第18集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/251d01f4cad84a0ca872e1196d8bc6da.m3u8', title: '少年包青天2 第19集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/9284bf8425cd4c1ca991d8ffc256692a.m3u8', title: '少年包青天2 第20集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/23007f5401b4412189cb5a63810cf5c6.m3u8', title: '少年包青天2 第21集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/3d0830b887414b429e493c8051e99598.m3u8', title: '少年包青天2 第22集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/045c0b49ceb44ccebe98353da5b00178.m3u8', title: '少年包青天2 第23集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/c331f917c5be4e64ac9d2e52fcad16de.m3u8', title: '少年包青天2 第24集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/88f98f6174f8449b982bdf3c13f8e1fa.m3u8', title: '少年包青天2 第25集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/9270fcf073e84f73addc9f9f00b86c8b.m3u8', title: '少年包青天2 第26集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/79cec327beca436b8fe842f12af25066.m3u8', title: '少年包青天2 第27集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/71ba839aacb8405b9d34abe1f1b4f54f.m3u8', title: '少年包青天2 第28集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/43b6653ba9ad455a9cf8035fadf1dcbb.m3u8', title: '少年包青天2 第29集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/0113ea52984e4f85a163705b67ab2203.m3u8', title: '少年包青天2 第30集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/5aa805a903c544008556fcb8ba4e2e3a.m3u8', title: '少年包青天2 第31集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/0596a12dcf334e05a6c50ad0b76ac8ed.m3u8', title: '少年包青天2 第32集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/93fead85d61e42abb5f979b88de84c8f.m3u8', title: '少年包青天2 第33集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/3e17d34fa8214dd38638b1d219d7db0b.m3u8', title: '少年包青天2 第34集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/cd7ded65d7fc4945a1d1332f84ccacbf.m3u8', title: '少年包青天2 第35集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/575aef9c694649ce9865f51bab114fdf.m3u8', title: '少年包青天2 第36集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/78954f343a264ff890f313ae08cbb9fa.m3u8', title: '少年包青天2 第37集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/149d85efb8c940f8961e443f02c48b2a.m3u8', title: '少年包青天2 第38集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/39b08a3ac8914a4bb62ef5b9c43708d7.m3u8', title: '少年包青天2 第39集' },
+        
+            {src: 'https://cos.m3u8hw8.com/share/d9ca333b3ad842dc86e82c9b0e8b96f7.m3u8', title: '少年包青天2 第40集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_huaweiba_52884";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
