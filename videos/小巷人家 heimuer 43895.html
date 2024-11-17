@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小巷人家</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u8.heimuertv.com/play/08b1ee3b28694372b9ec71e54dea6b3f.m3u8', title: '小巷人家 1' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/5b2b59845ba54f1ca7a3091e619a2eb9.m3u8', title: '小巷人家 2' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/1f7d9333f2d94cadb06d56cff918ee82.m3u8', title: '小巷人家 3' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/0aed4af00aa840efb86c327b670c75c3.m3u8', title: '小巷人家 4' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/a7fee6f89c2543698a23f3379deef958.m3u8', title: '小巷人家 5' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/04658dcf916645eb84ee14d301624f31.m3u8', title: '小巷人家 6' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/1bb1bb986272455cafa52bd1326cd97d.m3u8', title: '小巷人家 7' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/2c0770d3f12442538b3a65e08bc522b5.m3u8', title: '小巷人家 8' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/93bdaf84277842d8ab9434d3acb730c9.m3u8', title: '小巷人家 9' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/3f4c0e145c894d8fa6220c8b16e223be.m3u8', title: '小巷人家 10' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/88408102537b487c9ada5f82c8842907.m3u8', title: '小巷人家 11' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/2bfaea8f8ab842c49674325798e588a9.m3u8', title: '小巷人家 12' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/0ebefa92354c4657b441c1b084b66786.m3u8', title: '小巷人家 13' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/bf250ce07ef24317a54e7d47455ecf39.m3u8', title: '小巷人家 14' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/3917c74ce1944b3ea594cbad941a7f49.m3u8', title: '小巷人家 15' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/53dd0c86c0b34d6c94ce18289a902fc7.m3u8', title: '小巷人家 16' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/54fba7a25fdc4f2cab56a706fbc62cdb.m3u8', title: '小巷人家 17' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/305169d26ac147f0b6eb3b2ca8245f52.m3u8', title: '小巷人家 18' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/019180ad8e9641188adec76c06ba5c53.m3u8', title: '小巷人家 19' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/50ced177f8de4192a4d49b0b4610802c.m3u8', title: '小巷人家 20' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/0a439192e7dc43f98778d77b42acbba2.m3u8', title: '小巷人家 21' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/cbc35fc693c84373840b7e0accc54865.m3u8', title: '小巷人家 22' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/4dc507a5587848f7abdd84090d811216.m3u8', title: '小巷人家 23' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/e0725027181f4b228bdeb0bfe7f6167c.m3u8', title: '小巷人家 24' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/01ae5bf50a934f389303d3ec5b2205cf.m3u8', title: '小巷人家 25' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/72a0b8c18a0a4666b8b5111ec157cb16.m3u8', title: '小巷人家 26' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/c3337097135b48478a9d2999d1cd49be.m3u8', title: '小巷人家 27' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/5fcf857c796942f4bfb57ddad5f21b96.m3u8', title: '小巷人家 28' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/c14667305baf45798a4f80bd7c9ae266.m3u8', title: '小巷人家 29' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/513ab94e797d4c85a5805782ea52f119.m3u8', title: '小巷人家 30' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/f55c49d940dd4c889a01819835f3bbe4.m3u8', title: '小巷人家 31' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/f72fae04f338446182bd64076142098b.m3u8', title: '小巷人家 32' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/991b87af764a4edb97f8898e4528052a.m3u8', title: '小巷人家 33' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/a106760d81e74862a94b20131f6c9994.m3u8', title: '小巷人家 34' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/e55985f436694f1dbab6fc3f520a0712.m3u8', title: '小巷人家 35' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/9cd8bc43dd7441a6b32fbc23eb406712.m3u8', title: '小巷人家 36' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/20a46375555b436c9760959b9c697abf.m3u8', title: '小巷人家 37' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/eb241e5ced834c91bb1db27619a5b495.m3u8', title: '小巷人家 38' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/d6e3242b531c4679ae67efeadad50f60.m3u8', title: '小巷人家 39' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/2e96a4c137ed45429521f9023635da03.m3u8', title: '小巷人家 40' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_heimuer_43895";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
