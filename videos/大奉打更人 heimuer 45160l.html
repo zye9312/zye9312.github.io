@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大奉打更人</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u8.heimuertv.com/play/5cdf6a8e7fb3482f8e9f2ef4bd98ca93.m3u8', title: '大奉打更人 1' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/e72b4dc242584c66bd6db8ed65668642.m3u8', title: '大奉打更人 2' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/b1699b4ffb8148adae2899f343051aa4.m3u8', title: '大奉打更人 3' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/b4e0d12a5413410885be6280b70a9136.m3u8', title: '大奉打更人 4' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/4960cfae0aff40cf9c22d9367f5bb83f.m3u8', title: '大奉打更人 5' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/0ba26bf45978425889b517d586d19e9e.m3u8', title: '大奉打更人 6' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/2de2dc1dd27b4a849b153c314cc41877.m3u8', title: '大奉打更人 7' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/006b83eb9957402598318f735578406c.m3u8', title: '大奉打更人 8' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/a0fd57fa1c2d4d40b2122820bfbbf3a8.m3u8', title: '大奉打更人 9' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/297dc80dceaa4a3094f095d3317db104.m3u8', title: '大奉打更人 10' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/041854b2096249dea8f26b4ba667934b.m3u8', title: '大奉打更人 11' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/990d3605408244de915bcc4f22bf51d0.m3u8', title: '大奉打更人 12' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/280cdaf3999a4322a4bdf3408fd0b7e1.m3u8', title: '大奉打更人 13' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/9d32f006b2a043b8821a7b665a081ebc.m3u8', title: '大奉打更人 14' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/86a306e950ba4768ae8bd5fd511d95d2.m3u8', title: '大奉打更人 15' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/d92071aa58564d0b83fdef2fde4ee988.m3u8', title: '大奉打更人 16' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/63b4862e2e8149c6871580810442b39c.m3u8', title: '大奉打更人 17' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/7892d925303144268f0e86d983261bb7.m3u8', title: '大奉打更人 18' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/c1d0af4b9c63400ca3e3aaad84920bff.m3u8', title: '大奉打更人 19' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/a1ded14727d14118991f9213a5cb40c5.m3u8', title: '大奉打更人 20' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/8e1df60427d1432b8c061b7178a56101.m3u8', title: '大奉打更人 21' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_heimuer_45160l";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
