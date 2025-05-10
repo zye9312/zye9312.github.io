@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>狮城山海</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u8.heimuertv.com/play/1fa5565d13c9475885eca2715f8458ac.m3u8', title: '狮城山海 1' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/1dcc86b1922f4484965834374b23bbad.m3u8', title: '狮城山海 2' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/94634ee5bf69465a9fa9b8644c1a2887.m3u8', title: '狮城山海 3' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/fd53757160084e6ba71228752c1fbbe4.m3u8', title: '狮城山海 4' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/986c80bd25074e1a8c186037a8577ec7.m3u8', title: '狮城山海 5' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/0c51cb9604394ac594c27658f981b0a6.m3u8', title: '狮城山海 6' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/858118c165694cdfb0c1eef187aa3d66.m3u8', title: '狮城山海 7' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/3c1ac756985448cc827fab588455370a.m3u8', title: '狮城山海 8' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/864b6fe5aa904c75bc19f19b909af2ad.m3u8', title: '狮城山海 9' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/f206733138fd42448047328ac99cec39.m3u8', title: '狮城山海 10' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/40e039e4356e4a28835cc1c9a95a1948.m3u8', title: '狮城山海 11' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/c6ab008f7d164f098c3bf2ddd24d28f6.m3u8', title: '狮城山海 12' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/830021e94b34478c913c955df13645a3.m3u8', title: '狮城山海 13' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/bfaacf0c2f1942788875ba4172ba99ef.m3u8', title: '狮城山海 14' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/8d9ec1ccb9394bf3933d90d40d1792da.m3u8', title: '狮城山海 15' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/b223eab2eeff4808a46f18400e74cfe3.m3u8', title: '狮城山海 16' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/7f97240b1d804cc6a2863fdbcf2e5363.m3u8', title: '狮城山海 17' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/9d2a7b7c47ba44ee8795bd7609ba628a.m3u8', title: '狮城山海 18' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/351ed01fa604486d8f3e6b79e6902e88.m3u8', title: '狮城山海 19' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/11255168feb445bcbf558a3bebe9b347.m3u8', title: '狮城山海 20' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/03c2196a763d40d8865ae313428232c8.m3u8', title: '狮城山海 21' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/bfd3f5483e8f49e083e96ca9e88d1f8d.m3u8', title: '狮城山海 22' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/c217e04424ae404e80eea4abd546f104.m3u8', title: '狮城山海 23' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/a96e5b856ccc45f8a419185fd62cbb45.m3u8', title: '狮城山海 24' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_heimuer_47036";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
