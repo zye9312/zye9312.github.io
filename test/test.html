@@ -3,6 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>Copy Text Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 1em;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+
+    a.copy-link {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      text-align: center;
+      width: 100%;
+      max-width: 300px;
+      box-sizing: border-box;
+    }
+
+    a.copy-link:active {
+      background-color: #0056b3;
+    }
+  </style>
+
+
   <script>
     function copyText(text) {
       navigator.clipboard.writeText(text).then(() => {
