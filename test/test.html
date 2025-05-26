@@ -2,21 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Download Files</title>
+  <title>Copy Text Example</title>
+  <script>
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Copied to clipboard: " + text);
+      }).catch(err => {
+        alert("Failed to copy: " + err);
+      });
+    }
+  </script>
 </head>
 <body>
   <h1>Download Files</h1>
   <ul>
     <li><a href="clash.apk" download>Clash apk 下载</a></li>
-    <li><a href="https://dl.ssrss.club/cfa-2.5.12-premium-arm64-v8a-release.apk" download>Clash apk 下载 2</a></li>
-    <li><a href="配置文件.yaml.txt" download>Clash 配置</a></li>
 
-    <li><a href="BNApp64.apk" download>BN apk 下载</a></li>
+    <li><a href="配置文件.yaml.txt" download>Clash 配置下载</a></li>
 
     <li><a href="https://download.binance.com/pack/BNApp64.apk" download>BN apk 下载</a></li>
 
     <li><a href="https://www.marketwebb.me/referral/mystery-box/2025-pizza-day/claim?ref=GRO_16987_YG195"
         download>邀请链接</a></li>
+
+    <li>邀请链接码： <a href="#" onclick="copyText('GRO_16987_YG195'); return false;">复制邀请码</a></li>
+
+
+    <li><a href="https://dl.ssrss.club/cfa-2.5.12-premium-arm64-v8a-release.apk" download>备用 Clash apk 下载</a></li>
+    <li><a href="BNApp64.apk" download>备用 BN apk 下载</a></li>
+
+
 
   </ul>
 </body>
