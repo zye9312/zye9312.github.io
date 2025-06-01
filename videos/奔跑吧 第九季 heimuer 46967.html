@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奔跑吧 第九季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u8.heimuertv.com/play/9c9d98bd39e743f3b5d418ef08cfc268.m3u8', title: '奔跑吧 第九季 20250326(直播回放)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/c462d4e3dab24feea7540d6b1ed4bc7c.m3u8', title: '奔跑吧 第九季 20250327(直播回放)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/4dfa0dd84eec42eca54e8ff6cf744565.m3u8', title: '奔跑吧 第九季 20250417(发布会)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/13d7af543ffd42a0847f4d83f95392e1.m3u8', title: '奔跑吧 第九季 20250425' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/23433c7e93164eae8a22ead28e472d7c.m3u8', title: '奔跑吧 第九季 20250426' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/f6a7f062f5b848a198edac8453896d41.m3u8', title: '奔跑吧 第九季 20250428' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/472720724988484b862e60a863fd6690.m3u8', title: '奔跑吧 第九季 20250429(十亿吨王赫野)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/e8b69dc938614af9bf87677f9395c90b.m3u8', title: '奔跑吧 第九季 20250429(十亿吨张真源)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/ab26732bdb874f5e92fe79362d04e32b.m3u8', title: '奔跑吧 第九季 20250502' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/ea5c083e64eb40838a916745feb26867.m3u8', title: '奔跑吧 第九季 20250503(熟人局)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/7069fd3f723b4e42a2e943c6db5b77e5.m3u8', title: '奔跑吧 第九季 20250505' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/eae8a50c7f9f4388998089316aa2af0a.m3u8', title: '奔跑吧 第九季 20250506(周深)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/1e1f27044ddf4186b5bbc6c18ded2cb6.m3u8', title: '奔跑吧 第九季 20250507(十亿吨孟子义)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/0e8bd8b10b5d45eca192a4615b75c4df.m3u8', title: '奔跑吧 第九季 20250509' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/dc83f151df4a4c47bc27cb19096f6132.m3u8', title: '奔跑吧 第九季 20250510' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/a75c80180be145df852874b4358cf88e.m3u8', title: '奔跑吧 第九季 20250512' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/0dbc4f26249a4fab805c67196dd311ad.m3u8', title: '奔跑吧 第九季 20250516' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/655871c3376745059f28b490c74601c0.m3u8', title: '奔跑吧 第九季 20250519(加更)' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/de34929e69db4c7f8b1e752ec35f71a8.m3u8', title: '奔跑吧 第九季 20250523' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/ead971e3316347f8919b666a181b1e1e.m3u8', title: '奔跑吧 第九季 20250524' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/b3e89b56a1c347e7a75661f2f71d25eb.m3u8', title: '奔跑吧 第九季 20250526' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/5a25c50c47444513a6d4e7a50502785a.m3u8', title: '奔跑吧 第九季 20250530' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_heimuer_46967";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
