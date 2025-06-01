@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>护宝寻踪</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u8.heimuertv.com/play/ef6d00e11af2459a882e8d3a51b653d0.m3u8', title: '护宝寻踪 0' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/3bacacc99bdf445399bdb3e74a83ff76.m3u8', title: '护宝寻踪 1' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/adecdcb6250b4e9087872c4c29965fb8.m3u8', title: '护宝寻踪 2' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/8942eef6ccc74844a03524d210fd8e1c.m3u8', title: '护宝寻踪 3' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/69e13141c5cb4f48bb0874fe6710b7bb.m3u8', title: '护宝寻踪 4' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/63bee2a4b6514d949fe5acb6da66d44b.m3u8', title: '护宝寻踪 5' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/c17680d385704911b91a521a2194536b.m3u8', title: '护宝寻踪 6' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/2edcdf9c60c24fff812e0ff81dbd39f9.m3u8', title: '护宝寻踪 7' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/befa2d4cac0747a4b4a73c6eee9f4f15.m3u8', title: '护宝寻踪 8' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/46d869373dae40ce92a657ffb2023b46.m3u8', title: '护宝寻踪 9' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/e12887825f1d4039813d9dcb74684e98.m3u8', title: '护宝寻踪 10' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/0fa814c9ce9d4cbea1b94a65f5f8ad69.m3u8', title: '护宝寻踪 11' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/71211eeb962749e58532f67c49295280.m3u8', title: '护宝寻踪 12' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/878dcee7b5fd42879958ccba6b45cc84.m3u8', title: '护宝寻踪 13' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/ed80cdebfac94a74b2125d8409f3cea9.m3u8', title: '护宝寻踪 14' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/6bf6f12acd3c498880ffdb0a147e17f9.m3u8', title: '护宝寻踪 15' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/aa56f649c2894c3585a5e12c379335c3.m3u8', title: '护宝寻踪 16' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_heimuer_47302";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
