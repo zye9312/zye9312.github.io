@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老友记 第一季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://m3u8.heimuertv.com/play/3d1115de325d427bb6b23082f99a0411.m3u8', title: '老友记 第一季 1' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/5c66e84d28544414adce2a9c58b0f71f.m3u8', title: '老友记 第一季 2' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/69e787a918224f17a010e7515caf20df.m3u8', title: '老友记 第一季 3' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/43c4aecf05a1405b86d01d2125825df8.m3u8', title: '老友记 第一季 4' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/46cdd37424f4452a863d542da1e2e298.m3u8', title: '老友记 第一季 5' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/43cfe67632a04506a2df06e82d6e2744.m3u8', title: '老友记 第一季 6' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/3f75d51069364842aacdb81762dfdef5.m3u8', title: '老友记 第一季 7' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/03b3ca4b694747b19dd249fc682648aa.m3u8', title: '老友记 第一季 8' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/317bb4efad8745829532398449e2f94c.m3u8', title: '老友记 第一季 9' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/6d407ef1a21145b49e5b1cee62a76830.m3u8', title: '老友记 第一季 10' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/076bdd17bb8548b7b411497bca04dff8.m3u8', title: '老友记 第一季 11' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/511fadef9cb94945bd8b50b72ceb6ac3.m3u8', title: '老友记 第一季 12' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/9336a6ba9cf94b8db066af48ede4c3ea.m3u8', title: '老友记 第一季 13' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/ad572a893a5d4b488e9c514b93e3420c.m3u8', title: '老友记 第一季 14' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/405b80947df14b8bb0b39587a9ae06c6.m3u8', title: '老友记 第一季 15' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/9f8b857d32c64470aa69de1a1613c283.m3u8', title: '老友记 第一季 16' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/eab69d6c400a4a879ab738177cd38f17.m3u8', title: '老友记 第一季 17' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/e97d6d5749014270927f0cf2165ebdf8.m3u8', title: '老友记 第一季 18' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/1e9d96ffe4944799898fff617b4e499d.m3u8', title: '老友记 第一季 19' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/ba45c1a4d071489e990a27375a740b08.m3u8', title: '老友记 第一季 20' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/16c746bb9f5f4725938d462a4d74edba.m3u8', title: '老友记 第一季 21' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/4e4c6d114f724bb5bd8c8a42756a1579.m3u8', title: '老友记 第一季 22' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/618a86502dc941c182dab4d747c72352.m3u8', title: '老友记 第一季 23' },
+        
+            {src: 'https://m3u8.heimuertv.com/play/08666a4334aa44ccbcc4e4049180167b.m3u8', title: '老友记 第一季 24' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_heimuer_3004";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
