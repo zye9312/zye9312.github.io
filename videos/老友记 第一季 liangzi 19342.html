@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老友记 第一季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://vip.lz-cdn9.com/20220519/10250_96e93019/index.m3u8', title: '老友记 第一季 第01集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10252_7bca7373/index.m3u8', title: '老友记 第一季 第02集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10253_15b534f1/index.m3u8', title: '老友记 第一季 第03集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10251_85b22e8b/index.m3u8', title: '老友记 第一季 第04集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10254_b2d3da50/index.m3u8', title: '老友记 第一季 第05集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10255_909c0dda/index.m3u8', title: '老友记 第一季 第06集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10256_81a9f141/index.m3u8', title: '老友记 第一季 第07集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10258_4e0c27f6/index.m3u8', title: '老友记 第一季 第08集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10257_2f412c1b/index.m3u8', title: '老友记 第一季 第09集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10261_872bd340/index.m3u8', title: '老友记 第一季 第10集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10259_56a574b3/index.m3u8', title: '老友记 第一季 第11集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10260_924477b6/index.m3u8', title: '老友记 第一季 第12集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10262_ec917285/index.m3u8', title: '老友记 第一季 第13集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10263_ed42d4aa/index.m3u8', title: '老友记 第一季 第14集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10264_48930427/index.m3u8', title: '老友记 第一季 第15集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10265_a96161fd/index.m3u8', title: '老友记 第一季 第16集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10266_83233103/index.m3u8', title: '老友记 第一季 第17集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10267_7912d9c3/index.m3u8', title: '老友记 第一季 第18集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10268_d4b9fed5/index.m3u8', title: '老友记 第一季 第19集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10269_8c46866f/index.m3u8', title: '老友记 第一季 第20集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10270_e0220327/index.m3u8', title: '老友记 第一季 第21集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10271_07f5e57a/index.m3u8', title: '老友记 第一季 第22集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10272_fff3a5be/index.m3u8', title: '老友记 第一季 第23集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220519/10274_99f3613e/index.m3u8', title: '老友记 第一季 第24集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_liangzi_19342";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
