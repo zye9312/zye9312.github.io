@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>武林外传</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://vip1.lz-cdn8.com/20220730/20603_c8f23d1c/index.m3u8', title: '武林外传 第01集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20604_8353efc4/index.m3u8', title: '武林外传 第02集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20605_c20b2807/index.m3u8', title: '武林外传 第03集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20606_cbc899cc/index.m3u8', title: '武林外传 第04集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20607_475318cb/index.m3u8', title: '武林外传 第05集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20608_e19b1342/index.m3u8', title: '武林外传 第06集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20609_c2fa1cf3/index.m3u8', title: '武林外传 第07集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20610_a9764da9/index.m3u8', title: '武林外传 第08集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20611_f9744db1/index.m3u8', title: '武林外传 第09集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20612_03e81e22/index.m3u8', title: '武林外传 第10集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20613_4b3c1aba/index.m3u8', title: '武林外传 第11集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20614_3a0faaa8/index.m3u8', title: '武林外传 第12集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20615_1a8a2d9d/index.m3u8', title: '武林外传 第13集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20616_e6ccaac3/index.m3u8', title: '武林外传 第14集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20617_4b464fe5/index.m3u8', title: '武林外传 第15集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20618_85cf0077/index.m3u8', title: '武林外传 第16集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20619_f960dd75/index.m3u8', title: '武林外传 第17集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20620_adc22849/index.m3u8', title: '武林外传 第18集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20621_4b40c433/index.m3u8', title: '武林外传 第19集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20622_69ebeb18/index.m3u8', title: '武林外传 第20集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20623_94b7e8e9/index.m3u8', title: '武林外传 第21集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20624_d73df8e0/index.m3u8', title: '武林外传 第22集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20625_aa916696/index.m3u8', title: '武林外传 第23集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20626_558149e7/index.m3u8', title: '武林外传 第24集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20627_d65e3d88/index.m3u8', title: '武林外传 第25集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20628_1d9d035a/index.m3u8', title: '武林外传 第26集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20629_e4177c8b/index.m3u8', title: '武林外传 第27集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20630_9a8b06cb/index.m3u8', title: '武林外传 第28集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20631_774c8c53/index.m3u8', title: '武林外传 第29集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20632_d2be4231/index.m3u8', title: '武林外传 第30集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20633_40d4678b/index.m3u8', title: '武林外传 第31集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20634_13ce3050/index.m3u8', title: '武林外传 第32集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20635_8b2edf2e/index.m3u8', title: '武林外传 第33集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20636_25e9cf54/index.m3u8', title: '武林外传 第34集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20637_840ab7e6/index.m3u8', title: '武林外传 第35集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20638_26cc81af/index.m3u8', title: '武林外传 第36集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20639_15db23cf/index.m3u8', title: '武林外传 第37集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20640_3267f149/index.m3u8', title: '武林外传 第38集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20641_0497e75c/index.m3u8', title: '武林外传 第39集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20642_63de19a7/index.m3u8', title: '武林外传 第40集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20643_6de05fb8/index.m3u8', title: '武林外传 第41集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20644_d280e095/index.m3u8', title: '武林外传 第42集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20645_e9e9e80d/index.m3u8', title: '武林外传 第43集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20646_277275fc/index.m3u8', title: '武林外传 第44集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20647_41911829/index.m3u8', title: '武林外传 第45集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20648_545ac7a4/index.m3u8', title: '武林外传 第46集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20649_660198af/index.m3u8', title: '武林外传 第47集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20650_67259c86/index.m3u8', title: '武林外传 第48集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20651_1596cb0e/index.m3u8', title: '武林外传 第49集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20652_3ded1ab0/index.m3u8', title: '武林外传 第50集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20653_16b10a44/index.m3u8', title: '武林外传 第51集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20654_30ee1184/index.m3u8', title: '武林外传 第52集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20655_29f54f65/index.m3u8', title: '武林外传 第53集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20656_1a9d1651/index.m3u8', title: '武林外传 第54集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20657_7c3c347b/index.m3u8', title: '武林外传 第55集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20658_a11dadba/index.m3u8', title: '武林外传 第56集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20659_f95e90a8/index.m3u8', title: '武林外传 第57集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20660_5c1e94c6/index.m3u8', title: '武林外传 第58集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20661_9bc96187/index.m3u8', title: '武林外传 第59集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20662_2f6ba5dc/index.m3u8', title: '武林外传 第60集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20663_439ec52c/index.m3u8', title: '武林外传 第61集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20664_939b5889/index.m3u8', title: '武林外传 第62集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20665_60767f45/index.m3u8', title: '武林外传 第63集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20666_fbc9a11d/index.m3u8', title: '武林外传 第64集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20667_800343f7/index.m3u8', title: '武林外传 第65集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20668_920c5b2a/index.m3u8', title: '武林外传 第66集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20669_f9db8a6d/index.m3u8', title: '武林外传 第67集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20670_e2c64a83/index.m3u8', title: '武林外传 第68集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20671_af56121b/index.m3u8', title: '武林外传 第69集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20672_d056944f/index.m3u8', title: '武林外传 第70集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20673_6015e027/index.m3u8', title: '武林外传 第71集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20674_1cb6b4be/index.m3u8', title: '武林外传 第72集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20675_1f6e9325/index.m3u8', title: '武林外传 第73集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20676_9335dd89/index.m3u8', title: '武林外传 第74集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20677_05d26c74/index.m3u8', title: '武林外传 第75集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20678_88cd848c/index.m3u8', title: '武林外传 第76集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20679_8a1a8256/index.m3u8', title: '武林外传 第77集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20680_b27ce357/index.m3u8', title: '武林外传 第78集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20681_82e22783/index.m3u8', title: '武林外传 第79集' },
+        
+            {src: 'https://vip1.lz-cdn8.com/20220730/20682_616cd150/index.m3u8', title: '武林外传 第80集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_liangzi_28847";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
