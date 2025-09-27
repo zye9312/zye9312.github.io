@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盛夏芬德拉</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://v.lzfile26.com/20250925/82233_64ae2b0c/index.m3u8', title: '盛夏芬德拉 第01集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82235_d51e7e19/index.m3u8', title: '盛夏芬德拉 第02集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82237_cc083551/index.m3u8', title: '盛夏芬德拉 第03集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82234_b2fc66a0/index.m3u8', title: '盛夏芬德拉 第04集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82238_ded966e6/index.m3u8', title: '盛夏芬德拉 第05集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82236_4dda6bf3/index.m3u8', title: '盛夏芬德拉 第06集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82241_4c635b06/index.m3u8', title: '盛夏芬德拉 第07集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82242_f93a9700/index.m3u8', title: '盛夏芬德拉 第08集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82240_de25b667/index.m3u8', title: '盛夏芬德拉 第09集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82243_0c0cd506/index.m3u8', title: '盛夏芬德拉 第10集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82239_a8ace384/index.m3u8', title: '盛夏芬德拉 第11集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82244_2870d798/index.m3u8', title: '盛夏芬德拉 第12集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82245_817cc5b9/index.m3u8', title: '盛夏芬德拉 第13集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82250_882ec4f8/index.m3u8', title: '盛夏芬德拉 第14集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82246_e9c7cb64/index.m3u8', title: '盛夏芬德拉 第15集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82247_de27e280/index.m3u8', title: '盛夏芬德拉 第16集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82249_329b26f3/index.m3u8', title: '盛夏芬德拉 第17集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82248_37ff20f9/index.m3u8', title: '盛夏芬德拉 第18集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82251_a72c6532/index.m3u8', title: '盛夏芬德拉 第19集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82253_3e0d326b/index.m3u8', title: '盛夏芬德拉 第20集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82254_28a46f29/index.m3u8', title: '盛夏芬德拉 第21集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82252_00a26eea/index.m3u8', title: '盛夏芬德拉 第22集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82255_d8119447/index.m3u8', title: '盛夏芬德拉 第23集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82256_233221f5/index.m3u8', title: '盛夏芬德拉 第24集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82257_51122ecd/index.m3u8', title: '盛夏芬德拉 第25集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82260_48ca7874/index.m3u8', title: '盛夏芬德拉 第26集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82259_f8b4ca3e/index.m3u8', title: '盛夏芬德拉 第27集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82258_a4c8508b/index.m3u8', title: '盛夏芬德拉 第28集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82262_e38d8a10/index.m3u8', title: '盛夏芬德拉 第29集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82261_6289ecde/index.m3u8', title: '盛夏芬德拉 第30集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82263_5fc72d5e/index.m3u8', title: '盛夏芬德拉 第31集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82268_6c3f3c3f/index.m3u8', title: '盛夏芬德拉 第32集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82265_c1db8ca5/index.m3u8', title: '盛夏芬德拉 第33集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82264_ca645c16/index.m3u8', title: '盛夏芬德拉 第34集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82267_1ba6fd10/index.m3u8', title: '盛夏芬德拉 第35集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82266_016075a6/index.m3u8', title: '盛夏芬德拉 第36集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82269_520ff1c9/index.m3u8', title: '盛夏芬德拉 第37集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82272_a028da37/index.m3u8', title: '盛夏芬德拉 第38集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82270_89263adc/index.m3u8', title: '盛夏芬德拉 第39集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82273_d846e883/index.m3u8', title: '盛夏芬德拉 第40集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82271_f479df8a/index.m3u8', title: '盛夏芬德拉 第41集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82274_293884b6/index.m3u8', title: '盛夏芬德拉 第42集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82275_eac33861/index.m3u8', title: '盛夏芬德拉 第43集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82276_7b61375e/index.m3u8', title: '盛夏芬德拉 第44集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82278_85db1a11/index.m3u8', title: '盛夏芬德拉 第45集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82277_3ba03445/index.m3u8', title: '盛夏芬德拉 第46集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82279_435b2187/index.m3u8', title: '盛夏芬德拉 第47集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82280_352428ac/index.m3u8', title: '盛夏芬德拉 第48集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82281_1f41c1a6/index.m3u8', title: '盛夏芬德拉 第49集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82282_00979e33/index.m3u8', title: '盛夏芬德拉 第50集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82283_d6dead3e/index.m3u8', title: '盛夏芬德拉 第51集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82284_0662b916/index.m3u8', title: '盛夏芬德拉 第52集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82285_9d28ec29/index.m3u8', title: '盛夏芬德拉 第53集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82286_20c073ea/index.m3u8', title: '盛夏芬德拉 第54集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82287_55e76e30/index.m3u8', title: '盛夏芬德拉 第55集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82290_d0224d23/index.m3u8', title: '盛夏芬德拉 第56集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82289_66fb1f64/index.m3u8', title: '盛夏芬德拉 第57集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82288_0fdb0c53/index.m3u8', title: '盛夏芬德拉 第58集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82291_50c2fe70/index.m3u8', title: '盛夏芬德拉 第59集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82292_f7bf5c8c/index.m3u8', title: '盛夏芬德拉 第60集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82293_0a7b840a/index.m3u8', title: '盛夏芬德拉 第61集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82294_a170b994/index.m3u8', title: '盛夏芬德拉 第62集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82297_b12f2490/index.m3u8', title: '盛夏芬德拉 第63集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82295_ea85182e/index.m3u8', title: '盛夏芬德拉 第64集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82296_92219c61/index.m3u8', title: '盛夏芬德拉 第65集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82298_9c74f0f5/index.m3u8', title: '盛夏芬德拉 第66集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82299_f81b9682/index.m3u8', title: '盛夏芬德拉 第67集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82300_f654b237/index.m3u8', title: '盛夏芬德拉 第68集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82301_da8e3177/index.m3u8', title: '盛夏芬德拉 第69集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82304_d16885fd/index.m3u8', title: '盛夏芬德拉 第70集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82302_ff6826bc/index.m3u8', title: '盛夏芬德拉 第71集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82303_e8f4403a/index.m3u8', title: '盛夏芬德拉 第72集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82305_505a8bac/index.m3u8', title: '盛夏芬德拉 第73集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82306_d3ae6b3f/index.m3u8', title: '盛夏芬德拉 第74集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82307_f15c1b4d/index.m3u8', title: '盛夏芬德拉 第75集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82308_79431b97/index.m3u8', title: '盛夏芬德拉 第76集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82310_243a88c2/index.m3u8', title: '盛夏芬德拉 第77集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82309_28f40556/index.m3u8', title: '盛夏芬德拉 第78集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82311_51d7a9ac/index.m3u8', title: '盛夏芬德拉 第79集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82313_c411aaba/index.m3u8', title: '盛夏芬德拉 第80集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82312_421261c2/index.m3u8', title: '盛夏芬德拉 第81集' },
+        
+            {src: 'https://v.lzfile26.com/20250925/82314_775d16f0/index.m3u8', title: '盛夏芬德拉 第82集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_liangzi_111686";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
