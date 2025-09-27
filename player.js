@@ -41,7 +41,7 @@ for (var i = 0; i < sources.length; i++) {
 // videoSelect value change event
 videoSelect.addEventListener("change", function () {
   saveTimestampCookie(player.currentTime());
-
+  document.title = sources[parseInt(videoSelect.value)].title.replace(/\s+/g, "_");
   currentSourceIndex = parseInt(videoSelect.value);
   if (currentSourceIndex >= 0) {
     var selectedSrc = sources[currentSourceIndex].src;
