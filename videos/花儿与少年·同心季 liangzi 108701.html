@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>花儿与少年·同心季</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://v.cdnlz21.com/20250809/14161_027fd4bb/index.m3u8', title: '花儿与少年·同心季 20250809首映篇' },
+        
+            {src: 'https://v.cdnlz21.com/20250810/14215_61c56368/index.m3u8', title: '花儿与少年·同心季 20250810超前vlog' },
+        
+            {src: 'https://v.cdnlz21.com/20250811/14261_923f1a49/index.m3u8', title: '花儿与少年·同心季 20250811超前vlog' },
+        
+            {src: 'https://v.cdnlz21.com/20250812/14308_e27f6cdf/index.m3u8', title: '花儿与少年·同心季 20250812超前vlog' },
+        
+            {src: 'https://v.cdnlz21.com/20250813/14342_11c88301/index.m3u8', title: '花儿与少年·同心季 20250813超前Vlog' },
+        
+            {src: 'https://v.cdnlz21.com/20250814/14399_153ae570/index.m3u8', title: '花儿与少年·同心季 20250814陪看记' },
+        
+            {src: 'https://v.cdnlz21.com/20250815/14438_08230069/index.m3u8', title: '花儿与少年·同心季 20250815超前营业' },
+        
+            {src: 'https://v.cdnlz21.com/20250816/14498_14b4e917/index.m3u8', title: '花儿与少年·同心季 20250816' },
+        
+            {src: 'https://v.cdnlz21.com/20250817/14558_5e24e145/index.m3u8', title: '花儿与少年·同心季 20250817加更版' },
+        
+            {src: 'https://v.cdnlz21.com/20250818/14599_c452cd28/index.m3u8', title: '花儿与少年·同心季 20250818超前vlog' },
+        
+            {src: 'https://v.cdnlz21.com/20250819/14635_9abef259/index.m3u8', title: '花儿与少年·同心季 20250819超前vlog' },
+        
+            {src: 'https://v.cdnlz21.com/20250820/14687_d0d06df7/index.m3u8', title: '花儿与少年·同心季 20250820超前vlog' },
+        
+            {src: 'https://v.cdnlz21.com/20250821/14742_a59963a4/index.m3u8', title: '花儿与少年·同心季 20250821陪看记' },
+        
+            {src: 'https://v.cdnlz21.com/20250822/14799_211fe8be/index.m3u8', title: '花儿与少年·同心季 20250822超前营业' },
+        
+            {src: 'https://v.cdnlz21.com/20250823/14843_7f573e10/index.m3u8', title: '花儿与少年·同心季 20250823上' },
+        
+            {src: 'https://v.cdnlz21.com/20250823/14842_18e924d6/index.m3u8', title: '花儿与少年·同心季 20250823下' },
+        
+            {src: 'https://v.cdnlz21.com/20250825/14934_cf05c48e/index.m3u8', title: '花儿与少年·同心季 20250825加更版' },
+        
+            {src: 'https://v.cdnlz21.com/20250828/15087_9ac3b6da/index.m3u8', title: '花儿与少年·同心季 20250828陪看记' },
+        
+            {src: 'https://v.cdnlz21.com/20250829/15151_944073b4/index.m3u8', title: '花儿与少年·同心季 20250829超前营业' },
+        
+            {src: 'https://v.cdnlz21.com/20250830/15193_44e458d5/index.m3u8', title: '花儿与少年·同心季 20250830' },
+        
+            {src: 'https://v.cdnlz21.com/20250831/15246_cddd426e/index.m3u8', title: '花儿与少年·同心季 20250831加更版' },
+        
+            {src: 'https://v.cdnlz21.com/20250904/15412_3fd2fb04/index.m3u8', title: '花儿与少年·同心季 20250904陪看记' },
+        
+            {src: 'https://v.cdnlz21.com/20250905/15454_d81f563c/index.m3u8', title: '花儿与少年·同心季 20250905超前营业' },
+        
+            {src: 'https://v.cdnlz21.com/20250906/15506_94ba2bba/index.m3u8', title: '花儿与少年·同心季 20250906上' },
+        
+            {src: 'https://v.cdnlz21.com/20250906/15505_f2f2fb95/index.m3u8', title: '花儿与少年·同心季 20250906下' },
+        
+            {src: 'https://v.cdnlz21.com/20250908/15581_b4575a4e/index.m3u8', title: '花儿与少年·同心季 20250908加更版' },
+        
+            {src: 'https://v.cdnlz21.com/20250912/15751_0e13eb98/index.m3u8', title: '花儿与少年·同心季 20250912超前营业' },
+        
+            {src: 'https://v.cdnlz21.com/20250913/15790_30a51b5d/index.m3u8', title: '花儿与少年·同心季 20250913' },
+        
+            {src: 'https://v.cdnlz21.com/20250913/15789_5ed78053/index.m3u8', title: '花儿与少年·同心季 20250913母带放送' },
+        
+            {src: 'https://v.cdnlz21.com/20250915/15884_941c26f2/index.m3u8', title: '花儿与少年·同心季 20250915加更版' },
+        
+            {src: 'https://v.cdnlz21.com/20250917/15975_997ad574/index.m3u8', title: '花儿与少年·同心季 20250917超前营业' },
+        
+            {src: 'https://v.cdnlz21.com/20250919/16087_27d2e202/index.m3u8', title: '花儿与少年·同心季 20250919超前营业' },
+        
+            {src: 'https://v.cdnlz21.com/20250920/16125_b860c865/index.m3u8', title: '花儿与少年·同心季 20250920' },
+        
+            {src: 'https://v.cdnlz21.com/20250920/16126_d1472757/index.m3u8', title: '花儿与少年·同心季 20250920母带放送' },
+        
+            {src: 'https://v.cdnlz21.com/20250922/16210_a4188eaa/index.m3u8', title: '花儿与少年·同心季 20250922加更版' },
+        
+            {src: 'https://v.cdnlz21.com/20250926/16407_c63a7e69/index.m3u8', title: '花儿与少年·同心季 20250926超前营业' },
+        
+            {src: 'https://v.cdnlz21.com/20250927/16446_c7687ce9/index.m3u8', title: '花儿与少年·同心季 20250927' },
+        
+            {src: 'https://v.cdnlz21.com/20250927/16447_36bdb538/index.m3u8', title: '花儿与少年·同心季 20250927母带放送' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_liangzi_108701";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
