@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>凡人修仙传2020</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://v.cdnlz21.com/20240618/648_2e882709/index.m3u8', title: '凡人修仙传2020 第01集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1032_72b45aa8/index.m3u8', title: '凡人修仙传2020 第02集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1033_35fb7a40/index.m3u8', title: '凡人修仙传2020 第03集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1034_0860d873/index.m3u8', title: '凡人修仙传2020 第04集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1035_b39c452c/index.m3u8', title: '凡人修仙传2020 第05集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1036_b21b5dcc/index.m3u8', title: '凡人修仙传2020 第06集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1037_a1b9cd47/index.m3u8', title: '凡人修仙传2020 第07集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1038_1973640d/index.m3u8', title: '凡人修仙传2020 第08集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1039_13c552f2/index.m3u8', title: '凡人修仙传2020 第09集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1040_e9143343/index.m3u8', title: '凡人修仙传2020 第10集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1041_45fe81ed/index.m3u8', title: '凡人修仙传2020 第11集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1042_0762c260/index.m3u8', title: '凡人修仙传2020 第12集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1043_ed85663d/index.m3u8', title: '凡人修仙传2020 第13集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1044_9df14ccc/index.m3u8', title: '凡人修仙传2020 第14集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1045_b3991732/index.m3u8', title: '凡人修仙传2020 第15集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1046_a272afec/index.m3u8', title: '凡人修仙传2020 第16集' },
+        
+            {src: 'https://vip.lz-cdn3.com/20220320/1047_7f1285e7/index.m3u8', title: '凡人修仙传2020 第17集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/577_aa62c69c/index.m3u8', title: '凡人修仙传2020 第18集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/578_706b6f02/index.m3u8', title: '凡人修仙传2020 第19集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/580_cf5f299d/index.m3u8', title: '凡人修仙传2020 第20集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/579_faa6ce9a/index.m3u8', title: '凡人修仙传2020 第21集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/581_e6768832/index.m3u8', title: '凡人修仙传2020 第22集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/582_20f17500/index.m3u8', title: '凡人修仙传2020 第23集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/583_02df5955/index.m3u8', title: '凡人修仙传2020 第24集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/587_59524c4b/index.m3u8', title: '凡人修仙传2020 第25集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/585_fa304590/index.m3u8', title: '凡人修仙传2020 第26集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/584_6d9a301d/index.m3u8', title: '凡人修仙传2020 第27集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/586_793cced2/index.m3u8', title: '凡人修仙传2020 第28集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/590_16f94f00/index.m3u8', title: '凡人修仙传2020 第29集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/589_5a9828d1/index.m3u8', title: '凡人修仙传2020 第30集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/588_852760bc/index.m3u8', title: '凡人修仙传2020 第31集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/593_cb4b657a/index.m3u8', title: '凡人修仙传2020 第32集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/592_862b5073/index.m3u8', title: '凡人修仙传2020 第33集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/591_06835a4b/index.m3u8', title: '凡人修仙传2020 第34集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/596_c06b710b/index.m3u8', title: '凡人修仙传2020 第35集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/595_9ed0616e/index.m3u8', title: '凡人修仙传2020 第36集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/594_40ce5d78/index.m3u8', title: '凡人修仙传2020 第37集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/599_f1fc3045/index.m3u8', title: '凡人修仙传2020 第38集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/598_158b953c/index.m3u8', title: '凡人修仙传2020 第39集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/597_34bb0ced/index.m3u8', title: '凡人修仙传2020 第40集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/602_d68a3f56/index.m3u8', title: '凡人修仙传2020 第41集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/600_5c5c66d3/index.m3u8', title: '凡人修仙传2020 第42集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/601_43c03788/index.m3u8', title: '凡人修仙传2020 第43集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/605_1d41cc25/index.m3u8', title: '凡人修仙传2020 第44集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/603_fa4e4599/index.m3u8', title: '凡人修仙传2020 第45集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/604_a83232cd/index.m3u8', title: '凡人修仙传2020 第46集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/608_b7ab9dd9/index.m3u8', title: '凡人修仙传2020 第47集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/606_b5e6c5ca/index.m3u8', title: '凡人修仙传2020 第48集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/607_7079f84b/index.m3u8', title: '凡人修仙传2020 第49集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/610_5cf2b54c/index.m3u8', title: '凡人修仙传2020 第50集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/609_18059129/index.m3u8', title: '凡人修仙传2020 第51集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/615_fd4dd7a7/index.m3u8', title: '凡人修仙传2020 第52集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220611/611_64264cdb/index.m3u8', title: '凡人修仙传2020 第53集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220612/880_7dcfd5b7/index.m3u8', title: '凡人修仙传2020 第54集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220619/3183_a2f7e9e4/index.m3u8', title: '凡人修仙传2020 第55集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220626/3667_c2e9a9dc/index.m3u8', title: '凡人修仙传2020 第56集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220703/4069_22543a5d/index.m3u8', title: '凡人修仙传2020 第57集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220710/4447_2d04e254/index.m3u8', title: '凡人修仙传2020 第58集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220717/4945_9ff14e42/index.m3u8', title: '凡人修仙传2020 第59集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20230827/28654_ccafb69b/index.m3u8', title: '凡人修仙传2020 第60集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220731/6397_df856930/index.m3u8', title: '凡人修仙传2020 第61集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220807/6882_92852760/index.m3u8', title: '凡人修仙传2020 第62集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220814/8231_a34ed7ae/index.m3u8', title: '凡人修仙传2020 第63集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220821/8720_82974e8f/index.m3u8', title: '凡人修仙传2020 第64集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220828/9203_b9ef6619/index.m3u8', title: '凡人修仙传2020 第65集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220904/10531_6fead528/index.m3u8', title: '凡人修仙传2020 第66集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20220911/14613_4aecedf1/index.m3u8', title: '凡人修仙传2020 第67集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220918/11601_d447889a/index.m3u8', title: '凡人修仙传2020 第68集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20220925/12086_08907be9/index.m3u8', title: '凡人修仙传2020 第69集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20221002/12538_f3474307/index.m3u8', title: '凡人修仙传2020 第70集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20221009/12967_b464a029/index.m3u8', title: '凡人修仙传2020 第71集' },
+        
+            {src: 'https://vip.lz-cdn9.com/20221015/15005_20e15d23/index.m3u8', title: '凡人修仙传2020 第72集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20230730/27558_8cabf0a0/index.m3u8', title: '凡人修仙传2020 第73集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20230806/28027_5ff4f216/index.m3u8', title: '凡人修仙传2020 第74集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20230813/28245_b209a480/index.m3u8', title: '凡人修仙传2020 第75集' },
+        
+            {src: 'https://vip.lz-cdn14.com/20230820/28442_41bf9485/index.m3u8', title: '凡人修仙传2020 第76集' },
+        
+            {src: 'https://v.cdnlz14.com/20231125/31998_e5968f66/index.m3u8', title: '凡人修仙传2020 第77集' },
+        
+            {src: 'https://v.cdnlz14.com/20231202/32231_329f4e62/index.m3u8', title: '凡人修仙传2020 第78集' },
+        
+            {src: 'https://v.cdnlz14.com/20231209/32505_dbad26d3/index.m3u8', title: '凡人修仙传2020 第79集' },
+        
+            {src: 'https://v.cdnlz14.com/20231216/32794_69999d9e/index.m3u8', title: '凡人修仙传2020 第80集' },
+        
+            {src: 'https://v.cdnlz14.com/20231223/33040_4535d839/index.m3u8', title: '凡人修仙传2020 第81集' },
+        
+            {src: 'https://v.cdnlz14.com/20231230/33306_a0503b67/index.m3u8', title: '凡人修仙传2020 第82集' },
+        
+            {src: 'https://v.cdnlz14.com/20240106/33506_38273839/index.m3u8', title: '凡人修仙传2020 第83集' },
+        
+            {src: 'https://v.cdnlz14.com/20240113/33699_45f7d91b/index.m3u8', title: '凡人修仙传2020 第84集' },
+        
+            {src: 'https://v.cdnlz14.com/20240120/33935_12b2e6da/index.m3u8', title: '凡人修仙传2020 第85集' },
+        
+            {src: 'https://v.cdnlz14.com/20240127/34170_b7677fad/index.m3u8', title: '凡人修仙传2020 第86集' },
+        
+            {src: 'https://v.cdnlz14.com/20240203/34367_c9ee7f2b/index.m3u8', title: '凡人修仙传2020 第87集' },
+        
+            {src: 'https://v.cdnlz14.com/20240210/34675_77475c21/index.m3u8', title: '凡人修仙传2020 第88集' },
+        
+            {src: 'https://v.cdnlz14.com/20240217/34908_b6f0ca2e/index.m3u8', title: '凡人修仙传2020 第89集' },
+        
+            {src: 'https://v.cdnlz14.com/20240224/35162_b8d9e0ee/index.m3u8', title: '凡人修仙传2020 第90集' },
+        
+            {src: 'https://v.cdnlz14.com/20240302/35372_a2727cf5/index.m3u8', title: '凡人修仙传2020 第91集' },
+        
+            {src: 'https://v.cdnlz14.com/20240309/35653_1bbdd7f4/index.m3u8', title: '凡人修仙传2020 第92集' },
+        
+            {src: 'https://v.cdnlz14.com/20240316/35943_f52828f7/index.m3u8', title: '凡人修仙传2020 第93集' },
+        
+            {src: 'https://v.cdnlz14.com/20240323/36267_1ead8e53/index.m3u8', title: '凡人修仙传2020 第94集' },
+        
+            {src: 'https://v.cdnlz14.com/20240330/36444_80261d1b/index.m3u8', title: '凡人修仙传2020 第95集' },
+        
+            {src: 'https://v.cdnlz14.com/20240406/36627_aa2ff3fa/index.m3u8', title: '凡人修仙传2020 第96集' },
+        
+            {src: 'https://v.cdnlz9.com/20240413/22882_54485485/index.m3u8', title: '凡人修仙传2020 第97集' },
+        
+            {src: 'https://v.cdnlz9.com/20240420/23204_8d551b8f/index.m3u8', title: '凡人修仙传2020 第98集' },
+        
+            {src: 'https://v.cdnlz9.com/20240427/23664_fb0709d5/index.m3u8', title: '凡人修仙传2020 第99集' },
+        
+            {src: 'https://v.cdnlz9.com/20240504/24047_b14944e3/index.m3u8', title: '凡人修仙传2020 第100集' },
+        
+            {src: 'https://v.cdnlz9.com/20240511/24415_f0be782d/index.m3u8', title: '凡人修仙传2020 第101集' },
+        
+            {src: 'https://v.cdnlz21.com/20240623/695_d5e2062b/index.m3u8', title: '凡人修仙传2020 第102集' },
+        
+            {src: 'https://v.cdnlz22.com/20240525/140_0c64c48c/index.m3u8', title: '凡人修仙传2020 第103集' },
+        
+            {src: 'https://v.cdnlz9.com/20240601/25137_25503a81/index.m3u8', title: '凡人修仙传2020 第104集' },
+        
+            {src: 'https://v.cdnlz22.com/20240608/808_d37075b1/index.m3u8', title: '凡人修仙传2020 第105集' },
+        
+            {src: 'https://v.cdnlz22.com/20240615/1127_0e37ee98/index.m3u8', title: '凡人修仙传2020 第106集' },
+        
+            {src: 'https://v.cdnlz22.com/20240622/1418_899853ba/index.m3u8', title: '凡人修仙传2020 第107集' },
+        
+            {src: 'https://v.cdnlz22.com/20240629/1743_6a1b3cdb/index.m3u8', title: '凡人修仙传2020 第108集' },
+        
+            {src: 'https://v.cdnlz22.com/20240706/2024_c9a79cc1/index.m3u8', title: '凡人修仙传2020 第109集' },
+        
+            {src: 'https://v.cdnlz22.com/20240713/2269_aeec9dad/index.m3u8', title: '凡人修仙传2020 第110集' },
+        
+            {src: 'https://v.cdnlz22.com/20240720/2597_a6720b2f/index.m3u8', title: '凡人修仙传2020 第111集' },
+        
+            {src: 'https://v.cdnlz22.com/20240727/2919_fc42803d/index.m3u8', title: '凡人修仙传2020 第112集' },
+        
+            {src: 'https://v.cdnlz22.com/20240803/3212_5066ca6b/index.m3u8', title: '凡人修仙传2020 第113集' },
+        
+            {src: 'https://v.cdnlz22.com/20240810/3512_43368c62/index.m3u8', title: '凡人修仙传2020 第114集' },
+        
+            {src: 'https://v.cdnlz22.com/20240817/3841_bcd6160e/index.m3u8', title: '凡人修仙传2020 第115集' },
+        
+            {src: 'https://v.cdnlz22.com/20240824/4150_b0cb5cf3/index.m3u8', title: '凡人修仙传2020 第116集' },
+        
+            {src: 'https://v.cdnlz22.com/20240831/4471_16a6301a/index.m3u8', title: '凡人修仙传2020 第117集' },
+        
+            {src: 'https://v.cdnlz22.com/20240907/4777_ba18d6e3/index.m3u8', title: '凡人修仙传2020 第118集' },
+        
+            {src: 'https://v.cdnlz22.com/20240914/5099_ac5b6e65/index.m3u8', title: '凡人修仙传2020 第119集' },
+        
+            {src: 'https://v.cdnlz22.com/20240921/5393_f190dc0d/index.m3u8', title: '凡人修仙传2020 第120集' },
+        
+            {src: 'https://v.cdnlz22.com/20240928/5692_25f69a5a/index.m3u8', title: '凡人修仙传2020 第121集' },
+        
+            {src: 'https://v.cdnlz22.com/20241005/5962_d4d4923c/index.m3u8', title: '凡人修仙传2020 第122集' },
+        
+            {src: 'https://v.cdnlz22.com/20241012/6295_9434b839/index.m3u8', title: '凡人修仙传2020 第123集' },
+        
+            {src: 'https://v.cdnlz22.com/20241019/6664_cbba0296/index.m3u8', title: '凡人修仙传2020 第124集' },
+        
+            {src: 'https://v.cdnlz22.com/20250118/11329_02bd1a55/index.m3u8', title: '凡人修仙传2020 第125集' },
+        
+            {src: 'https://v.cdnlz22.com/20250118/11328_70ed09e5/index.m3u8', title: '凡人修仙传2020 第126集' },
+        
+            {src: 'https://v.cdnlz22.com/20250125/11720_b17f5b37/index.m3u8', title: '凡人修仙传2020 第127集' },
+        
+            {src: 'https://v.cdnlz22.com/20250201/12020_c3b6fd30/index.m3u8', title: '凡人修仙传2020 第128集' },
+        
+            {src: 'https://v.cdnlz22.com/20250208/12394_7ffbdffd/index.m3u8', title: '凡人修仙传2020 第129集' },
+        
+            {src: 'https://v.cdnlz22.com/20250215/12735_1caed8d6/index.m3u8', title: '凡人修仙传2020 第130集' },
+        
+            {src: 'https://v.cdnlz22.com/20250222/13100_88cb2bcd/index.m3u8', title: '凡人修仙传2020 第131集' },
+        
+            {src: 'https://v.cdnlz22.com/20250301/13425_659a0435/index.m3u8', title: '凡人修仙传2020 第132集' },
+        
+            {src: 'https://v.cdnlz22.com/20250308/13754_faa051ed/index.m3u8', title: '凡人修仙传2020 第133集' },
+        
+            {src: 'https://v.cdnlz22.com/20250315/14097_59bc0ee3/index.m3u8', title: '凡人修仙传2020 第134集' },
+        
+            {src: 'https://v.cdnlz22.com/20250322/14515_385f5d12/index.m3u8', title: '凡人修仙传2020 第135集' },
+        
+            {src: 'https://v.cdnlz22.com/20250329/14818_2acbf13e/index.m3u8', title: '凡人修仙传2020 第136集' },
+        
+            {src: 'https://v.lzcdn24.com/20250408/25794_bde2e3c8/index.m3u8', title: '凡人修仙传2020 第137集' },
+        
+            {src: 'https://v.cdnlz22.com/20250412/15488_c746948e/index.m3u8', title: '凡人修仙传2020 第138集' },
+        
+            {src: 'https://v.cdnlz22.com/20250419/15802_6ea53b97/index.m3u8', title: '凡人修仙传2020 第139集' },
+        
+            {src: 'https://v.cdnlz22.com/20250426/16123_0ea69d6b/index.m3u8', title: '凡人修仙传2020 第140集' },
+        
+            {src: 'https://v.cdnlz22.com/20250503/16426_ea472378/index.m3u8', title: '凡人修仙传2020 第141集' },
+        
+            {src: 'https://v.cdnlz22.com/20250510/16788_5b571bd4/index.m3u8', title: '凡人修仙传2020 第142集' },
+        
+            {src: 'https://v.cdnlz22.com/20250517/17179_f9a266e5/index.m3u8', title: '凡人修仙传2020 第143集' },
+        
+            {src: 'https://v.cdnlz22.com/20250524/17532_a74a3821/index.m3u8', title: '凡人修仙传2020 第144集' },
+        
+            {src: 'https://v.cdnlz22.com/20250531/17852_34f36341/index.m3u8', title: '凡人修仙传2020 第145集' },
+        
+            {src: 'https://v.cdnlz22.com/20250607/18180_0dec6220/index.m3u8', title: '凡人修仙传2020 第146集' },
+        
+            {src: 'https://v.cdnlz22.com/20250614/18473_97cfa30a/index.m3u8', title: '凡人修仙传2020 第147集' },
+        
+            {src: 'https://v.cdnlz22.com/20250621/18792_a0b33386/index.m3u8', title: '凡人修仙传2020 第148集' },
+        
+            {src: 'https://v.cdnlz22.com/20250628/19106_8b1d0843/index.m3u8', title: '凡人修仙传2020 第149集' },
+        
+            {src: 'https://v.cdnlz22.com/20250705/19366_590597ad/index.m3u8', title: '凡人修仙传2020 第150集' },
+        
+            {src: 'https://v.cdnlz22.com/20250712/19711_5f26a132/index.m3u8', title: '凡人修仙传2020 第151集' },
+        
+            {src: 'https://v.cdnlz22.com/20250719/20019_a938853d/index.m3u8', title: '凡人修仙传2020 第152集' },
+        
+            {src: 'https://v.cdnlz22.com/20250726/20383_4cfbdb8d/index.m3u8', title: '凡人修仙传2020 第153集' },
+        
+            {src: 'https://v.cdnlz22.com/20250802/20718_3793a748/index.m3u8', title: '凡人修仙传2020 第154集' },
+        
+            {src: 'https://v.cdnlz22.com/20250809/21038_63d5e7f0/index.m3u8', title: '凡人修仙传2020 第155集' },
+        
+            {src: 'https://v.cdnlz22.com/20250816/21362_da2f532d/index.m3u8', title: '凡人修仙传2020 第156集' },
+        
+            {src: 'https://v.cdnlz22.com/20250823/21691_46f1c100/index.m3u8', title: '凡人修仙传2020 第157集' },
+        
+            {src: 'https://v.cdnlz22.com/20250830/22025_25a99817/index.m3u8', title: '凡人修仙传2020 第158集' },
+        
+            {src: 'https://v.cdnlz22.com/20250906/22347_b44587e2/index.m3u8', title: '凡人修仙传2020 第159集' },
+        
+            {src: 'https://v.cdnlz22.com/20250913/22666_44bb637a/index.m3u8', title: '凡人修仙传2020 第160集' },
+        
+            {src: 'https://v.cdnlz22.com/20250920/23005_8d1119a8/index.m3u8', title: '凡人修仙传2020 第161集' },
+        
+            {src: 'https://v.cdnlz22.com/20250927/23326_46d008e6/index.m3u8', title: '凡人修仙传2020 第162集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_liangzi_397";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
