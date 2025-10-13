@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宴遇永安</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://v.lzcdn25.com/20251010/7820_3cdb70e1/index.m3u8', title: '宴遇永安 第01集' },
+        
+            {src: 'https://v.lzcdn25.com/20251010/7821_4b078602/index.m3u8', title: '宴遇永安 第02集' },
+        
+            {src: 'https://v.lzcdn25.com/20251010/7822_6f3c7c30/index.m3u8', title: '宴遇永安 第03集' },
+        
+            {src: 'https://v.lzcdn25.com/20251010/7824_810ecea2/index.m3u8', title: '宴遇永安 第04集' },
+        
+            {src: 'https://v.lzcdn25.com/20251010/7835_52c3698c/index.m3u8', title: '宴遇永安 第05集' },
+        
+            {src: 'https://v.lzcdn25.com/20251011/7878_4ebfc400/index.m3u8', title: '宴遇永安 第06集' },
+        
+            {src: 'https://v.lzcdn25.com/20251012/7946_6a30a8ca/index.m3u8', title: '宴遇永安 第07集' },
+        
+            {src: 'https://v.lzcdn25.com/20251012/7933_1bf5ec4f/index.m3u8', title: '宴遇永安 第08集' },
+        
+            {src: 'https://v.lzcdn25.com/20251012/7945_b059e7e5/index.m3u8', title: '宴遇永安 第09集' },
+        
+            {src: 'https://v.lzcdn25.com/20251013/8004_b4822ee2/index.m3u8', title: '宴遇永安 第10集' },
+        
+            {src: 'https://v.lzcdn25.com/20251013/8024_2933e645/index.m3u8', title: '宴遇永安 第11集' },
+        
+            {src: 'https://v.lzcdn25.com/20251014/8071_c95973a9/index.m3u8', title: '宴遇永安 第12集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_liangzi_112901";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
