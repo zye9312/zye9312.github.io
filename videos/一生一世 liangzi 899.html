@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一生一世</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://vip1.lz-cdn.com/20220323/2599_eccb0e35/index.m3u8', title: '一生一世 第01集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2602_4d61f78a/index.m3u8', title: '一生一世 第02集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2605_05b4f658/index.m3u8', title: '一生一世 第03集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2609_f10728d8/index.m3u8', title: '一生一世 第04集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2611_1de83010/index.m3u8', title: '一生一世 第05集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2615_55a8ca03/index.m3u8', title: '一生一世 第06集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2619_70297231/index.m3u8', title: '一生一世 第07集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2622_4c9f7e02/index.m3u8', title: '一生一世 第08集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2625_42764abe/index.m3u8', title: '一生一世 第09集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2628_57fd2ce5/index.m3u8', title: '一生一世 第10集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2632_d736e944/index.m3u8', title: '一生一世 第11集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2635_59bdc50e/index.m3u8', title: '一生一世 第12集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2641_b058c4b5/index.m3u8', title: '一生一世 第13集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2647_1f3428a2/index.m3u8', title: '一生一世 第14集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2652_adb919fe/index.m3u8', title: '一生一世 第15集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2655_2914e3c7/index.m3u8', title: '一生一世 第16集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2661_e6ca7e5c/index.m3u8', title: '一生一世 第17集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2665_122b3366/index.m3u8', title: '一生一世 第18集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2666_78f0c534/index.m3u8', title: '一生一世 第19集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2667_1289e1d9/index.m3u8', title: '一生一世 第20集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2669_b3eaba64/index.m3u8', title: '一生一世 第21集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2671_9c62c6c8/index.m3u8', title: '一生一世 第22集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2672_048a5dee/index.m3u8', title: '一生一世 第23集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2673_908f1d8e/index.m3u8', title: '一生一世 第24集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2674_d0105c38/index.m3u8', title: '一生一世 第25集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2676_50589a75/index.m3u8', title: '一生一世 第26集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2677_13594980/index.m3u8', title: '一生一世 第27集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2679_6e191454/index.m3u8', title: '一生一世 第28集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2680_e4ccc3c3/index.m3u8', title: '一生一世 第29集' },
+        
+            {src: 'https://vip1.lz-cdn.com/20220323/2682_2cd61cb6/index.m3u8', title: '一生一世 第30集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_liangzi_899";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
