@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>唐朝诡事录之西行</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://vid.dbokutv.com/20240718/3YMUgKfM/index.m3u8', title: '唐朝诡事录之西行 第1集' },
+        
+            {src: 'https://vid.dbokutv.com/20240718/RQwgWSL1/index.m3u8', title: '唐朝诡事录之西行 第2集' },
+        
+            {src: 'https://vid.dbokutv.com/20240718/SIursolT/index.m3u8', title: '唐朝诡事录之西行 第3集' },
+        
+            {src: 'https://vid.dbokutv.com/20240718/Bf85j9Iv/index.m3u8', title: '唐朝诡事录之西行 第4集' },
+        
+            {src: 'https://vid.dbokutv.com/20240718/ACb5cUhm/index.m3u8', title: '唐朝诡事录之西行 第5集' },
+        
+            {src: 'https://vid.dbokutv.com/20240718/Uu9JGbHq/index.m3u8', title: '唐朝诡事录之西行 第6集' },
+        
+            {src: 'https://vid.dbokutv.com/20240719/XPrTfrlJ/index.m3u8', title: '唐朝诡事录之西行 第7集' },
+        
+            {src: 'https://vid.dbokutv.com/20240719/m38bW5Xm/index.m3u8', title: '唐朝诡事录之西行 第8集' },
+        
+            {src: 'https://vid.dbokutv.com/20240720/CimngMZk/index.m3u8', title: '唐朝诡事录之西行 第9集' },
+        
+            {src: 'https://vid.dbokutv.com/20240720/94YSggNX/index.m3u8', title: '唐朝诡事录之西行 第10集' },
+        
+            {src: 'https://vid.dbokutv.com/20240721/QUHyK27c/index.m3u8', title: '唐朝诡事录之西行 第11集' },
+        
+            {src: 'https://vid.dbokutv.com/20240721/RfGvje0W/index.m3u8', title: '唐朝诡事录之西行 第12集' },
+        
+            {src: 'https://vid.dbokutv.com/20240722/7hj06f9V/index.m3u8', title: '唐朝诡事录之西行 第13集' },
+        
+            {src: 'https://vid.dbokutv.com/20240722/BjL6aaqO/index.m3u8', title: '唐朝诡事录之西行 第14集' },
+        
+            {src: 'https://vid.dbokutv.com/20240723/8urOIXLv/index.m3u8', title: '唐朝诡事录之西行 第15集' },
+        
+            {src: 'https://vid.dbokutv.com/20240723/IZcLryLt/index.m3u8', title: '唐朝诡事录之西行 第16集' },
+        
+            {src: 'https://vid.dbokutv.com/20240724/LMPY8ug2/index.m3u8', title: '唐朝诡事录之西行 第17集' },
+        
+            {src: 'https://vid.dbokutv.com/20240724/cXBOxxkB/index.m3u8', title: '唐朝诡事录之西行 第18集' },
+        
+            {src: 'https://vid.dbokutv.com/20240725/yQlbNl8k/index.m3u8', title: '唐朝诡事录之西行 第19集' },
+        
+            {src: 'https://vid.dbokutv.com/20240725/ygyidBef/index.m3u8', title: '唐朝诡事录之西行 第20集' },
+        
+            {src: 'https://vid.dbokutv.com/20240726/xIv8AAyc/index.m3u8', title: '唐朝诡事录之西行 第21集' },
+        
+            {src: 'https://vid.dbokutv.com/20240726/PruLh6zG/index.m3u8', title: '唐朝诡事录之西行 第22集' },
+        
+            {src: 'https://vid.dbokutv.com/20240727/bd9hiZ1e/index.m3u8', title: '唐朝诡事录之西行 第23集' },
+        
+            {src: 'https://vid.dbokutv.com/20240727/rztYfsvC/index.m3u8', title: '唐朝诡事录之西行 第24集' },
+        
+            {src: 'https://vid.dbokutv.com/20240728/Uvtts01z/index.m3u8', title: '唐朝诡事录之西行 第25集' },
+        
+            {src: 'https://vid.dbokutv.com/20240728/dQFYTGiS/index.m3u8', title: '唐朝诡事录之西行 第26集' },
+        
+            {src: 'https://vid.dbokutv.com/20240729/I2wahpgD/index.m3u8', title: '唐朝诡事录之西行 第27集' },
+        
+            {src: 'https://vid.dbokutv.com/20240729/lG22lkBD/index.m3u8', title: '唐朝诡事录之西行 第28集' },
+        
+            {src: 'https://vid.dbokutv.com/20240730/ESQB6BOA/index.m3u8', title: '唐朝诡事录之西行 第29集' },
+        
+            {src: 'https://vid.dbokutv.com/20240730/9XxF1nns/index.m3u8', title: '唐朝诡事录之西行 第30集' },
+        
+            {src: 'https://vid.dbokutv.com/20240731/TmDUBGJi/index.m3u8', title: '唐朝诡事录之西行 第31集' },
+        
+            {src: 'https://vid.dbokutv.com/20240731/JdVt5Cj7/index.m3u8', title: '唐朝诡事录之西行 第32集' },
+        
+            {src: 'https://vid.dbokutv.com/20240801/KjLoZy79/index.m3u8', title: '唐朝诡事录之西行 第33集' },
+        
+            {src: 'https://vid.dbokutv.com/20240801/4CSLAxfx/index.m3u8', title: '唐朝诡事录之西行 第34集' },
+        
+            {src: 'https://vid.dbokutv.com/20240802/LgnV844H/index.m3u8', title: '唐朝诡事录之西行 第35集' },
+        
+            {src: 'https://vid.dbokutv.com/20240802/r02eHpXW/index.m3u8', title: '唐朝诡事录之西行 第36集' },
+        
+            {src: 'https://vid.dbokutv.com/20240802/36lxZjQT/index.m3u8', title: '唐朝诡事录之西行 第37集' },
+        
+            {src: 'https://vid.dbokutv.com/20240802/oqjDjzCN/index.m3u8', title: '唐朝诡事录之西行 第38集' },
+        
+            {src: 'https://vid.dbokutv.com/20240802/x5GJn8pX/index.m3u8', title: '唐朝诡事录之西行 第39集' },
+        
+            {src: 'https://vid.dbokutv.com/20240802/wd73oDV0/index.m3u8', title: '唐朝诡事录之西行 第40集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_duboku_4712";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
