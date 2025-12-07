@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梦华录</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://vid.dbokutv.com/20220602/NhOQtcXn/index.m3u8', title: '梦华录 第1集' },
+        
+            {src: 'https://vid.dbokutv.com/20220602/ANUcVinA/index.m3u8', title: '梦华录 第2集' },
+        
+            {src: 'https://vid.dbokutv.com/20220602/icI0eOV7/index.m3u8', title: '梦华录 第3集' },
+        
+            {src: 'https://vid.dbokutv.com/20220602/YuVdttcq/index.m3u8', title: '梦华录 第4集' },
+        
+            {src: 'https://vid.dbokutv.com/20220602/10WWfZtS/index.m3u8', title: '梦华录 第5集' },
+        
+            {src: 'https://vid.dbokutv.com/20220602/8DTdxGCN/index.m3u8', title: '梦华录 第6集' },
+        
+            {src: 'https://vid.dbokutv.com/20220602/ZbOeJAbD/index.m3u8', title: '梦华录 第7集' },
+        
+            {src: 'https://vid.dbokutv.com/20220602/SwEpCopS/index.m3u8', title: '梦华录 第8集' },
+        
+            {src: 'https://vid.dbokutv.com/20220603/XxpZ6pDV/index.m3u8', title: '梦华录 第9集' },
+        
+            {src: 'https://vid.dbokutv.com/20220603/5SiLXEbw/index.m3u8', title: '梦华录 第10集' },
+        
+            {src: 'https://vid.dbokutv.com/20220604/yK7gvisN/index.m3u8', title: '梦华录 第11集' },
+        
+            {src: 'https://vid.dbokutv.com/20220604/7QYn9JF5/index.m3u8', title: '梦华录 第12集' },
+        
+            {src: 'https://vid.dbokutv.com/20220605/Xx5MfW98/index.m3u8', title: '梦华录 第13集' },
+        
+            {src: 'https://vid.dbokutv.com/20220605/NXGo8Kxq/index.m3u8', title: '梦华录 第14集' },
+        
+            {src: 'https://vid.dbokutv.com/20220609/GluXU3k0/index.m3u8', title: '梦华录 第15集' },
+        
+            {src: 'https://vid.dbokutv.com/20220609/vnDNagF8/index.m3u8', title: '梦华录 第16集' },
+        
+            {src: 'https://vid.dbokutv.com/20220610/02CYzz8i/index.m3u8', title: '梦华录 第17集' },
+        
+            {src: 'https://vid.dbokutv.com/20220610/RMsOdeJw/index.m3u8', title: '梦华录 第18集' },
+        
+            {src: 'https://vid.dbokutv.com/20220611/gYWM48AQ/index.m3u8', title: '梦华录 第19集' },
+        
+            {src: 'https://vid.dbokutv.com/20220611/KeCmKlnI/index.m3u8', title: '梦华录 第20集' },
+        
+            {src: 'https://vid.dbokutv.com/20220616/K4D1rIdp/index.m3u8', title: '梦华录 第21集' },
+        
+            {src: 'https://vid.dbokutv.com/20220616/RmrHj2l7/index.m3u8', title: '梦华录 第22集' },
+        
+            {src: 'https://vid.dbokutv.com/20220617/1rAOyuyU/index.m3u8', title: '梦华录 第23集' },
+        
+            {src: 'https://vid.dbokutv.com/20220617/7Rl1UeLb/index.m3u8', title: '梦华录 第24集' },
+        
+            {src: 'https://vid.dbokutv.com/20220618/ckrj2XkH/index.m3u8', title: '梦华录 第25集' },
+        
+            {src: 'https://vid.dbokutv.com/20220618/k3JVO79e/index.m3u8', title: '梦华录 第26集' },
+        
+            {src: 'https://vid.dbokutv.com/20220623/Squ2nWfy/index.m3u8', title: '梦华录 第27集' },
+        
+            {src: 'https://vid.dbokutv.com/20220623/2hB9OlWj/index.m3u8', title: '梦华录 第28集' },
+        
+            {src: 'https://vid.dbokutv.com/20220624/h9oISFFI/index.m3u8', title: '梦华录 第29集' },
+        
+            {src: 'https://vid.dbokutv.com/20220624/GW1SXKCw/index.m3u8', title: '梦华录 第30集' },
+        
+            {src: 'https://vid.dbokutv.com/20220625/IsseWi91/index.m3u8', title: '梦华录 第31集' },
+        
+            {src: 'https://vid.dbokutv.com/20220625/fPQIJH2t/index.m3u8', title: '梦华录 第32集' },
+        
+            {src: 'https://vid.dbokutv.com/20220626/5xesPFio/index.m3u8', title: '梦华录 第33集' },
+        
+            {src: 'https://vid.dbokutv.com/20220626/ntxb0uGA/index.m3u8', title: '梦华录 第34集' },
+        
+            {src: 'https://vid.dbokutv.com/20220626/B9bJiCnU/index.m3u8', title: '梦华录 第35集' },
+        
+            {src: 'https://vid.dbokutv.com/20220626/trBJh3ks/index.m3u8', title: '梦华录 第36集' },
+        
+            {src: 'https://vid.dbokutv.com/20220626/FqxhWe4E/index.m3u8', title: '梦华录 第37集' },
+        
+            {src: 'https://vid.dbokutv.com/20220626/swDkYNJb/index.m3u8', title: '梦华录 第38集' },
+        
+            {src: 'https://vid.dbokutv.com/20220626/vsE25w1N/index.m3u8', title: '梦华录 第39集' },
+        
+            {src: 'https://vid.dbokutv.com/20220626/GZ8ezgTC/index.m3u8', title: '梦华录 第40集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_duboku_2886";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
