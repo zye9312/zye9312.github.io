@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>去有风的地方</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://vid.dbokutv.com/20230103/Ox4pFNVZ/index.m3u8', title: '去有风的地方 第1集' },
+        
+            {src: 'https://vid.dbokutv.com/20230103/ty8gkk01/index.m3u8', title: '去有风的地方 第2集' },
+        
+            {src: 'https://vid.dbokutv.com/20230103/fD6hGrw1/index.m3u8', title: '去有风的地方 第3集' },
+        
+            {src: 'https://vid.dbokutv.com/20230103/D4nXFxdi/index.m3u8', title: '去有风的地方 第4集' },
+        
+            {src: 'https://vid.dbokutv.com/20230103/JS1V6WPV/index.m3u8', title: '去有风的地方 第5集' },
+        
+            {src: 'https://vid.dbokutv.com/20230103/yNSzqbMc/index.m3u8', title: '去有风的地方 第6集' },
+        
+            {src: 'https://vid.dbokutv.com/20230104/nqbZKTh5/index.m3u8', title: '去有风的地方 第7集' },
+        
+            {src: 'https://vid.dbokutv.com/20230104/vdcwbHNk/index.m3u8', title: '去有风的地方 第8集' },
+        
+            {src: 'https://vid.dbokutv.com/20230105/dBoWknrx/index.m3u8', title: '去有风的地方 第9集' },
+        
+            {src: 'https://vid.dbokutv.com/20230105/O1lpdnvh/index.m3u8', title: '去有风的地方 第10集' },
+        
+            {src: 'https://vid.dbokutv.com/20230106/dxK2Fn97/index.m3u8', title: '去有风的地方 第11集' },
+        
+            {src: 'https://vid.dbokutv.com/20230107/SLi8VtFh/index.m3u8', title: '去有风的地方 第12集' },
+        
+            {src: 'https://vid.dbokutv.com/20230109/sUVRWdUX/index.m3u8', title: '去有风的地方 第13集' },
+        
+            {src: 'https://vid.dbokutv.com/20230109/enPJ0FEq/index.m3u8', title: '去有风的地方 第14集' },
+        
+            {src: 'https://vid.dbokutv.com/20230110/o6Toc4mq/index.m3u8', title: '去有风的地方 第15集' },
+        
+            {src: 'https://vid.dbokutv.com/20230110/yo6MemTD/index.m3u8', title: '去有风的地方 第16集' },
+        
+            {src: 'https://vid.dbokutv.com/20230111/PNtgz1xN/index.m3u8', title: '去有风的地方 第17集' },
+        
+            {src: 'https://vid.dbokutv.com/20230111/Vxciafh8/index.m3u8', title: '去有风的地方 第18集' },
+        
+            {src: 'https://vid.dbokutv.com/20230112/NgyYpqAL/index.m3u8', title: '去有风的地方 第19集' },
+        
+            {src: 'https://vid.dbokutv.com/20230112/vmUzqqSB/index.m3u8', title: '去有风的地方 第20集' },
+        
+            {src: 'https://vid.dbokutv.com/20230113/2rGeBPyQ/index.m3u8', title: '去有风的地方 第21集' },
+        
+            {src: 'https://vid.dbokutv.com/20230114/wejJNab4/index.m3u8', title: '去有风的地方 第22集' },
+        
+            {src: 'https://vid.dbokutv.com/20230116/SUHptv9v/index.m3u8', title: '去有风的地方 第23集' },
+        
+            {src: 'https://vid.dbokutv.com/20230116/7yeub5Gc/index.m3u8', title: '去有风的地方 第24集' },
+        
+            {src: 'https://vid.dbokutv.com/20230117/Iw5vh0Nr/index.m3u8', title: '去有风的地方 第25集' },
+        
+            {src: 'https://vid.dbokutv.com/20230117/DISsLX0W/index.m3u8', title: '去有风的地方 第26集' },
+        
+            {src: 'https://vid.dbokutv.com/20230118/3ZjBXqpy/index.m3u8', title: '去有风的地方 第27集' },
+        
+            {src: 'https://vid.dbokutv.com/20230118/XqQFicln/index.m3u8', title: '去有风的地方 第28集' },
+        
+            {src: 'https://vid.dbokutv.com/20230119/Y3o8bKJZ/index.m3u8', title: '去有风的地方 第29集' },
+        
+            {src: 'https://vid.dbokutv.com/20230119/UyVQ5mrJ/index.m3u8', title: '去有风的地方 第30集' },
+        
+            {src: 'https://vid.dbokutv.com/20230120/0K3TFdRJ/index.m3u8', title: '去有风的地方 第31集' },
+        
+            {src: 'https://vid.dbokutv.com/20230122/SbpgWXZ1/index.m3u8', title: '去有风的地方 第32集' },
+        
+            {src: 'https://vid.dbokutv.com/20230122/5p3WdyK1/index.m3u8', title: '去有风的地方 第33集' },
+        
+            {src: 'https://vid.dbokutv.com/20230122/GuDeUTxU/index.m3u8', title: '去有风的地方 第34集' },
+        
+            {src: 'https://vid.dbokutv.com/20230122/YQwCxLru/index.m3u8', title: '去有风的地方 第35集' },
+        
+            {src: 'https://vid.dbokutv.com/20230122/k91RaQmR/index.m3u8', title: '去有风的地方 第36集' },
+        
+            {src: 'https://vid.dbokutv.com/20230122/ZbULGdC3/index.m3u8', title: '去有风的地方 第37集' },
+        
+            {src: 'https://vid.dbokutv.com/20230122/9prN6380/index.m3u8', title: '去有风的地方 第38集' },
+        
+            {src: 'https://vid.dbokutv.com/20230122/hnBRaBBL/index.m3u8', title: '去有风的地方 第39集' },
+        
+            {src: 'https://vid.dbokutv.com/20230122/ayr390DD/index.m3u8', title: '去有风的地方 第40集' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_duboku_3340";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
