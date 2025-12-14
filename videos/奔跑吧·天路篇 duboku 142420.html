@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奔跑吧·天路篇</title>
+    <link rel="stylesheet" href="../video.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+
+            {src: 'https://vid.dbokutv.com/20251124/zy-bpbtlp-20251027slpthhg-006115299.mp4/chunklist.m3u8', title: '奔跑吧·天路篇 20251027(首录碰头会回顾)' },
+        
+            {src: 'https://vid.dbokutv.com/20251124/zy-bpbtlp-20251122d1q-0357AD99F.mp4/chunklist.m3u8', title: '奔跑吧·天路篇 20251122(第1期)' },
+        
+            {src: 'https://vid.dbokutv.com/20251125/zy-bpbtlp-20251125pnlld1q-006628B61.mp4/chunklist.m3u8', title: '奔跑吧·天路篇 20251125(跑男来了第1期)' },
+        
+            {src: 'https://vid.dbokutv.com/20251130/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlUdajOd1YT6nmBJ8mCZKnCJ8vP39nBJ0mH392CJ8sHYvjS34/chunklist.m3u8', title: '奔跑吧·天路篇 20251129(第2期)' },
+        
+            {src: 'https://vid.dbokutv.com/20251202/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlUdajOd1YT6nmBJ8mCZKnCZ0oS6viR6GoSIqmCpSvHJb3GpKkRN0q/chunklist.m3u8', title: '奔跑吧·天路篇 20251202(跑男来了第2期)' },
+        
+            {src: 'https://vid.dbokutv.com/20251206/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlUdajOd1YT6nmBJ8mCZKnCZ0sP3DnBJ0pCaKpHZ8pGovjS34/chunklist.m3u8', title: '奔跑吧·天路篇 20251206(第3期)' },
+        
+            {src: 'https://vid.dbokutv.com/20251209/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xqyIrYS69qR70jCZ0oDJ4oC3baCt5gPoqmCa4qCpasE48kRN0q/chunklist.m3u8', title: '奔跑吧·天路篇 20251209(第3期加更)' },
+        
+            {src: 'https://vid.dbokutv.com/20251209/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xqyIrYS69qR70jCZ0oDJ4oC3bmRcniP3DnBJ0oCpD3HJ53DYvjS34/chunklist.m3u8', title: '奔跑吧·天路篇 20251209(跑男来了第3期)' },
+        
+            {src: 'https://vid.dbokutv.com/20251214/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsjsRsGlUdajOd1YT6nmBJ8mCZKnCZ4pP3HnBJ0nH3apCp4tGIvjS34/chunklist.m3u8', title: '奔跑吧·天路篇 20251213(第4期)' },
+        
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_duboku_142420";
+    </script>
+    <script src="../cookie.js"></script>
+    <script src="../player.js"></script>
+</body>
+</html>
