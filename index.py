@@ -36,8 +36,12 @@ index_html = f"""
 
     <nav>
         <ul id="nav-menu">
-            {li_s}
+                {li_s}
         <li><a href="bilibili/new.html">bilibili</a></li>
+        <li><a href="https://m.ghw9zwp5.com">金牌影院</a></li>
+        <li><a href="https://www.dbku.tv">独播库</a></li>
+        <li><a href="https://gz360.tv">瓜子影视</a></li>
+        <li><a href="https://aigua8.com">爱瓜TV</a></li>
         </ul>
     </nav>
     <button id="random-button">Random Page</button>
