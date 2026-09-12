@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>周生如故</title>
+    <link rel="stylesheet" href="../video.css?v=2">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-hotkeys@0.2.30/videojs.hotkeys.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <select id="video-select">
+        </select>
+    </div>
+    <br>
+    <!-- https://stackoverflow.com/a/39223524 -->
+    <div class="video-container">
+        <!-- https://stackoverflow.com/a/39223524 -->
+        <video id="my-video" class="video-js vjs-default-skin vjs-16-9" controls preload="auto">
+        </video>
+    </div>
+    <script>
+
+        var sources = [
+            {"src": "https://vid.dbokutv.com/20210818/STb0dFuX/index.m3u8", "title": "周生如故 第1集"},
+            {"src": "https://vid.dbokutv.com/20210818/tMZhHLIA/index.m3u8", "title": "周生如故 第2集"},
+            {"src": "https://vid.dbokutv.com/20210818/H5XDeI8G/index.m3u8", "title": "周生如故 第3集"},
+            {"src": "https://vid.dbokutv.com/20210818/PQBka4q1/index.m3u8", "title": "周生如故 第4集"},
+            {"src": "https://vid.dbokutv.com/20210818/CZGq4G8A/index.m3u8", "title": "周生如故 第5集"},
+            {"src": "https://vid.dbokutv.com/20210818/UjMSbxDV/index.m3u8", "title": "周生如故 第6集"},
+            {"src": "https://vid.dbokutv.com/20210819/Qi3E9bpO/index.m3u8", "title": "周生如故 第7集"},
+            {"src": "https://vid.dbokutv.com/20210819/3dZBvl7v/index.m3u8", "title": "周生如故 第8集"},
+            {"src": "https://vid.dbokutv.com/20210820/gNXVJaam/index.m3u8", "title": "周生如故 第9集"},
+            {"src": "https://vid.dbokutv.com/20210820/oeAoRLbo/index.m3u8", "title": "周生如故 第10集"},
+            {"src": "https://vid.dbokutv.com/20210825/CQA6Y9VW/index.m3u8", "title": "周生如故 第11集"},
+            {"src": "https://vid.dbokutv.com/20210825/ofxqWVzc/index.m3u8", "title": "周生如故 第12集"},
+            {"src": "https://vid.dbokutv.com/20210826/GiYv91Zp/index.m3u8", "title": "周生如故 第13集"},
+            {"src": "https://vid.dbokutv.com/20210826/JG8nVTWU/index.m3u8", "title": "周生如故 第14集"},
+            {"src": "https://vid.dbokutv.com/20210827/KFKbaPgw/index.m3u8", "title": "周生如故 第15集"},
+            {"src": "https://vid.dbokutv.com/20210827/KpHgxDJA/index.m3u8", "title": "周生如故 第16集"},
+            {"src": "https://vid.dbokutv.com/20210827/kfnAaT4d/index.m3u8", "title": "周生如故 第17集"},
+            {"src": "https://vid.dbokutv.com/20210827/Y5Hp20OX/index.m3u8", "title": "周生如故 第18集"},
+            {"src": "https://vid.dbokutv.com/20210827/S8hncNIj/index.m3u8", "title": "周生如故 第19集"},
+            {"src": "https://vid.dbokutv.com/20210827/6B65P4Vf/index.m3u8", "title": "周生如故 第20集"},
+            {"src": "https://vid.dbokutv.com/20210827/z1j4VHMk/index.m3u8", "title": "周生如故 第21集"},
+            {"src": "https://vid.dbokutv.com/20210827/Cjz7rbfP/index.m3u8", "title": "周生如故 第22集"},
+            {"src": "https://vid.dbokutv.com/20210827/5qsrKQOL/index.m3u8", "title": "周生如故 第23集"},
+            {"src": "https://vid.dbokutv.com/20210827/NenQG1SE/index.m3u8", "title": "周生如故 第24集"}
+        ];
+
+        var startTime = 1; // Start time in seconds
+        var endTime = 1; // End time in seconds
+        const video_id = "cookie_episode_duboku_2307";
+    </script>
+    <script src="../cookie.js?v=2"></script>
+    <script src="../player.js?v=5"></script>
+</body>
+</html>
