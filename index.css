@@ -1,128 +1,236 @@
-nav ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+:root {
+  color-scheme: dark;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #eef1f6;
+  background: #0b0d12;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(82, 109, 180, 0.22), transparent 34%),
+    #0b0d12;
+}
+
+button {
+  font: inherit;
+}
+
+.home-header,
+.home-page {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.home-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 42px 24px 24px;
+}
+
+.home-header h1,
+.section-heading h2 {
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+
+.home-header h1 {
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.08;
+}
+
+.eyebrow {
+  margin: 0 0 7px;
+  color: #829eff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.home-page {
+  display: grid;
+  gap: 42px;
+  padding: 0 24px 64px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 15px;
+}
+
+.section-heading h2 {
+  font-size: clamp(21px, 3vw, 27px);
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #252a34;
+  border-radius: 16px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+}
+
+.video-container iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+#random-button,
+#youtube_src {
+  min-height: 38px;
+  padding: 8px 14px;
+  border: 1px solid #3b465b;
+  border-radius: 9px;
+  color: #eef2ff;
+  background: #283148;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+}
+
+#random-button:hover,
+#youtube_src:hover {
+  border-color: #6f8fff;
+  background: #35415f;
+}
+
+#random-button:active,
+#youtube_src:active {
+  transform: translateY(1px);
+}
+
+.item-count {
+  color: #8993a5;
+  font-size: 13px;
+}
+
+.library-grid,
+.resource-grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.library-item a {
+  display: flex;
+  min-height: 106px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  border: 1px solid #292e3a;
+  border-radius: 13px;
+  color: #eef1f6;
+  background: linear-gradient(145deg, #191d26, #14171e);
+  text-decoration: none;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+  transition: border-color 0.16s ease, background-color 0.16s ease, transform 0.16s ease;
+}
+
+.library-item a:hover {
+  border-color: #536582;
+  background: #202631;
+  transform: translateY(-2px);
+}
+
+.card-title {
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+}
+
+.card-meta {
+  color: #8590a3;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+}
+
+.resource-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.resource-grid a {
+  display: block;
+  padding: 9px 13px;
+  border: 1px solid #303643;
+  border-radius: 9px;
+  color: #b8c1d1;
+  background: #151920;
+  text-decoration: none;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.resource-grid a:hover {
+  border-color: #4b5770;
+  color: #f4f6fa;
+  background: #1d222c;
+}
+
+@media (max-width: 900px) {
+  .library-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  
-  nav li {
-	margin: 10px;
-	border: 1px solid #ccc;
-	padding: 10px;
-	border-radius: 10px;
+}
+
+@media (max-width: 640px) {
+  .home-header {
+    align-items: center;
+    padding: 26px 12px 18px;
   }
-  
-  nav a {
-	color: #000;
-	text-decoration: none;
-	font-size: 18px;
-	font-weight: bold;
-	transition: color 0.3s ease;
+
+  .home-page {
+    gap: 30px;
+    padding: 0 12px 40px;
   }
-  
-  nav a:hover {
-	color: #ff7f50;
+
+  .library-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
   }
-  
-  #random-button {
-	position: fixed;
-	top: 20px;
-	right: 20px;
-	margin-top: 0;
-	margin-right: 0;
-	padding: 10px;
-	font-size: 18px;
-	background-color: #ff7f50;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
+
+  .library-item a {
+    min-height: 92px;
+    padding: 13px;
   }
-  
-  #random-button:hover {
-	background-color: #ff6347;
-  }
-  
-  #youtube_src {
-	position: sticky;
-	top: 20px;
-	right: 20px;
-	margin-top: 0;
-	margin-right: 0;
-	padding: 10px;
-	font-size: 12px;
-	background-color: #ff6347;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-  }
-  
-  #youtube_src:hover {
-	background-color: #ff6347;
-  }
-  
-  input[type="text"] {
-	display: inline;
-	margin: 10px 0;
-	padding: 8px;
-	/* font-size: 16px; */
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-sizing: border-box;
-  }
-  
-  select {
-	font-size: 16px;
-	box-shadow: none;
-	outline: none;
-  }
-  
-  /* Ensure the video container is responsive */
+
   .video-container {
-	position: relative;
-	width: 100%;
-	height: 0;
-	padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    border-radius: 12px;
   }
-  .video-container iframe {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	border: 0;
+
+  #random-button,
+  #youtube_src {
+    min-height: 36px;
+    padding: 7px 11px;
+    font-size: 13px;
   }
-  
-  /* Responsive Layout */
-  body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+}
+
+@media (max-width: 380px) {
+  .library-grid {
+    grid-template-columns: 1fr;
   }
-  
-  header {
-	background: #333;
-	color: white;
-	text-align: center;
-	padding: 1rem;
-  }
-  
-  .content {
-	padding: 1rem;
-  }
-  
-  @media (min-width: 768px) {
-	.content {
-	  max-width: 800px;
-	  margin: 0 auto;
-	}
-  }
-  
+}

@@ -13,10 +13,11 @@ VIDEOS_PATH = PROJECT_PATH / "videos"
 SOURCE_PATTERN = re.compile(r"var\s+sources\s*=\s*(\[.*?\]);", re.DOTALL)
 
 REQUIRED_ASSETS = (
-    "../assets/player/video.css?v=5",
-    "../assets/player/player.js?v=10",
+    "../assets/player/video.css?v=6",
+    "../assets/player/player.js?v=12",
 )
 NATIVE_VIDEO_TAG = '<video id="my-video" controls playsinline preload="auto">'
+PLAYER_TOOLBAR = '<div id="player-toolbar" class="episode-toolbar">'
 
 
 class LinkParser(HTMLParser):
@@ -64,6 +65,8 @@ def validate_video_page(path: Path):
             errors.append(f"{path.name}: missing pinned asset {asset}")
     if NATIVE_VIDEO_TAG not in content:
         errors.append(f"{path.name}: missing native preloading video element")
+    if PLAYER_TOOLBAR not in content:
+        errors.append(f"{path.name}: missing player toolbar")
     if (
         "videojs" in content
         or "video-js" in content

@@ -6,21 +6,23 @@
     <meta charset=utf-8 />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>武林外传</title>
-    <link rel="stylesheet" href="../assets/player/video.css?v=5">
+    <link rel="stylesheet" href="../assets/player/video.css?v=6">
 </head>
 
 <body>
-    <div>
-        <select id="video-select">
-        </select>
-    </div>
-    <br>
-    <!-- https://stackoverflow.com/a/39223524 -->
-    <div class="video-container">
-        <!-- https://stackoverflow.com/a/39223524 -->
-        <video id="my-video" controls playsinline preload="auto">
-        </video>
-    </div>
+    <main class="watch-page">
+        <div id="player-toolbar" class="episode-toolbar">
+            <div class="episode-picker">
+                <label for="video-select">选集</label>
+                <select id="video-select" aria-label="选择剧集">
+                </select>
+            </div>
+        </div>
+        <div class="video-container">
+            <video id="my-video" controls playsinline preload="auto">
+            </video>
+        </div>
+    </main>
     <script>
 
         var sources = [
@@ -106,6 +108,6 @@
             {"src": "https://vip1.lz-cdn8.com/20220730/20682_616cd150/index.m3u8", "title": "武林外传 第80集"}
         ];
     </script>
-    <script src="../assets/player/player.js?v=10"></script>
+    <script src="../assets/player/player.js?v=12"></script>
 </body>
 </html>

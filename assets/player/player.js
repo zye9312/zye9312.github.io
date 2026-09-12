@@ -1,13 +1,22 @@
 (function () {
   var videoElement = document.getElementById("my-video");
   var videoSelect = document.getElementById("video-select");
+  var playerToolbar = document.getElementById("player-toolbar");
   if (!videoElement || !videoSelect || !Array.isArray(sources)) {
     return;
   }
+  playerToolbar = playerToolbar || videoSelect.parentNode;
 
   var storageKey = "tv2html:native-state:" + window.location.pathname;
-  var loadedEpisodeIndex = -1;
-  var sourceIsChanging = false;
+  var playerMachine = {
+    phase: "idle",
+    wantsToPlay: false,
+    switchingSource: false,
+    sourceRevision: 0,
+    activeSource: "",
+    episodeIndex: -1,
+    ignoredPauseEvents: 0,
+  };
   var statusTimer = null;
   var progressTick = 0;
 
@@ -131,7 +140,7 @@
   controls.appendChild(playerStatus);
   controls.appendChild(actionRow);
   controls.appendChild(settings);
-  videoElement.parentNode.insertAdjacentElement("afterend", controls);
+  playerToolbar.appendChild(controls);
 
   function setStatus(message, autoHide) {
     if (statusTimer) {
@@ -147,6 +156,26 @@
     }
   }
 
+  function transitionTo(phase, message, autoHide) {
+    playerMachine.phase = phase;
+    controls.setAttribute("data-player-state", phase);
+    controls.setAttribute(
+      "aria-busy",
+      phase === "loading" || phase === "buffering" ? "true" : "false"
+    );
+    if (typeof message === "string") {
+      setStatus(message, autoHide);
+    }
+  }
+
+  function eventMatchesActiveSource() {
+    if (!playerMachine.activeSource) {
+      return false;
+    }
+    var currentSource = videoElement.currentSrc || videoElement.src;
+    return currentSource === playerMachine.activeSource;
+  }
+
   function savedProgress(index) {
     var value = Number(playbackState.progress[String(index)]);
     return Number.isFinite(value) && value > 0 ? value : 0;
@@ -159,8 +188,8 @@
 
   function saveCurrentProgress() {
     if (
-      loadedEpisodeIndex < 0 ||
-      sourceIsChanging ||
+      playerMachine.episodeIndex < 0 ||
+      playerMachine.switchingSource ||
       videoElement.ended ||
       videoElement.seeking
     ) {
@@ -174,15 +203,15 @@
     }
 
     if (Number.isFinite(duration) && duration > 0 && currentTime >= duration - 10) {
-      delete playbackState.progress[String(loadedEpisodeIndex)];
+      delete playbackState.progress[String(playerMachine.episodeIndex)];
     } else {
-      playbackState.progress[String(loadedEpisodeIndex)] = Math.floor(currentTime);
+      playbackState.progress[String(playerMachine.episodeIndex)] = Math.floor(currentTime);
     }
     storeState();
   }
 
   function updateResumeButton() {
-    var progress = savedProgress(loadedEpisodeIndex);
+    var progress = savedProgress(playerMachine.episodeIndex);
     var duration = Number(videoElement.duration);
     var canResume =
       progress >= 3 &&
@@ -208,58 +237,90 @@
     }
 
     var remaining = Number.isFinite(duration) ? duration - currentTime : Infinity;
-    var hasNextEpisode = loadedEpisodeIndex < sources.length - 1;
+    var hasNextEpisode = playerMachine.episodeIndex < sources.length - 1;
     skipOutroButton.hidden = !(outro > 0 && remaining >= 0 && remaining <= outro && hasNextEpisode);
     if (!skipOutroButton.hidden) {
       skipOutroButton.textContent = "跳过片尾（剩余 " + formatTime(remaining) + "）";
     }
   }
 
-  function playCurrentEpisode() {
-    var playPromise = videoElement.play();
+  function playCurrentEpisode(expectedRevision) {
+    var revision =
+      typeof expectedRevision === "number"
+        ? expectedRevision
+        : playerMachine.sourceRevision;
+    playerMachine.wantsToPlay = true;
+    var playPromise;
+    try {
+      playPromise = videoElement.play();
+    } catch (error) {
+      handlePlayFailure(error, revision);
+      return;
+    }
     if (playPromise) {
       playPromise.catch(function (error) {
-        setStatus("无法自动播放，请点击原生播放按钮。", 5000);
-        console.warn("视频无法自动播放。", error);
+        handlePlayFailure(error, revision);
       });
     }
   }
 
-  function loadEpisode(index) {
+  function handlePlayFailure(error, revision) {
+    if (revision !== playerMachine.sourceRevision) {
+      return;
+    }
+    playerMachine.wantsToPlay = false;
+    playerMachine.switchingSource = false;
+    transitionTo("paused", "无法自动播放，请点击原生播放按钮。", 5000);
+    console.warn("视频无法自动播放。", error);
+  }
+
+  function loadEpisode(index, shouldPlay) {
     var source = sources[index];
     if (!source) {
       videoElement.removeAttribute("src");
+      playerMachine.activeSource = "";
+      playerMachine.wantsToPlay = false;
+      playerMachine.switchingSource = false;
+      transitionTo("idle", "没有可用的视频源。");
       return false;
     }
 
-    sourceIsChanging = true;
-    loadedEpisodeIndex = index;
+    playerMachine.sourceRevision += 1;
+    var revision = playerMachine.sourceRevision;
+    playerMachine.wantsToPlay = Boolean(shouldPlay);
+    playerMachine.switchingSource = true;
+    playerMachine.episodeIndex = index;
     playbackState.currentEpisode = index;
     storeState();
     resumeButton.hidden = true;
     skipIntroButton.hidden = true;
     skipOutroButton.hidden = true;
-    setStatus("正在连接视频源……");
+    transitionTo("loading", "正在连接视频源……");
     document.title = source.title;
 
-    // Source assignment is the only automatic media operation. Playback and
-    // seeking remain native unless the user presses one of the explicit tools.
+    // Explicitly settle the previous native resource before assigning the new
+    // one. The new source then inherits the user's play/pause intent.
+    if (!videoElement.paused) {
+      playerMachine.ignoredPauseEvents += 1;
+      videoElement.pause();
+    }
     videoElement.src = source.src;
+    playerMachine.activeSource = videoElement.src;
+    if (playerMachine.wantsToPlay) {
+      playCurrentEpisode(revision);
+    }
     return true;
   }
 
   function moveToNextEpisode(shouldPlay) {
-    var nextIndex = loadedEpisodeIndex + 1;
+    var nextIndex = playerMachine.episodeIndex + 1;
     if (nextIndex >= sources.length) {
       return false;
     }
 
-    clearProgress(loadedEpisodeIndex);
+    clearProgress(playerMachine.episodeIndex);
     videoSelect.value = nextIndex.toString();
-    loadEpisode(nextIndex);
-    if (shouldPlay) {
-      playCurrentEpisode();
-    }
+    loadEpisode(nextIndex, shouldPlay);
     return true;
   }
 
@@ -271,12 +332,15 @@
   }
 
   videoSelect.addEventListener("change", function () {
+    var shouldContinuePlaying =
+      !videoElement.ended &&
+      (playerMachine.wantsToPlay || !videoElement.paused);
     saveCurrentProgress();
-    loadEpisode(Number(videoSelect.value));
+    loadEpisode(Number(videoSelect.value), shouldContinuePlaying);
   });
 
   resumeButton.addEventListener("click", function () {
-    var progress = savedProgress(loadedEpisodeIndex);
+    var progress = savedProgress(playerMachine.episodeIndex);
     if (progress > 0 && Number.isFinite(videoElement.duration)) {
       videoElement.currentTime = Math.min(progress, videoElement.duration - 0.25);
       resumeButton.hidden = true;
@@ -312,51 +376,108 @@
   });
 
   videoElement.addEventListener("loadstart", function () {
-    setStatus("正在连接视频源……");
+    if (eventMatchesActiveSource()) {
+      transitionTo("loading", "正在连接视频源……");
+    }
   });
 
   videoElement.addEventListener("loadedmetadata", function () {
-    sourceIsChanging = false;
-    setStatus("已读取视频信息");
+    if (!eventMatchesActiveSource()) {
+      return;
+    }
+    playerMachine.switchingSource = false;
+    transitionTo(
+      playerMachine.wantsToPlay ? "loading" : "ready",
+      playerMachine.wantsToPlay ? "正在准备播放……" : "已读取视频信息"
+    );
     updateResumeButton();
     updateSkipButtons();
   });
 
   videoElement.addEventListener("canplay", function () {
-    sourceIsChanging = false;
-    setStatus("可以播放", 2000);
+    if (!eventMatchesActiveSource()) {
+      return;
+    }
+    playerMachine.switchingSource = false;
+    if (!playerMachine.wantsToPlay) {
+      transitionTo("ready", "可以播放", 2000);
+    } else if (videoElement.paused) {
+      transitionTo("loading", "正在准备播放……");
+    } else {
+      transitionTo("playing", "正在播放", 1200);
+    }
     updateResumeButton();
   });
 
+  videoElement.addEventListener("play", function () {
+    if (!eventMatchesActiveSource()) {
+      return;
+    }
+    playerMachine.wantsToPlay = true;
+    transitionTo("loading", "正在准备播放……");
+  });
+
   videoElement.addEventListener("waiting", function () {
-    setStatus("正在缓冲……");
+    if (eventMatchesActiveSource() && !videoElement.paused) {
+      playerMachine.wantsToPlay = true;
+      transitionTo("buffering", "正在缓冲……");
+    }
   });
 
   videoElement.addEventListener("stalled", function () {
-    setStatus("视频数据加载较慢，正在等待……");
+    if (
+      eventMatchesActiveSource() &&
+      playerMachine.wantsToPlay &&
+      !videoElement.paused
+    ) {
+      transitionTo("buffering", "视频数据加载较慢，正在等待……");
+    }
   });
 
   videoElement.addEventListener("playing", function () {
-    setStatus("正在播放", 1200);
+    if (!eventMatchesActiveSource()) {
+      return;
+    }
+    playerMachine.wantsToPlay = true;
+    playerMachine.switchingSource = false;
+    transitionTo("playing", "正在播放", 1200);
     resumeButton.hidden = true;
   });
 
   videoElement.addEventListener("pause", function () {
-    if (!sourceIsChanging && !videoElement.ended) {
-      setStatus("已暂停", 2000);
-      saveCurrentProgress();
+    if (playerMachine.ignoredPauseEvents > 0) {
+      playerMachine.ignoredPauseEvents -= 1;
+      return;
     }
+    if (
+      !eventMatchesActiveSource() ||
+      videoElement.ended
+    ) {
+      return;
+    }
+    playerMachine.wantsToPlay = false;
+    transitionTo("paused", "已暂停", 2000);
+    saveCurrentProgress();
   });
 
   videoElement.addEventListener("error", function () {
-    sourceIsChanging = false;
-    setStatus("视频加载失败，请尝试其他选集或稍后重试。");
+    if (!eventMatchesActiveSource()) {
+      return;
+    }
+    playerMachine.wantsToPlay = false;
+    playerMachine.switchingSource = false;
+    transitionTo("error", "视频加载失败，请尝试其他选集或稍后重试。");
   });
 
   videoElement.addEventListener("ended", function () {
+    if (!eventMatchesActiveSource()) {
+      return;
+    }
+    playerMachine.wantsToPlay = false;
+    transitionTo("ended", "本集播放结束，正在切换下一集……");
     if (!moveToNextEpisode(true)) {
-      clearProgress(loadedEpisodeIndex);
-      setStatus("已播放完最后一集。");
+      clearProgress(playerMachine.episodeIndex);
+      transitionTo("ended", "已播放完最后一集。");
     }
   });
 
@@ -375,7 +496,7 @@
 
   if (sources.length > 0) {
     videoSelect.value = playbackState.currentEpisode.toString();
-    loadEpisode(playbackState.currentEpisode);
+    loadEpisode(playbackState.currentEpisode, false);
   }
 
   var homeButton = createButton("首页");
@@ -384,5 +505,5 @@
     saveCurrentProgress();
     window.location.href = "../index.html";
   });
-  document.body.appendChild(homeButton);
+  playerToolbar.appendChild(homeButton);
 })();

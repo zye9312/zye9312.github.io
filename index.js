@@ -17,7 +17,7 @@ function changeVideo() {
 ///////////// videos
 
 function redirectToRandomPage() {
-  const links = document.querySelectorAll("#nav-menu a");
+  const links = document.querySelectorAll(".library-grid a, .resource-grid a");
   const randomIndex = Math.floor(Math.random() * links.length);
   window.location.href = links[randomIndex];
 }

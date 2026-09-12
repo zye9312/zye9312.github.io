@@ -9,6 +9,7 @@ A static GitHub Pages site for the generated TV playback pages.
 - `videos/archive/`: retired pages, excluded from the home page.
 - `assets/player/`: shared native-video setup and responsive styles.
 - `validate_site.py`: checks generated pages, links, URLs, and dependencies.
+- `tests/player_state_test.js`: checks native-player episode transition states.
 - `.github/workflows/static.yml`: deploys the repository as a static Pages site.
 
 ## TODO

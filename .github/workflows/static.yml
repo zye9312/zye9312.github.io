@@ -31,6 +31,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Validate site and player states
+        run: |
+          python3 validate_site.py
+          node tests/player_state_test.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

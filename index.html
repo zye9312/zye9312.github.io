@@ -4,42 +4,75 @@
 <head>
     <meta charset=utf-8 />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal TV Library</title>
-    <link rel="stylesheet" href="index.css">
+    <title>私人影视库</title>
+    <link rel="stylesheet" href="index.css?v=2">
 </head>
 <body>
-    <h1>Personal TV Library</h1>
+    <header class="home-header">
+        <div>
+            <p class="eyebrow">PERSONAL SCREENING ROOM</p>
+            <h1>私人影视库</h1>
+        </div>
+        <button id="random-button" type="button">随机打开</button>
+    </header>
 
-    <button id="youtube_src" onclick="changeVideo()">Change video</button>
+    <main class="home-page">
+        <section class="featured-panel" aria-labelledby="featured-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">FEATURED</p>
+                    <h2 id="featured-title">随便看看</h2>
+                </div>
+                <button id="youtube_src" type="button" onclick="changeVideo()">换一个视频</button>
+            </div>
+            <div class="video-container">
+                <iframe id="video-iframe" title="推荐视频" src="https://www.youtube.com/embed/0Iwr1arwtbU" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </section>
 
-    <br>
-    <div class="video-container">
-        <iframe id="video-iframe" src="https://www.youtube.com/embed/0Iwr1arwtbU" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
+        <section class="library-panel" aria-labelledby="library-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">LIBRARY</p>
+                    <h2 id="library-title">我的剧集</h2>
+                </div>
+                <span class="item-count">13 部</span>
+            </div>
+            <nav aria-label="剧集列表">
+                <ul id="nav-menu" class="library-grid">
+                    <li class="library-item"><a href="videos/%E8%80%81%E5%8F%8B%E8%AE%B0%20%E7%AC%AC%E4%BA%8C%E5%AD%A3%20liangzi%2019357.html"><span class="card-title">老友记 第二季</span><span class="card-meta">量子</span></a></li>
+<li class="library-item"><a href="videos/%E8%80%81%E5%8F%8B%E8%AE%B0%20%E7%AC%AC%E4%B8%80%E5%AD%A3%20liangzi%2019342.html"><span class="card-title">老友记 第一季</span><span class="card-meta">量子</span></a></li>
+<li class="library-item"><a href="videos/%E6%AD%A6%E6%9E%97%E5%A4%96%E4%BC%A0%20liangzi%2028847.html"><span class="card-title">武林外传</span><span class="card-meta">量子</span></a></li>
+<li class="library-item"><a href="videos/%E6%A2%A6%E5%8D%8E%E5%BD%95%20duboku%202886.html"><span class="card-title">梦华录</span><span class="card-meta">独播库</span></a></li>
+<li class="library-item"><a href="videos/%E5%AF%86%E5%AE%A4%E5%A4%A7%E9%80%83%E8%84%B1%20%E7%AC%AC%E4%BA%8C%E5%AD%A3%20duboku%201513.html"><span class="card-title">密室大逃脱 第二季</span><span class="card-meta">独播库</span></a></li>
+<li class="library-item"><a href="videos/%E5%A5%94%E8%B7%91%E5%90%A7%C2%B7%E5%A4%A9%E8%B7%AF%E7%AF%87%20duboku%20142420.html"><span class="card-title">奔跑吧·天路篇</span><span class="card-meta">独播库</span></a></li>
+<li class="library-item"><a href="videos/%E5%A3%AB%E5%85%B5%E7%AA%81%E5%87%BB%20liangzi%2037823.html"><span class="card-title">士兵突击</span><span class="card-meta">量子</span></a></li>
+<li class="library-item"><a href="videos/%E5%94%90%E6%9C%9D%E8%AF%A1%E4%BA%8B%E5%BD%95%E4%B9%8B%E8%A5%BF%E8%A1%8C%20duboku%204712.html"><span class="card-title">唐朝诡事录之西行</span><span class="card-meta">独播库</span></a></li>
+<li class="library-item"><a href="videos/%E5%91%A8%E7%94%9F%E5%A6%82%E6%95%85%20liangzi%20578.html"><span class="card-title">周生如故</span><span class="card-meta">量子</span></a></li>
+<li class="library-item"><a href="videos/%E5%91%A8%E7%94%9F%E5%A6%82%E6%95%85%20duboku%202307.html"><span class="card-title">周生如故</span><span class="card-meta">独播库</span></a></li>
+<li class="library-item"><a href="videos/%E5%8E%BB%E6%9C%89%E9%A3%8E%E7%9A%84%E5%9C%B0%E6%96%B9%20duboku%203340.html"><span class="card-title">去有风的地方</span><span class="card-meta">独播库</span></a></li>
+<li class="library-item"><a href="videos/%E5%87%A1%E4%BA%BA%E4%BF%AE%E4%BB%99%E4%BC%A02020%20liangzi%20397.html"><span class="card-title">凡人修仙传2020</span><span class="card-meta">量子</span></a></li>
+<li class="library-item"><a href="videos/%E4%B8%80%E7%94%9F%E4%B8%80%E4%B8%96%20liangzi%20899.html"><span class="card-title">一生一世</span><span class="card-meta">量子</span></a></li>
+                </ul>
+            </nav>
+        </section>
 
-    <nav>
-        <ul id="nav-menu">
-                <li><a href="videos/%E5%8E%BB%E6%9C%89%E9%A3%8E%E7%9A%84%E5%9C%B0%E6%96%B9%20duboku%203340.html">去有风的地方</a></li>
-<li><a href="videos/%E8%80%81%E5%8F%8B%E8%AE%B0%20%E7%AC%AC%E4%B8%80%E5%AD%A3%20liangzi%2019342.html">老友记 第一季</a></li>
-<li><a href="videos/%E8%80%81%E5%8F%8B%E8%AE%B0%20%E7%AC%AC%E4%BA%8C%E5%AD%A3%20liangzi%2019357.html">老友记 第二季</a></li>
-<li><a href="videos/%E5%AF%86%E5%AE%A4%E5%A4%A7%E9%80%83%E8%84%B1%20%E7%AC%AC%E4%BA%8C%E5%AD%A3%20duboku%201513.html">密室大逃脱 第二季</a></li>
-<li><a href="videos/%E6%A2%A6%E5%8D%8E%E5%BD%95%20duboku%202886.html">梦华录</a></li>
-<li><a href="videos/%E4%B8%80%E7%94%9F%E4%B8%80%E4%B8%96%20liangzi%20899.html">一生一世</a></li>
-<li><a href="videos/%E5%91%A8%E7%94%9F%E5%A6%82%E6%95%85%20duboku%202307.html">周生如故</a></li>
-<li><a href="videos/%E5%94%90%E6%9C%9D%E8%AF%A1%E4%BA%8B%E5%BD%95%E4%B9%8B%E8%A5%BF%E8%A1%8C%20duboku%204712.html">唐朝诡事录之西行</a></li>
-<li><a href="videos/%E5%87%A1%E4%BA%BA%E4%BF%AE%E4%BB%99%E4%BC%A02020%20liangzi%20397.html">凡人修仙传2020</a></li>
-<li><a href="videos/%E5%91%A8%E7%94%9F%E5%A6%82%E6%95%85%20liangzi%20578.html">周生如故</a></li>
-<li><a href="videos/%E5%A3%AB%E5%85%B5%E7%AA%81%E5%87%BB%20liangzi%2037823.html">士兵突击</a></li>
-<li><a href="videos/%E6%AD%A6%E6%9E%97%E5%A4%96%E4%BC%A0%20liangzi%2028847.html">武林外传</a></li>
-<li><a href="videos/%E5%A5%94%E8%B7%91%E5%90%A7%C2%B7%E5%A4%A9%E8%B7%AF%E7%AF%87%20duboku%20142420.html">奔跑吧·天路篇</a></li>
-        <li><a href="bilibili/new.html">bilibili</a></li>
-        <li><a href="https://m.ghw9zwp5.com">金牌影院</a></li>
-        <li><a href="https://www.dbku.tv">独播库</a></li>
-        <li><a href="https://gz360.tv">瓜子影视</a></li>
-        <li><a href="https://aigua8.com">爱瓜TV</a></li>
-        </ul>
-    </nav>
-    <button id="random-button">Random Page</button>
-    <script src="index.js"></script>
+        <section class="resource-panel" aria-labelledby="resource-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">MORE</p>
+                    <h2 id="resource-title">其他入口</h2>
+                </div>
+            </div>
+            <ul class="resource-grid">
+                <li><a href="bilibili/new.html">Bilibili 热门</a></li>
+                <li><a href="https://m.ghw9zwp5.com">金牌影院</a></li>
+                <li><a href="https://www.dbku.tv">独播库</a></li>
+                <li><a href="https://gz360.tv">瓜子影视</a></li>
+                <li><a href="https://aigua8.com">爱瓜 TV</a></li>
+            </ul>
+        </section>
+    </main>
+    <script src="index.js?v=2"></script>
 </body>
 </html>
