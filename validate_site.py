@@ -16,6 +16,7 @@ REQUIRED_ASSETS = (
     "../assets/player/video.css?v=4",
     "../assets/player/player.js?v=9",
 )
+NATIVE_VIDEO_TAG = '<video id="my-video" controls playsinline preload="auto">'
 
 
 class LinkParser(HTMLParser):
@@ -61,6 +62,8 @@ def validate_video_page(path: Path):
     for asset in REQUIRED_ASSETS:
         if asset not in content:
             errors.append(f"{path.name}: missing pinned asset {asset}")
+    if NATIVE_VIDEO_TAG not in content:
+        errors.append(f"{path.name}: missing native preloading video element")
     if (
         "videojs" in content
         or "video-js" in content
