@@ -13,11 +13,12 @@ A static GitHub Pages site for the generated TV playback pages.
 
 ## TODO
 
-The site currently favors browser-native HLS playback. Reintroduce these only
-after they can be verified not to interfere with native seeking or fullscreen:
+The site currently favors browser-native HLS playback. Episode memory, manual
+resume, and manual intro/outro skipping deliberately avoid automatic seeking.
+Consider these only after they can be verified not to interfere with native
+seeking or fullscreen:
 
-- Remember the selected episode and playback position.
-- Skip configurable intro and outro ranges.
 - Provide playback-rate controls and keyboard shortcuts.
 - Download the selected M3U8 playlist.
 - Add a carefully tested fallback for browsers without native HLS support.
+- Optionally skip intro/outro automatically without overriding native seeking.

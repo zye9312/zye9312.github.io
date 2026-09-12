@@ -20,7 +20,7 @@ select {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+#myButton:hover {
   background-color: #ff6347;
 }
 
@@ -38,4 +38,76 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.native-player-tools {
+  margin-top: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+}
+
+.player-status {
+  min-height: 20px;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.player-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.player-action,
+.player-settings-save {
+  padding: 8px 12px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  color: #222;
+  background: #f7f7f7;
+  cursor: pointer;
+}
+
+.player-action:hover,
+.player-settings-save:hover {
+  background: #ececec;
+}
+
+.player-settings {
+  max-width: 360px;
+  color: #444;
+}
+
+.player-settings summary {
+  width: fit-content;
+  cursor: pointer;
+}
+
+.player-settings-fields {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.player-settings-fields label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.player-settings-fields input {
+  width: 90px;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+.player-settings-status {
+  min-height: 18px;
+  color: #555;
 }

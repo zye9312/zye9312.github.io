@@ -13,8 +13,8 @@ VIDEOS_PATH = PROJECT_PATH / "videos"
 SOURCE_PATTERN = re.compile(r"var\s+sources\s*=\s*(\[.*?\]);", re.DOTALL)
 
 REQUIRED_ASSETS = (
-    "../assets/player/video.css?v=4",
-    "../assets/player/player.js?v=9",
+    "../assets/player/video.css?v=5",
+    "../assets/player/player.js?v=10",
 )
 NATIVE_VIDEO_TAG = '<video id="my-video" controls playsinline preload="auto">'
 
