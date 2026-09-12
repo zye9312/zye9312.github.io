@@ -39,7 +39,7 @@ for (var i = 0; i < sources.length; i++) {
 }
 
 // videoSelect value change event
-videoSelect.addEventListener("change", function () {
+videoSelect.addEventListener("change", function (event) {
   saveTimestampCookie(player.currentTime());
   document.title = sources[parseInt(videoSelect.value)].title.replace(/\s+/g, "_");
   currentSourceIndex = parseInt(videoSelect.value);
@@ -47,7 +47,17 @@ videoSelect.addEventListener("change", function () {
     var selectedSrc = sources[currentSourceIndex].src;
     var selectedType = "application/x-mpegURL";
     player.src({ src: selectedSrc, type: selectedType });
-    player.play();
+    // Browsers block audible autoplay triggered by a synthetic event. On the
+    // initial dispatch, load the source and let the user press Play. A real
+    // selection change is a user gesture, so playback can start immediately.
+    if (event.isTrusted) {
+      var playPromise = player.play();
+      if (playPromise) {
+        playPromise.catch(function (error) {
+          console.warn("Playback could not start automatically:", error);
+        });
+      }
+    }
   }
   saveIndexCookie();
 });
@@ -57,8 +67,12 @@ videoSelect.addEventListener("change", function () {
 
 player.on("ended", function () {
   saveTimestampCookie(0);
-  if (currentSourceIndex >= 0 && autoplayNext) {
-    currentSourceIndex = Math.min(currentSourceIndex + 1, sources.length);
+  if (
+    currentSourceIndex >= 0 &&
+    currentSourceIndex < sources.length - 1 &&
+    autoplayNext
+  ) {
+    currentSourceIndex += 1;
     var selectedSrc = sources[currentSourceIndex].src;
     var selectedType = "application/x-mpegURL";
     player.src({ src: selectedSrc, type: selectedType });
