@@ -14,12 +14,12 @@ SOURCE_PATTERN = re.compile(r"var\s+sources\s*=\s*(\[.*?\]);", re.DOTALL)
 VIDEO_ID_PATTERN = re.compile(r'const\s+video_id\s*=\s*"([^"]+)";')
 
 REQUIRED_ASSETS = (
-    "../video.css?v=2",
+    "../assets/player/video.css?v=2",
     "https://vjs.zencdn.net/7.14.3/video-js.css",
     "https://vjs.zencdn.net/7.14.3/video.min.js",
     "https://cdn.jsdelivr.net/npm/videojs-hotkeys@0.2.30/videojs.hotkeys.min.js",
-    "../cookie.js?v=2",
-    "../player.js?v=5",
+    "../assets/player/cookie.js?v=2",
+    "../assets/player/player.js?v=5",
 )
 
 
