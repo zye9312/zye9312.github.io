@@ -5,6 +5,16 @@ var currentSourceIndex = -1;
 
 var autoplayNext = true;
 
+// Video.js and Safari's native fullscreen controls operate on the same media
+// element. Keep source changes and automatic episode changes single-flight so
+// native seeking cannot race with a synthetic player transition.
+var sourceLoadId = 0;
+var restoredSourceLoadId = -1;
+var sourceIsChanging = false;
+var episodeChangeHandled = false;
+var seekInProgress = false;
+var suppressEndingUntil = 0;
+
 // The values embedded in each generated HTML page remain the defaults.
 // Browser-local overrides are stored per video and never leave this device.
 var pageDefaultStartTime = Number(startTime) || 0;
@@ -58,6 +68,84 @@ for (var i = 0; i < sources.length; i++) {
   option.value = i.toString();
   option.text = sources[i].title;
   videoSelect.appendChild(option);
+}
+
+// Download the currently selected playlist.  This intentionally downloads the
+// M3U8 file itself; merging HLS segments into a video requires a server-side
+// tool such as ffmpeg and is not reliable in a static, cross-origin page.
+var downloadButton = document.createElement("a");
+downloadButton.id = "download-m3u8";
+downloadButton.className = "player-action-button";
+downloadButton.textContent = "下载 M3U8";
+downloadButton.target = "_blank";
+downloadButton.rel = "noopener";
+downloadButton.download = "";
+downloadButton.setAttribute("aria-label", "下载当前 M3U8 播放列表");
+downloadButton.title = "下载当前选集的 M3U8 播放列表";
+videoSelect.parentNode.appendChild(downloadButton);
+
+function updateDownloadButton(index) {
+  var source = sources[index];
+  if (!source) {
+    downloadButton.removeAttribute("href");
+    downloadButton.classList.add("is-disabled");
+    return;
+  }
+
+  downloadButton.href = source.src;
+  downloadButton.download = (source.title || "video")
+    .replace(/[\\/:*?"<>|]/g, "_") + ".m3u8";
+  downloadButton.classList.remove("is-disabled");
+}
+
+function playWithWarning() {
+  var playPromise = player.play();
+  if (playPromise) {
+    playPromise.catch(function (error) {
+      console.warn("Playback could not start automatically:", error);
+    });
+  }
+}
+
+function loadEpisodeSource(index, shouldPlay) {
+  var source = sources[index];
+  if (!source) {
+    return;
+  }
+
+  sourceLoadId += 1;
+  sourceIsChanging = true;
+  episodeChangeHandled = true;
+  seekInProgress = false;
+  suppressEndingUntil = Date.now() + 1500;
+
+  player.src({ src: source.src, type: "application/x-mpegURL" });
+  updateDownloadButton(index);
+
+  // Calling play during the user's gesture is important on mobile Safari.
+  if (shouldPlay) {
+    playWithWarning();
+  }
+}
+
+function advanceToNextEpisode() {
+  if (
+    episodeChangeHandled ||
+    sourceIsChanging ||
+    currentSourceIndex < 0 ||
+    currentSourceIndex >= sources.length - 1 ||
+    !autoplayNext
+  ) {
+    return;
+  }
+
+  episodeChangeHandled = true;
+  saveTimestampCookie(0);
+  currentSourceIndex += 1;
+  videoSelect.value = currentSourceIndex.toString();
+  document.title = sources[currentSourceIndex].title.replace(/\s+/g, "_");
+  saveIndexCookie();
+  loadEpisodeSource(currentSourceIndex, true);
 }
 
 var skipPanel = document.createElement("div");
@@ -159,20 +247,10 @@ videoSelect.addEventListener("change", function (event) {
   document.title = sources[parseInt(videoSelect.value)].title.replace(/\s+/g, "_");
   currentSourceIndex = parseInt(videoSelect.value);
   if (currentSourceIndex >= 0) {
-    var selectedSrc = sources[currentSourceIndex].src;
-    var selectedType = "application/x-mpegURL";
-    player.src({ src: selectedSrc, type: selectedType });
     // Browsers block audible autoplay triggered by a synthetic event. On the
     // initial dispatch, load the source and let the user press Play. A real
     // selection change is a user gesture, so playback can start immediately.
-    if (event.isTrusted) {
-      var playPromise = player.play();
-      if (playPromise) {
-        playPromise.catch(function (error) {
-          console.warn("Playback could not start automatically:", error);
-        });
-      }
-    }
+    loadEpisodeSource(currentSourceIndex, event.isTrusted);
   }
   saveIndexCookie();
 });
@@ -181,35 +259,83 @@ videoSelect.addEventListener("change", function (event) {
 // skip head and end
 
 player.on("ended", function () {
-  saveTimestampCookie(0);
-  if (
-    currentSourceIndex >= 0 &&
-    currentSourceIndex < sources.length - 1 &&
-    autoplayNext
-  ) {
-    currentSourceIndex += 1;
-    var selectedSrc = sources[currentSourceIndex].src;
-    var selectedType = "application/x-mpegURL";
-    player.src({ src: selectedSrc, type: selectedType });
-    player.play();
-    videoSelect.value = currentSourceIndex.toString();
-    currentSourceIndex = parseInt(videoSelect.value);
+  if (currentSourceIndex >= sources.length - 1 || !autoplayNext) {
+    saveTimestampCookie(0);
+    return;
   }
+  advanceToNextEpisode();
 });
 
 player.on("loadedmetadata", function () {
-  player.currentTime(startTime);
-  loadTimestampCookie();
+  // Safari may emit metadata events again while entering/leaving its native
+  // fullscreen player. Restore progress only once for each explicit source
+  // load so those events never overwrite a native seek.
+  if (restoredSourceLoadId !== sourceLoadId) {
+    var savedTime = Number(
+      playbackState.progress[String(currentSourceIndex)]
+    );
+    var resumeTime =
+      Number.isFinite(savedTime) && savedTime > 0 ? savedTime : startTime;
+    var duration = player.duration();
+
+    if (Number.isFinite(duration) && duration > 0) {
+      resumeTime = Math.min(resumeTime, Math.max(0, duration - 0.25));
+    }
+    if (validSkipTime(resumeTime) && Math.abs(player.currentTime() - resumeTime) > 0.25) {
+      player.currentTime(resumeTime);
+    }
+    restoredSourceLoadId = sourceLoadId;
+  }
+  sourceIsChanging = false;
+  episodeChangeHandled = false;
+});
+
+player.on("seeking", function () {
+  seekInProgress = true;
+  // Never let skip-ending logic change sources while Safari is resolving a
+  // native 10-second seek. Rapid taps can keep this state active for a while.
+  suppressEndingUntil = Date.now() + 1500;
+});
+
+player.on("seeked", function () {
+  seekInProgress = false;
+  suppressEndingUntil = Date.now() + 1500;
+  saveTimestampCookie(player.currentTime());
+});
+
+player.on("pause", function () {
+  if (!sourceIsChanging) {
+    saveTimestampCookie(player.currentTime());
+  }
+});
+
+// iPhone Safari temporarily presents its own fullscreen controls. It still
+// controls this same video element, so do not copy time back and forth. On
+// return, only ask Video.js to redraw from the native element's current state.
+videoElement.addEventListener("webkitendfullscreen", function () {
+  seekInProgress = false;
+  suppressEndingUntil = Date.now() + 1500;
+  saveTimestampCookie(videoElement.currentTime);
+  player.trigger("timeupdate");
 });
 
 // Add a timeupdate event listener to the player
 player.on("timeupdate", function () {
-  // Get the current playback position
   var currentTime = player.currentTime();
-  // Check if the current time is equal to 30 seconds
-  if (currentTime >= player.duration() - endTime) {
-    // Trigger an event
-    player.trigger("ended");
+  var duration = player.duration();
+
+  if (
+    endTime > 0 &&
+    Number.isFinite(duration) &&
+    !sourceIsChanging &&
+    !seekInProgress &&
+    !player.seeking() &&
+    Date.now() >= suppressEndingUntil &&
+    currentTime >= duration - endTime
+  ) {
+    // Do not synthesize an `ended` event. Safari owns the native media event;
+    // an explicit, guarded transition keeps both control surfaces consistent.
+    advanceToNextEpisode();
   }
 });
 
