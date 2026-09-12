@@ -1,18 +1,24 @@
-from glob import glob
-import os
+from html import escape
+from pathlib import Path
+from urllib.parse import quote
 
-GIT_PATH = "/Users/yezhuo/TV-Related/zye9312.github.io/"
+PROJECT_PATH = Path(__file__).resolve().parent
+VIDEOS_PATH = PROJECT_PATH / "videos"
+
+links = sorted(VIDEOS_PATH.glob("*.html"), key=lambda link: link.stat().st_mtime, reverse=True)
 
 
-os.chdir(GIT_PATH)
-links_ = glob("videos/*.html")
-links_.sort(key=os.path.getmtime, reverse=True)
-# links_.remove("index.html")
-# links_ = sorted(links_)
-titles = [html.rsplit(" ", 2)[0].replace("_", " ")[7:] for html in links_]
-links = [link for link in links_]
+def get_title(path: Path) -> str:
+    """Remove the source and numeric ID suffix from a generated filename."""
+    parts = path.stem.rsplit(" ", 2)
+    title = parts[0] if len(parts) == 3 else path.stem
+    return title.replace("_", " ").strip()
+
+
 li_s = "\n".join(
-    [f'<li><a href="{link}">{title}</a></li>' for link, title in zip(links, titles)]
+    f'<li><a href="{escape(quote(path.relative_to(PROJECT_PATH).as_posix()))}">'
+    f'{escape(get_title(path))}</a></li>'
+    for path in links
 )
 
 index_html = f"""
@@ -49,22 +55,4 @@ index_html = f"""
 </body>
 </html>
 """
-open("index.html", "w").write(index_html)
-
-# upload to git and commit
-try:
-    import subprocess
-
-    # Change directory to the Git repository root directory
-    subprocess.run(["cd", GIT_PATH], check=True)
-
-    # Stage all modified files
-    subprocess.run(["git", "add", "."], cwd=GIT_PATH, check=True)
-
-    # Commit the changes with a commit message
-    subprocess.run(["git", "commit", "-m", "Add"], cwd=GIT_PATH, check=True)
-
-    # Push the changes to the remote repository
-    subprocess.run(["git", "push", "origin", "main"], cwd=GIT_PATH, check=True)
-except:
-    pass
+(PROJECT_PATH / "index.html").write_text(index_html, encoding="utf-8")
