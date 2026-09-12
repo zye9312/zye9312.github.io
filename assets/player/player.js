@@ -12,8 +12,6 @@ var sourceLoadId = 0;
 var restoredSourceLoadId = -1;
 var sourceIsChanging = false;
 var episodeChangeHandled = false;
-var seekInProgress = false;
-var suppressEndingUntil = 0;
 
 // The values embedded in each generated HTML page remain the defaults.
 // Browser-local overrides are stored per video and never leave this device.
@@ -116,8 +114,6 @@ function loadEpisodeSource(index, shouldPlay) {
   sourceLoadId += 1;
   sourceIsChanging = true;
   episodeChangeHandled = true;
-  seekInProgress = false;
-  suppressEndingUntil = Date.now() + 1500;
 
   player.src({ src: source.src, type: "application/x-mpegURL" });
   updateDownloadButton(index);
@@ -258,6 +254,9 @@ videoSelect.addEventListener("change", function (event) {
 //opening and ending events
 // skip head and end
 
+// Test build: do not observe seeking or timeupdate. Safari/Video.js owns all
+// user-initiated progress changes; only the media element's real ended event
+// may advance to the next episode. This temporarily disables early outro skip.
 player.on("ended", function () {
   if (currentSourceIndex >= sources.length - 1 || !autoplayNext) {
     saveTimestampCookie(0);
@@ -288,55 +287,6 @@ player.on("loadedmetadata", function () {
   }
   sourceIsChanging = false;
   episodeChangeHandled = false;
-});
-
-player.on("seeking", function () {
-  seekInProgress = true;
-  // Never let skip-ending logic change sources while Safari is resolving a
-  // native 10-second seek. Rapid taps can keep this state active for a while.
-  suppressEndingUntil = Date.now() + 1500;
-});
-
-player.on("seeked", function () {
-  seekInProgress = false;
-  suppressEndingUntil = Date.now() + 1500;
-  saveTimestampCookie(player.currentTime());
-});
-
-player.on("pause", function () {
-  if (!sourceIsChanging) {
-    saveTimestampCookie(player.currentTime());
-  }
-});
-
-// iPhone Safari temporarily presents its own fullscreen controls. It still
-// controls this same video element, so do not copy time back and forth. On
-// return, only ask Video.js to redraw from the native element's current state.
-videoElement.addEventListener("webkitendfullscreen", function () {
-  seekInProgress = false;
-  suppressEndingUntil = Date.now() + 1500;
-  saveTimestampCookie(videoElement.currentTime);
-  player.trigger("timeupdate");
-});
-
-// Add a timeupdate event listener to the player
-player.on("timeupdate", function () {
-  var currentTime = player.currentTime();
-  var duration = player.duration();
-
-  if (
-    endTime > 0 &&
-    Number.isFinite(duration) &&
-    !sourceIsChanging &&
-    !seekInProgress &&
-    !player.seeking() &&
-    Date.now() >= suppressEndingUntil &&
-    currentTime >= duration - endTime
-  ) {
-    // Do not synthesize an `ended` event. Safari owns the native media event;
-    // an explicit, guarded transition keeps both control surfaces consistent.
-    advanceToNextEpisode();
-  }
 });
 
 // close event, save episode cookie

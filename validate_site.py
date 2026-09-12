@@ -19,7 +19,7 @@ REQUIRED_ASSETS = (
     "https://vjs.zencdn.net/7.14.3/video.min.js",
     "https://cdn.jsdelivr.net/npm/videojs-hotkeys@0.2.30/videojs.hotkeys.min.js",
     "../assets/player/cookie.js?v=2",
-    "../assets/player/player.js?v=6",
+    "../assets/player/player.js?v=7",
 )
 
 
