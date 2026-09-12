@@ -14,7 +14,7 @@ SOURCE_PATTERN = re.compile(r"var\s+sources\s*=\s*(\[.*?\]);", re.DOTALL)
 
 REQUIRED_ASSETS = (
     "../assets/player/video.css?v=4",
-    "../assets/player/player.js?v=8",
+    "../assets/player/player.js?v=9",
 )
 
 

@@ -25,6 +25,23 @@ videoSelect.addEventListener("change", function () {
   loadEpisode(Number(videoSelect.value));
 });
 
+videoElement.addEventListener("ended", function () {
+  var nextIndex = Number(videoSelect.value) + 1;
+  if (nextIndex >= sources.length) {
+    return;
+  }
+
+  videoSelect.value = nextIndex.toString();
+  loadEpisode(nextIndex);
+
+  var playPromise = videoElement.play();
+  if (playPromise) {
+    playPromise.catch(function (error) {
+      console.warn("下一集无法自动播放，请手动点击播放。", error);
+    });
+  }
+});
+
 if (sources.length > 0) {
   videoSelect.value = "0";
   loadEpisode(0);
