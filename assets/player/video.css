@@ -1,78 +1,7 @@
-input[type="text"] {
-  display: inline;
-  margin: 10px 0;
-  padding: 8px;
-  /* font-size: 16px; */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
 select {
   font-size: 16px;
   box-shadow: none;
   outline: none;
-}
-
-.vjs-skip-control {
-  width: 4em !important;
-  font-size: 11px !important;
-  font-weight: 600;
-}
-
-.vjs-skip-settings-panel {
-  position: absolute;
-  right: 12px;
-  bottom: 46px;
-  z-index: 20;
-  display: grid;
-  grid-template-columns: 1fr 72px;
-  gap: 9px 12px;
-  width: 260px;
-  padding: 14px;
-  color: #fff;
-  background: rgba(20, 20, 20, 0.94);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 8px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
-  font-size: 13px;
-}
-
-.vjs-skip-settings-panel.is-hidden {
-  display: none;
-}
-
-.vjs-skip-settings-panel label {
-  display: contents;
-}
-
-.vjs-skip-settings-panel input[type="number"] {
-  width: 72px;
-  padding: 5px 7px;
-  color: #111;
-  background: #fff;
-  border: 0;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.vjs-skip-settings-panel button {
-  padding: 6px 8px;
-  color: #fff;
-  background: #3d7eff;
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.vjs-skip-settings-panel button:hover {
-  background: #2768e8;
-}
-
-#skip-status {
-  grid-column: 1 / -1;
-  min-height: 16px;
-  color: #cfd8e6;
 }
 
 #myButton {
@@ -109,25 +38,4 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-}
-
-.player-action-button {
-  display: inline-block;
-  margin-left: 0.75rem;
-  padding: 0.35rem 0.7rem;
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  color: inherit;
-  background: #f5f5f5;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.player-action-button:hover {
-  background: #e8e8e8;
-}
-
-.player-action-button.is-disabled {
-  pointer-events: none;
-  opacity: 0.5;
 }

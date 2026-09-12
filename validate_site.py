@@ -11,15 +11,10 @@ from urllib.parse import unquote, urlparse
 PROJECT_PATH = Path(__file__).resolve().parent
 VIDEOS_PATH = PROJECT_PATH / "videos"
 SOURCE_PATTERN = re.compile(r"var\s+sources\s*=\s*(\[.*?\]);", re.DOTALL)
-VIDEO_ID_PATTERN = re.compile(r'const\s+video_id\s*=\s*"([^"]+)";')
 
 REQUIRED_ASSETS = (
-    "../assets/player/video.css?v=3",
-    "https://vjs.zencdn.net/7.14.3/video-js.css",
-    "https://vjs.zencdn.net/7.14.3/video.min.js",
-    "https://cdn.jsdelivr.net/npm/videojs-hotkeys@0.2.30/videojs.hotkeys.min.js",
-    "../assets/player/cookie.js?v=2",
-    "../assets/player/player.js?v=7",
+    "../assets/player/video.css?v=4",
+    "../assets/player/player.js?v=8",
 )
 
 
@@ -41,12 +36,12 @@ def validate_video_page(path: Path):
 
     source_match = SOURCE_PATTERN.search(content)
     if not source_match:
-        return [f"{path.name}: sources array not found"], None, 0
+        return [f"{path.name}: sources array not found"], 0
 
     try:
         sources = json.loads(source_match.group(1))
     except json.JSONDecodeError as error:
-        return [f"{path.name}: sources is not valid JSON ({error})"], None, 0
+        return [f"{path.name}: sources is not valid JSON ({error})"], 0
 
     if not sources:
         errors.append(f"{path.name}: sources is empty")
@@ -63,18 +58,20 @@ def validate_video_page(path: Path):
         if not parsed or parsed.scheme not in {"http", "https"} or not parsed.netloc:
             errors.append(f"{path.name}: episode {index + 1} has an invalid URL")
 
-    video_id_match = VIDEO_ID_PATTERN.search(content)
-    video_id = video_id_match.group(1) if video_id_match else None
-    if not video_id:
-        errors.append(f"{path.name}: video_id not found")
-
     for asset in REQUIRED_ASSETS:
         if asset not in content:
             errors.append(f"{path.name}: missing pinned asset {asset}")
-    if "hls.js" in content or "/latest/" in content or "@latest" in content:
+    if (
+        "videojs" in content
+        or "video-js" in content
+        or "cookie.js" in content
+        or "hls.js" in content
+        or "/latest/" in content
+        or "@latest" in content
+    ):
         errors.append(f"{path.name}: contains an unpinned or unused dependency")
 
-    return errors, video_id, len(sources)
+    return errors, len(sources)
 
 
 def validate_index(video_pages):
@@ -103,22 +100,15 @@ def validate_index(video_pages):
 def main():
     video_pages = sorted(VIDEOS_PATH.glob("*.html"))
     errors = []
-    ids = {}
     episode_count = 0
 
     if not video_pages:
         errors.append("No generated video pages found")
 
     for path in video_pages:
-        page_errors, video_id, count = validate_video_page(path)
+        page_errors, count = validate_video_page(path)
         errors.extend(page_errors)
         episode_count += count
-        if video_id:
-            if video_id in ids:
-                errors.append(
-                    f"Duplicate video_id {video_id}: {ids[video_id].name}, {path.name}"
-                )
-            ids[video_id] = path
 
     errors.extend(validate_index(video_pages))
 
@@ -130,7 +120,7 @@ def main():
 
     print(
         f"Validation passed: {len(video_pages)} video pages, "
-        f"{episode_count} episodes, {len(ids)} unique video IDs."
+        f"{episode_count} episodes."
     )
     return 0
 
