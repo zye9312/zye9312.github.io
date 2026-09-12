@@ -9,23 +9,18 @@ var autoplayNext = true;
 // Browser-local overrides are stored per video and never leave this device.
 var pageDefaultStartTime = Number(startTime) || 0;
 var pageDefaultEndTime = Number(endTime) || 0;
-var skipStorageKey = "skip_times_" + video_id;
 
 function validSkipTime(value) {
   return Number.isFinite(value) && value >= 0;
 }
 
 function loadSkipTimes() {
-  try {
-    var saved = JSON.parse(localStorage.getItem(skipStorageKey));
-    if (saved && validSkipTime(Number(saved.startTime))) {
-      startTime = Number(saved.startTime);
-    }
-    if (saved && validSkipTime(Number(saved.endTime))) {
-      endTime = Number(saved.endTime);
-    }
-  } catch (error) {
-    console.warn("Could not load browser skip settings; using page defaults.", error);
+  var saved = playbackState.skip;
+  if (saved && validSkipTime(Number(saved.startTime))) {
+    startTime = Number(saved.startTime);
+  }
+  if (saved && validSkipTime(Number(saved.endTime))) {
+    endTime = Number(saved.endTime);
   }
 }
 
@@ -108,27 +103,17 @@ saveSkipButton.addEventListener("click", function () {
 
   startTime = newStartTime;
   endTime = newEndTime;
-  try {
-    localStorage.setItem(
-      skipStorageKey,
-      JSON.stringify({ startTime: startTime, endTime: endTime })
-    );
-    skipStatus.textContent = "Saved in this browser.";
-    setTimeout(function () {
-      skipPanel.classList.add("is-hidden");
-    }, 500);
-  } catch (error) {
-    skipStatus.textContent = " Browser storage is unavailable.";
-    console.warn("Could not save browser skip settings.", error);
-  }
+  playbackState.skip = { startTime: startTime, endTime: endTime };
+  playbackState = storePlaybackState(playbackState);
+  skipStatus.textContent = "Saved in this browser.";
+  setTimeout(function () {
+    skipPanel.classList.add("is-hidden");
+  }, 500);
 });
 
 resetSkipButton.addEventListener("click", function () {
-  try {
-    localStorage.removeItem(skipStorageKey);
-  } catch (error) {
-    console.warn("Could not clear browser skip settings.", error);
-  }
+  playbackState.skip = null;
+  playbackState = storePlaybackState(playbackState);
   startTime = pageDefaultStartTime;
   endTime = pageDefaultEndTime;
   startInput.value = startTime;
