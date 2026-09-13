@@ -19,7 +19,11 @@ def get_source(path: Path) -> str:
     """Return a short display name for the source suffix in the filename."""
     parts = path.stem.rsplit(" ", 2)
     source = parts[1] if len(parts) == 3 else "local"
-    return {"duboku": "独播库", "liangzi": "量子"}.get(source, source.upper())
+    return {
+        "duboku": "独播库",
+        "liangzi": "量子",
+        "zy360": "360资源",
+    }.get(source, source.upper())
 
 
 li_s = "\n".join(
@@ -89,6 +93,7 @@ index_html = f"""
                 <li><a href="https://www.dbku.tv">独播库</a></li>
                 <li><a href="https://gz360.tv">瓜子影视</a></li>
                 <li><a href="https://aigua8.com">爱瓜 TV</a></li>
+                <li><a href="https://360zyzz.com">360资源</a></li>
             </ul>
         </section>
     </main>
