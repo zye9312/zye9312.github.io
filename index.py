@@ -1,9 +1,27 @@
 from html import escape
 from pathlib import Path
+import sys
 from urllib.parse import quote
 
 PROJECT_PATH = Path(__file__).resolve().parent
 VIDEOS_PATH = PROJECT_PATH / "videos"
+
+SOURCE_NAMES = {"duboku": "独播库", "liangzi": "量子", "zy360": "360资源"}
+GENERATOR_SRC = PROJECT_PATH.parent / "tv2html" / "src"
+if GENERATOR_SRC.is_dir():
+    sys.path.insert(0, str(GENERATOR_SRC))
+    try:
+        from tv2html_core.const import INFO
+
+        SOURCE_NAMES.update(
+            {
+                key: info["display_name"]
+                for key, info in INFO.items()
+                if info.get("display_name")
+            }
+        )
+    except (ImportError, KeyError, OSError, ValueError):
+        pass
 
 links = sorted(VIDEOS_PATH.glob("*.html"), key=lambda link: link.stat().st_mtime, reverse=True)
 
@@ -19,11 +37,7 @@ def get_source(path: Path) -> str:
     """Return a short display name for the source suffix in the filename."""
     parts = path.stem.rsplit(" ", 2)
     source = parts[1] if len(parts) == 3 else "local"
-    return {
-        "duboku": "独播库",
-        "liangzi": "量子",
-        "zy360": "360资源",
-    }.get(source, source.upper())
+    return SOURCE_NAMES.get(source, source.upper())
 
 
 li_s = "\n".join(
