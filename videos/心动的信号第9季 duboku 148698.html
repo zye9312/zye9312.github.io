@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心动的信号第9季</title>
+    <link rel="stylesheet" href="../assets/player/video.css?v=6">
+</head>
+
+<body>
+    <main class="watch-page">
+        <div id="player-toolbar" class="episode-toolbar">
+            <div class="episode-picker">
+                <label for="video-select">选集</label>
+                <select id="video-select" aria-label="选择剧集">
+                </select>
+            </div>
+        </div>
+        <div class="video-container">
+            <video id="my-video" controls playsinline preload="auto">
+            </video>
+        </div>
+    </main>
+    <script>
+
+        var sources = [
+            {"src": "https://vid.dbokutv.com/20260802/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsTsRsGlUdajU6HaU6XaEMejCZ0oDZ0tCp5uP71pBJ0pEJCpCpapHIvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260731(先导片上)"},
+            {"src": "https://vid.dbokutv.com/20260802/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlUdajU6HaU6XaEMejCZ0oDZ0tCp5uP71uBJ0oHKCmCpX1H2vjS34/chunklist.m3u8", "title": "心动的信号第9季 20260731(先导片下)"},
+            {"src": "https://vid.dbokutv.com/20260803/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xqyIruP6HuQ6GvQYqoC38sC3WmCsGnSNCjC34qDKCoGpSmBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260803(第1期上)"},
+            {"src": "https://vid.dbokutv.com/20260803/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlUdajU6HaU6XaEMejCZ0oDZ0uC3DaCN5wBJ0nCJavDJ8vH2vjS34/chunklist.m3u8", "title": "心动的信号第9季 20260803(第1期中)"},
+            {"src": "https://vid.dbokutv.com/20260803/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlUdajU6HaU6XaEMejCZ0oDZ0uC3DaCN5pOtWjC395C4GsE4D4BcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260803(第1期上纯享)"},
+            {"src": "https://vid.dbokutv.com/20260803/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsTsRsGlUdajU6HaU6XaEMejCZ0oDZ0uC3DaCN5wOtWjC351D3avGJKsBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260803(第1期中纯享)"},
+            {"src": "https://vid.dbokutv.com/20260804/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlUdajU6HaU6XaEMejCZ0oDZ0uC3HaCN5uBJ0pDJ0tDJ8vH2vjS34/chunklist.m3u8", "title": "心动的信号第9季 20260804(第1期下)"},
+            {"src": "https://vid.dbokutv.com/20260804/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlUdajU6HaU6XaEMejCZ0oDZ0uC3HaCN5uOtWjC3CqEKKqC4GpBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260804(第1期下纯享)"},
+            {"src": "https://vid.dbokutv.com/20260805/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlUdajU6HaU6XaEMejCZ0oDZ0uC3LZSMDaBJ0pE30vGKKqD2vjS34/chunklist.m3u8", "title": "心动的信号第9季 20260805(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260806/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtTsRsGlUdajU6HaU6XaEMejCZ0oDZ0uC3PaCN5gPtCjC356HZatCK4nBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260806(第1期加更上)"},
+            {"src": "https://vid.dbokutv.com/20260806/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsTsRsGlUdajU6HaU6XaEMejCZ0oDZ0uC3PaCN5gPtWjC30uC3D4CK4vBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260806(第1期加更下)"},
+            {"src": "https://vid.dbokutv.com/20260807/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtLsRsGlUdajU6HaU6XaEMejCZ0oDZ0uC3TuP71hSoqmCpKtH3T4EK4kRN0q/chunklist.m3u8", "title": "心动的信号第9季 20260807(先导陪看上)"},
+            {"src": "https://vid.dbokutv.com/20260807/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsXsRsGlUdajU6HaU6XaEMejCZ0oDZ0uC3TaCN5mQtCjC355DJGpH48pBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260807(第1期陪看上)"},
+            {"src": "https://vid.dbokutv.com/20260808/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xqyIruP6HuQ6GvQYqoC38sC3WmE7XaS6juBJ0nC38nDq4oHYvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260808(先导陪看下)"},
+            {"src": "https://vid.dbokutv.com/20260808/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlUdajU6HaU6XaEMejCZ0oDZ0uC3XaCN5mQtWjC34nD34qCp15BcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260808(第1期陪看下)"},
+            {"src": "https://vid.dbokutv.com/20260809/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlUdajU6HaU6XaEMejCZ0oDZ0uC3beU7HgBJ0nHK4qHZ8uGYvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260809(花絮特辑)"},
+            {"src": "https://vid.dbokutv.com/20260810/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJ1aCd5pBJ0nGJb4GJ4vCIvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260810(第2期上)"},
+            {"src": "https://vid.dbokutv.com/20260810/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJ1aCd5wBJ0oHJ4tCZ8vEIvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260810(第2期中)"},
+            {"src": "https://vid.dbokutv.com/20260810/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJ1aCd5pOtWjC3D1Cq4rCpP5BcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260810(第2期上纯享)"},
+            {"src": "https://vid.dbokutv.com/20260810/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtLsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJ1aCd5wOtWjC34mCp14DJD3BcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260810(第2期中纯享)"},
+            {"src": "https://vid.dbokutv.com/20260811/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJ5aCd5uBJ0pCZP2D4P1H2vjS34/chunklist.m3u8", "title": "心动的信号第9季 20260811(第2期下)"},
+            {"src": "https://vid.dbokutv.com/20260811/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtLsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJ5aCd5uOtWjC38rDJT1Gp0mBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260811(第2期下纯享)"},
+            {"src": "https://vid.dbokutv.com/20260812/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtPsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJ9ZSMDaBJ0mDZb6GJOuDovjS34/chunklist.m3u8", "title": "心动的信号第9季 20260812(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260813/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xqyIruP6HuQ6GvQYqoC38sC3WnCsGoSMfdSoqmCpOqD3GtCK4kRN0q/chunklist.m3u8", "title": "心动的信号第9季 20260813(第2期加更上)"},
+            {"src": "https://vid.dbokutv.com/20260813/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJDaCd5gPtWjC34oC3T5DqKtBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260813(第2期加更下)"},
+            {"src": "https://vid.dbokutv.com/20260814/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xqyIruP6HuQ6GvQYqoC38sC3WnD6GoSN1hSoqmCJaqE3arCpOkRN0q/chunklist.m3u8", "title": "心动的信号第9季 20260814(第2期陪看上)"},
+            {"src": "https://vid.dbokutv.com/20260815/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xqyIruP6HuQ6GvQYqoC38sC3WnDMGoSN1hU2qmCpX3CZ8vHZWkRN0q/chunklist.m3u8", "title": "心动的信号第9季 20260815(第2期陪看下)"},
+            {"src": "https://vid.dbokutv.com/20260816/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsXsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJPeU7HgBJ0nCJ4nD48pDIvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260816(花絮特辑)"},
+            {"src": "https://vid.dbokutv.com/20260817/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJTaCt5pBJ0nD3P4Dp8sDovjS34/chunklist.m3u8", "title": "心动的信号第9季 20260817(第3期上)"},
+            {"src": "https://vid.dbokutv.com/20260817/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJTaCt5wSoqmCZSsCZStDKOkRN0q/chunklist.m3u8", "title": "心动的信号第9季 20260817(第3期中（上）)"},
+            {"src": "https://vid.dbokutv.com/20260817/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJTaCt5pOtWjC314D34tDZapBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260817(第3期上纯享)"},
+            {"src": "https://vid.dbokutv.com/20260817/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJTaCt5wSsDuBJ0pDKKqC30qGovjS34/chunklist.m3u8", "title": "心动的信号第9季 20260817(第3期中（上）纯享)"},
+            {"src": "https://vid.dbokutv.com/20260818/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJXaCt5wU2qmCKGoH4OoCpWkRN0q/chunklist.m3u8", "title": "心动的信号第9季 20260818(第3期中（下）)"},
+            {"src": "https://vid.dbokutv.com/20260818/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJXaCt5uBJ0oGpatGZ0nGIvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260818(第3期下)"},
+            {"src": "https://vid.dbokutv.com/20260818/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJXaCt5wU6DuBJ0nGZb5DpL6C2vjS34/chunklist.m3u8", "title": "心动的信号第9季 20260818(第3期中（下）纯享)"},
+            {"src": "https://vid.dbokutv.com/20260818/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJXaCt5uOtWjC315H3SrDZb3BcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260818(第3期下纯享)"},
+            {"src": "https://vid.dbokutv.com/20260820/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsTsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCJbZSMDaBJ0nCqCpHaGqD2vjS34/chunklist.m3u8", "title": "心动的信号第9季 20260819(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260821/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCZ1aCt5gPtCjC38mC3OpHZ0qBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260820(第3期加更上)"},
+            {"src": "https://vid.dbokutv.com/20260821/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCZ1aCt5gPtWjC38nC3CsCJWsBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260820(第3期加更下)"},
+            {"src": "https://vid.dbokutv.com/20260822/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHbTcyo5xqyIruP6HuQ6GvQYqoC38sC3WoCMGpSN1hSoqmC3X5E3CvDq4kRN0q/chunklist.m3u8", "title": "心动的信号第9季 20260821(第3期陪看上)"},
+            {"src": "https://vid.dbokutv.com/20260822/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCZ5aCt5mQtWjC392C48vCp92BcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260821(第3期陪看下)"},
+            {"src": "https://vid.dbokutv.com/20260823/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCZDeU7HgBJ0nHK93D4P6HYvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260823(花絮特辑)"},
+            {"src": "https://vid.dbokutv.com/20260824/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtTsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCZHaD75pBJ0nCaD5E3P5GIvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260824(第4期上)"},
+            {"src": "https://vid.dbokutv.com/20260824/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlUdajU6HaU6XaEMejCZ0oDZ0uCZHaD75wSoqmCZ51HK8mCq4kRN0q/chunklist.m3u8", "title": "心动的信号第9季 20260824(第4期中（上）)"},
+            {"src": "https://vid.dbokutv.com/20260825/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtTsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCZLaD75wU2qmCK8rHKL2HZ0kRN0q/chunklist.m3u8", "title": "心动的信号第9季 20260825(第4期中（下）)"},
+            {"src": "https://vid.dbokutv.com/20260825/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt5sRsGlUdajU6HaU6XaEMejCZ0oDZ0uCZLaD75uBJ0oE3OmCK8mHYvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260825(第4期下)"},
+            {"src": "https://vid.dbokutv.com/20260827/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xqyIruP6HuQ6GvQYqoC38sC3WoDcDnOsGjC351E38nCZ8qBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260826(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260827/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCZTaD75gPtCjC34uCpP6DKCrBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260827(第4期加更上)"},
+            {"src": "https://vid.dbokutv.com/20260827/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCZTaD75gPtWjC34nGJ0tE3GqBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260827(第4期加更下)"},
+            {"src": "https://vid.dbokutv.com/20260828/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCZXaD75mQtCjC30sHJT5C351BcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260828(第4期陪看上)"},
+            {"src": "https://vid.dbokutv.com/20260828/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCZXaD75mQtejC313E4P1EK95BcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260828(第4期陪看中)"},
+            {"src": "https://vid.dbokutv.com/20260829/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCZbaD75mQtWjC34mDKL5DZOsBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260829(第4期陪看下)"},
+            {"src": "https://vid.dbokutv.com/20260830/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlUdajU6HaU6XaEMejCZ0oDZ0uCp1eU7HgBJ0mGpasDqH1HYvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260830(花絮特辑)"},
+            {"src": "https://vid.dbokutv.com/20260831/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCp5aDN5pBJ0pDpP4E3CtCYvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260831(第5期上)"},
+            {"src": "https://vid.dbokutv.com/20260831/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xqyIruP6HuQ6GvQYqoC38sC3WpCMGrSNfpBJ0mHZSqHJamGIvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260831(第5期中上)"},
+            {"src": "https://vid.dbokutv.com/20260831/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCp5aDN5pOtWjC312E492EJX2BcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260831(第5期上纯享)"},
+            {"src": "https://vid.dbokutv.com/20260831/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xqyIruP6HuQ6GvQYqoC38sC3WpCMGrSNfpOtWjC352CaCnCK93BcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260831(第5期中上纯享)"},
+            {"src": "https://vid.dbokutv.com/20260901/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlUdajU6HaU6XaEMejCZ0oDZ0uCp5aDN5wSoqmC3T1EJ0qCZ4kRN0q/chunklist.m3u8", "title": "心动的信号第9季 20260831(第5期中（上）)"},
+            {"src": "https://vid.dbokutv.com/20260901/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlUdajU6HaU6XaEMejCZ0oDZ0uCp5aDN5wSsDuBJ0pE3GqC3aoHYvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260831(第5期中（上）纯享)"},
+            {"src": "https://vid.dbokutv.com/20260901/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC35aDN5wU2qmCpGoDJWmD38kRN0q/chunklist.m3u8", "title": "心动的信号第9季 20260901(第5期中（下）)"},
+            {"src": "https://vid.dbokutv.com/20260901/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC35aDN5uBJ0oGaGsD3SvEIvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260901(第5期下)"},
+            {"src": "https://vid.dbokutv.com/20260901/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC35aDN5wU6DuBJ0nDpT4D4KqCIvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260901(第5期中（下）纯享)"},
+            {"src": "https://vid.dbokutv.com/20260901/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC35aDN5uOtWjC311E30uC3D1BcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260901(第5期下纯享)"},
+            {"src": "https://vid.dbokutv.com/20260902/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC34jC3CuGpWsH4GoBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260901"},
+            {"src": "https://vid.dbokutv.com/20260902/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC39ZSMDaBJ0nHJOuGJ0vDovjS34/chunklist.m3u8", "title": "心动的信号第9季 20260902(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260903/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtHsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC3DaDN5gPtCjC393CpSmCZD5BcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260903(第5期加更上)"},
+            {"src": "https://vid.dbokutv.com/20260903/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC3DaDN5gPtWjC38sH3T3CpSoBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260903(第5期加更下)"},
+            {"src": "https://vid.dbokutv.com/20260904/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsyxDx8NlJoMl38oF3Go7BKMcHWP6nWSc1eo6hYuDRcMc1WReI6O8Q6YbpQu64/chunklist.m3u8", "title": "心动的信号第9季 20260904(第5期陪看上)"},
+            {"src": "https://vid.dbokutv.com/20260904/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC3HaDN5mQtWjC312E4KoDaGnBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260904(第5期陪看下)"},
+            {"src": "https://vid.dbokutv.com/20260906/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC3PeU7HgBJ0pCaP6CqOoDYvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260906(花絮特辑)"},
+            {"src": "https://vid.dbokutv.com/20260907/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC3TaDd5pBJ0mDpSrDJL2CovjS34/chunklist.m3u8", "title": "心动的信号第9季 20260907(第6期上)"},
+            {"src": "https://vid.dbokutv.com/20260907/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsvsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC3TaDd5wBJ0oDpStGKKpDovjS34/chunklist.m3u8", "title": "心动的信号第9季 20260907(第6期中)"},
+            {"src": "https://vid.dbokutv.com/20260907/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xqyIruP6HuQ6GvQYqoC38sC3amDsGsSNDZU2qmC4GrCKD5CaKkRN0q/chunklist.m3u8", "title": "心动的信号第9季 20260907(第6期上纯享)"},
+            {"src": "https://vid.dbokutv.com/20260907/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC3TaDd5wOtWjC3D1C44nD493BcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260907(第6期中纯享)"},
+            {"src": "https://vid.dbokutv.com/20260908/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC3XaDd5uBJ0nGJ8oCqOvGIvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260908(第6期下)"},
+            {"src": "https://vid.dbokutv.com/20260908/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtLsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC3XaDd5uOtWjC3D1GJP3Cp0sBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260908(第6期下纯享)"},
+            {"src": "https://vid.dbokutv.com/20260909/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtLsRsGlUdajU6HaU6XaEMejCZ0oDZ0vC3bZSMDaBJ0oDqL1DqKvDYvjS34/chunklist.m3u8", "title": "心动的信号第9季 20260909(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260910/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsvsRsGlUdajU6HaU6XaEMejCZ0oDZ0vCJ1aDd5gPtCjC393HZ92DKOuBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260910(第6期加更上)"},
+            {"src": "https://vid.dbokutv.com/20260910/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsyxDx8NlJoMl38oF3Go7BKMcHWP6nWSc9Wo6pYrCxmMc1WWcXaX8HgQbpQu64/chunklist.m3u8", "title": "心动的信号第9季 20260910(第6期加更下)"},
+            {"src": "https://vid.dbokutv.com/20260911/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlUdajU6HaU6XaEMejCZ0oDZ0vCJ5aDd5mQtCjC38qGK96DqCnBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260911(第6期陪看上)"},
+            {"src": "https://vid.dbokutv.com/20260911/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtDsRsGlUdajU6HaU6XaEMejCZ0oDZ0vCJ5aDd5mQtWjC314Cq4qGZWvBcrmD0/chunklist.m3u8", "title": "心动的信号第9季 20260911(第6期陪看下)"},
+            {"src": "https://vid.dbokutv.com/20260913/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlUdajU6HaU6XaEMejCZ0oDZ0vCJDeU7HgBJ0mGp52GaH6GovjS34/chunklist.m3u8", "title": "心动的信号第9季 20260913(花絮特辑)"}
+        ];
+    </script>
+    <script src="../assets/player/player.js?v=12"></script>
+</body>
+</html>
