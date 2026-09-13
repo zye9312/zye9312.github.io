@@ -46,6 +46,13 @@ button {
   line-height: 1.08;
 }
 
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
 .eyebrow {
   margin: 0 0 7px;
   color: #829eff;
@@ -90,6 +97,7 @@ button {
   border: 0;
 }
 
+#refresh-button,
 #random-button,
 #youtube_src {
   min-height: 38px;
@@ -102,12 +110,14 @@ button {
   transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
 }
 
+#refresh-button:hover,
 #random-button:hover,
 #youtube_src:hover {
   border-color: #6f8fff;
   background: #35415f;
 }
 
+#refresh-button:active,
 #random-button:active,
 #youtube_src:active {
   transform: translateY(1px);
@@ -198,7 +208,15 @@ button {
 
 @media (max-width: 640px) {
   .home-header {
-    align-items: center;
+    align-items: flex-start;
+  }
+
+  .header-actions {
+    align-items: flex-end;
+    flex-direction: column;
+  }
+
+  .home-header {
     padding: 26px 12px 18px;
   }
 

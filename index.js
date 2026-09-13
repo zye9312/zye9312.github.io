@@ -24,3 +24,14 @@ function redirectToRandomPage() {
 
 const button = document.getElementById("random-button");
 button.addEventListener("click", redirectToRandomPage);
+
+// iOS home-screen apps do not show Safari's reload controls. Add a manual
+// cache-busting reload so a newly generated index.html can be fetched from
+// GitHub Pages without requiring the user to remove and re-add the app.
+const refreshButton = document.getElementById("refresh-button");
+refreshButton.addEventListener("click", function () {
+  const url = new URL(window.location.href);
+  url.search = "";
+  url.searchParams.set("refresh", Date.now().toString());
+  window.location.replace(url.toString());
+});
