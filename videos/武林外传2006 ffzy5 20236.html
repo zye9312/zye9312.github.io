@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>武林外传2006</title>
+    <link rel="stylesheet" href="../assets/player/video.css?v=6">
+</head>
+
+<body>
+    <main class="watch-page">
+        <div id="player-toolbar" class="episode-toolbar">
+            <div class="episode-picker">
+                <label for="video-select">选集</label>
+                <select id="video-select" aria-label="选择剧集">
+                </select>
+            </div>
+        </div>
+        <div class="video-container">
+            <video id="my-video" controls playsinline preload="auto">
+            </video>
+        </div>
+    </main>
+    <script>
+
+        var sources = [
+            {"src": "https://vip.ffzy-play.com/20221206/30372_8a1c4768/index.m3u8", "title": "武林外传2006 第01集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30373_e44493e9/index.m3u8", "title": "武林外传2006 第02集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30374_8792de05/index.m3u8", "title": "武林外传2006 第03集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30375_24507892/index.m3u8", "title": "武林外传2006 第04集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30376_b34be1c6/index.m3u8", "title": "武林外传2006 第05集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30377_47787c3b/index.m3u8", "title": "武林外传2006 第06集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30378_087ab7a2/index.m3u8", "title": "武林外传2006 第07集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30379_186be8ae/index.m3u8", "title": "武林外传2006 第08集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30380_095d4bcd/index.m3u8", "title": "武林外传2006 第09集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30381_e21f608c/index.m3u8", "title": "武林外传2006 第10集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30382_d7664caf/index.m3u8", "title": "武林外传2006 第11集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30383_497b5adb/index.m3u8", "title": "武林外传2006 第12集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30384_5cf5c130/index.m3u8", "title": "武林外传2006 第13集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30386_df380250/index.m3u8", "title": "武林外传2006 第14集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30385_dae3f061/index.m3u8", "title": "武林外传2006 第15集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30387_a477eea0/index.m3u8", "title": "武林外传2006 第16集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30390_b739abf6/index.m3u8", "title": "武林外传2006 第17集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30388_14215e18/index.m3u8", "title": "武林外传2006 第18集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30389_953b6524/index.m3u8", "title": "武林外传2006 第19集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30393_daef1ae3/index.m3u8", "title": "武林外传2006 第20集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30392_f8f4c780/index.m3u8", "title": "武林外传2006 第21集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30391_d5e88cca/index.m3u8", "title": "武林外传2006 第22集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30394_a5bdbff5/index.m3u8", "title": "武林外传2006 第23集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30396_f80ac6df/index.m3u8", "title": "武林外传2006 第24集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30395_6c401d88/index.m3u8", "title": "武林外传2006 第25集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30397_9efaf8f7/index.m3u8", "title": "武林外传2006 第26集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30398_f9617b9d/index.m3u8", "title": "武林外传2006 第27集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30400_df1fb1cd/index.m3u8", "title": "武林外传2006 第28集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30399_97704e6a/index.m3u8", "title": "武林外传2006 第29集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30401_81708f60/index.m3u8", "title": "武林外传2006 第30集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30404_c4d46e57/index.m3u8", "title": "武林外传2006 第31集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30403_e94b351d/index.m3u8", "title": "武林外传2006 第32集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30402_33e931aa/index.m3u8", "title": "武林外传2006 第33集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30405_a280bc03/index.m3u8", "title": "武林外传2006 第34集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30407_9a6cf3e7/index.m3u8", "title": "武林外传2006 第35集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30406_2ffedcab/index.m3u8", "title": "武林外传2006 第36集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30408_9706e24e/index.m3u8", "title": "武林外传2006 第37集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30409_f77ddc27/index.m3u8", "title": "武林外传2006 第38集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30410_7099d538/index.m3u8", "title": "武林外传2006 第39集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30411_06d2a9fb/index.m3u8", "title": "武林外传2006 第40集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30412_a13796dd/index.m3u8", "title": "武林外传2006 第41集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30413_342ca755/index.m3u8", "title": "武林外传2006 第42集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30414_565fb1c2/index.m3u8", "title": "武林外传2006 第43集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30415_84cc036b/index.m3u8", "title": "武林外传2006 第44集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30416_e73c0f76/index.m3u8", "title": "武林外传2006 第45集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30417_22044076/index.m3u8", "title": "武林外传2006 第46集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30418_d990f777/index.m3u8", "title": "武林外传2006 第47集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30419_d3d4eebf/index.m3u8", "title": "武林外传2006 第48集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30420_e7a88e51/index.m3u8", "title": "武林外传2006 第49集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30421_cd442784/index.m3u8", "title": "武林外传2006 第50集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30423_c70bcba4/index.m3u8", "title": "武林外传2006 第51集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30422_228edc6a/index.m3u8", "title": "武林外传2006 第52集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30425_92518393/index.m3u8", "title": "武林外传2006 第53集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30424_382cb873/index.m3u8", "title": "武林外传2006 第54集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30426_d0021168/index.m3u8", "title": "武林外传2006 第55集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30427_bb27f9a5/index.m3u8", "title": "武林外传2006 第56集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30428_0d96c8cb/index.m3u8", "title": "武林外传2006 第57集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30429_662e8937/index.m3u8", "title": "武林外传2006 第58集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30430_6c31dc92/index.m3u8", "title": "武林外传2006 第59集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30431_0cc9dc50/index.m3u8", "title": "武林外传2006 第60集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30432_294b7f93/index.m3u8", "title": "武林外传2006 第61集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30433_83c96893/index.m3u8", "title": "武林外传2006 第62集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30436_d7e2a824/index.m3u8", "title": "武林外传2006 第63集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30435_3995511c/index.m3u8", "title": "武林外传2006 第64集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30434_3a4b5856/index.m3u8", "title": "武林外传2006 第65集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30437_d5ef0191/index.m3u8", "title": "武林外传2006 第66集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30438_de20e065/index.m3u8", "title": "武林外传2006 第67集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30439_97c9f118/index.m3u8", "title": "武林外传2006 第68集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30440_f94d1cd6/index.m3u8", "title": "武林外传2006 第69集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30441_0ac9f496/index.m3u8", "title": "武林外传2006 第70集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30442_2b7c02b6/index.m3u8", "title": "武林外传2006 第71集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30443_a7a5763f/index.m3u8", "title": "武林外传2006 第72集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30445_e1797b43/index.m3u8", "title": "武林外传2006 第73集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30444_1da4f3aa/index.m3u8", "title": "武林外传2006 第74集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30447_93107c6d/index.m3u8", "title": "武林外传2006 第75集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30446_94940a88/index.m3u8", "title": "武林外传2006 第76集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30448_aac33619/index.m3u8", "title": "武林外传2006 第77集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30450_afe37049/index.m3u8", "title": "武林外传2006 第78集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30449_e60ca4f9/index.m3u8", "title": "武林外传2006 第79集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30451_15fe29eb/index.m3u8", "title": "武林外传2006 第80集"},
+            {"src": "https://vip.ffzy-play.com/20221206/30452_ea41bf6c/index.m3u8", "title": "武林外传2006 第81集"}
+        ];
+    </script>
+    <script src="../assets/player/player.js?v=12"></script>
+</body>
+</html>

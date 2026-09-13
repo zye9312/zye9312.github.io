@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>武林外传</title>
+    <link rel="stylesheet" href="../assets/player/video.css?v=6">
+</head>
+
+<body>
+    <main class="watch-page">
+        <div id="player-toolbar" class="episode-toolbar">
+            <div class="episode-picker">
+                <label for="video-select">选集</label>
+                <select id="video-select" aria-label="选择剧集">
+                </select>
+            </div>
+        </div>
+        <div class="video-container">
+            <video id="my-video" controls playsinline preload="auto">
+            </video>
+        </div>
+    </main>
+    <script>
+
+        var sources = [
+            {"src": "https://bfikuncdn.com/20221123/ipViwr4V/index.m3u8", "title": "武林外传 第01集"},
+            {"src": "https://bfikuncdn.com/20221123/BXixgsZj/index.m3u8", "title": "武林外传 第02集"},
+            {"src": "https://bfikuncdn.com/20221123/ohDJWhCl/index.m3u8", "title": "武林外传 第03集"},
+            {"src": "https://bfikuncdn.com/20221123/rjtypWAr/index.m3u8", "title": "武林外传 第04集"},
+            {"src": "https://bfikuncdn.com/20221123/KXAulllD/index.m3u8", "title": "武林外传 第05集"},
+            {"src": "https://bfikuncdn.com/20221123/EC1Nu6zb/index.m3u8", "title": "武林外传 第06集"},
+            {"src": "https://bfikuncdn.com/20221123/2F6E31oi/index.m3u8", "title": "武林外传 第07集"},
+            {"src": "https://bfikuncdn.com/20221123/H6CJ8ils/index.m3u8", "title": "武林外传 第08集"},
+            {"src": "https://bfikuncdn.com/20221123/n4qnzsQz/index.m3u8", "title": "武林外传 第09集"},
+            {"src": "https://bfikuncdn.com/20221123/WczTSlk8/index.m3u8", "title": "武林外传 第10集"},
+            {"src": "https://bfikuncdn.com/20221123/NnTM2ML2/index.m3u8", "title": "武林外传 第11集"},
+            {"src": "https://bfikuncdn.com/20221123/nh1GDIQF/index.m3u8", "title": "武林外传 第12集"},
+            {"src": "https://bfikuncdn.com/20221123/UJB5pSPu/index.m3u8", "title": "武林外传 第13集"},
+            {"src": "https://bfikuncdn.com/20221123/bgkfoZYj/index.m3u8", "title": "武林外传 第14集"},
+            {"src": "https://bfikuncdn.com/20221123/h86NM4Lu/index.m3u8", "title": "武林外传 第15集"},
+            {"src": "https://bfikuncdn.com/20221123/t9JSsFie/index.m3u8", "title": "武林外传 第16集"},
+            {"src": "https://bfikuncdn.com/20221123/4ybdzO4N/index.m3u8", "title": "武林外传 第17集"},
+            {"src": "https://bfikuncdn.com/20221123/5yv1ZJYs/index.m3u8", "title": "武林外传 第18集"},
+            {"src": "https://bfikuncdn.com/20221123/PJURMJXm/index.m3u8", "title": "武林外传 第19集"},
+            {"src": "https://bfikuncdn.com/20221123/3iSIJNHY/index.m3u8", "title": "武林外传 第20集"},
+            {"src": "https://bfikuncdn.com/20221123/1nLFRk7h/index.m3u8", "title": "武林外传 第21集"},
+            {"src": "https://bfikuncdn.com/20221123/DW6so0wq/index.m3u8", "title": "武林外传 第22集"},
+            {"src": "https://bfikuncdn.com/20221123/ElL8jwNs/index.m3u8", "title": "武林外传 第23集"},
+            {"src": "https://bfikuncdn.com/20221123/Yd976jWC/index.m3u8", "title": "武林外传 第24集"},
+            {"src": "https://bfikuncdn.com/20221123/sPwvxeWy/index.m3u8", "title": "武林外传 第25集"},
+            {"src": "https://bfikuncdn.com/20221123/SKMxCjbD/index.m3u8", "title": "武林外传 第26集"},
+            {"src": "https://bfikuncdn.com/20221123/SbZdQfVL/index.m3u8", "title": "武林外传 第27集"},
+            {"src": "https://bfikuncdn.com/20221123/fxm19QXR/index.m3u8", "title": "武林外传 第28集"},
+            {"src": "https://bfikuncdn.com/20221123/TeDnxDBH/index.m3u8", "title": "武林外传 第29集"},
+            {"src": "https://bfikuncdn.com/20221123/6vVhIqaP/index.m3u8", "title": "武林外传 第30集"},
+            {"src": "https://bfikuncdn.com/20221123/rmxlKCSH/index.m3u8", "title": "武林外传 第31集"},
+            {"src": "https://bfikuncdn.com/20221123/CjIqvmcf/index.m3u8", "title": "武林外传 第32集"},
+            {"src": "https://bfikuncdn.com/20221123/9NliSq3m/index.m3u8", "title": "武林外传 第33集"},
+            {"src": "https://bfikuncdn.com/20221123/9OQQQBtH/index.m3u8", "title": "武林外传 第34集"},
+            {"src": "https://bfikuncdn.com/20221123/a55n2qhw/index.m3u8", "title": "武林外传 第35集"},
+            {"src": "https://bfikuncdn.com/20221123/8mJh0NKY/index.m3u8", "title": "武林外传 第36集"},
+            {"src": "https://bfikuncdn.com/20221123/OA9SoT6U/index.m3u8", "title": "武林外传 第37集"},
+            {"src": "https://bfikuncdn.com/20221123/WFnVJuGa/index.m3u8", "title": "武林外传 第38集"},
+            {"src": "https://bfikuncdn.com/20221123/JahjnXNx/index.m3u8", "title": "武林外传 第39集"},
+            {"src": "https://bfikuncdn.com/20221123/y666Sfle/index.m3u8", "title": "武林外传 第40集"},
+            {"src": "https://bfikuncdn.com/20221123/LUSOz53F/index.m3u8", "title": "武林外传 第41集"},
+            {"src": "https://bfikuncdn.com/20221123/agLdjVr3/index.m3u8", "title": "武林外传 第42集"},
+            {"src": "https://bfikuncdn.com/20221123/iD4ogZPR/index.m3u8", "title": "武林外传 第43集"},
+            {"src": "https://bfikuncdn.com/20221123/Y5IpZ3yi/index.m3u8", "title": "武林外传 第44集"},
+            {"src": "https://bfikuncdn.com/20221123/QCq4Qbdm/index.m3u8", "title": "武林外传 第45集"},
+            {"src": "https://bfikuncdn.com/20221123/pENkSNs2/index.m3u8", "title": "武林外传 第46集"},
+            {"src": "https://bfikuncdn.com/20221123/XRId45j9/index.m3u8", "title": "武林外传 第47集"},
+            {"src": "https://bfikuncdn.com/20221123/EfthxQFu/index.m3u8", "title": "武林外传 第48集"},
+            {"src": "https://bfikuncdn.com/20221123/zRjPPETh/index.m3u8", "title": "武林外传 第49集"},
+            {"src": "https://bfikuncdn.com/20221123/rk6sSI3V/index.m3u8", "title": "武林外传 第50集"},
+            {"src": "https://bfikuncdn.com/20221123/AZGrXdH8/index.m3u8", "title": "武林外传 第51集"},
+            {"src": "https://bfikuncdn.com/20221123/mNLtEmEW/index.m3u8", "title": "武林外传 第52集"},
+            {"src": "https://bfikuncdn.com/20221123/vbHO3mk3/index.m3u8", "title": "武林外传 第53集"},
+            {"src": "https://bfikuncdn.com/20221123/x43uTeGp/index.m3u8", "title": "武林外传 第54集"},
+            {"src": "https://bfikuncdn.com/20221123/z9dVsGky/index.m3u8", "title": "武林外传 第55集"},
+            {"src": "https://bfikuncdn.com/20221123/OaUSN9YD/index.m3u8", "title": "武林外传 第56集"},
+            {"src": "https://bfikuncdn.com/20221123/sY9vDccA/index.m3u8", "title": "武林外传 第57集"},
+            {"src": "https://bfikuncdn.com/20221123/XReOEG2d/index.m3u8", "title": "武林外传 第58集"},
+            {"src": "https://bfikuncdn.com/20221123/4IxN5JF1/index.m3u8", "title": "武林外传 第59集"},
+            {"src": "https://bfikuncdn.com/20221123/DIoFrIUt/index.m3u8", "title": "武林外传 第60集"},
+            {"src": "https://bfikuncdn.com/20221123/eunBSfNQ/index.m3u8", "title": "武林外传 第61集"},
+            {"src": "https://bfikuncdn.com/20221123/COKi9yMC/index.m3u8", "title": "武林外传 第62集"},
+            {"src": "https://bfikuncdn.com/20221123/sLnRdAeD/index.m3u8", "title": "武林外传 第63集"},
+            {"src": "https://bfikuncdn.com/20221123/kRGsZ3dg/index.m3u8", "title": "武林外传 第64集"},
+            {"src": "https://bfikuncdn.com/20221123/kVXOC8BH/index.m3u8", "title": "武林外传 第65集"},
+            {"src": "https://bfikuncdn.com/20221123/dqpocYm9/index.m3u8", "title": "武林外传 第66集"},
+            {"src": "https://bfikuncdn.com/20221123/818veuOS/index.m3u8", "title": "武林外传 第67集"},
+            {"src": "https://bfikuncdn.com/20221123/ZWxBtqz0/index.m3u8", "title": "武林外传 第68集"},
+            {"src": "https://bfikuncdn.com/20221123/QqBfNJH1/index.m3u8", "title": "武林外传 第69集"},
+            {"src": "https://bfikuncdn.com/20221123/L4Fhy3hO/index.m3u8", "title": "武林外传 第70集"},
+            {"src": "https://bfikuncdn.com/20221123/z12zsN37/index.m3u8", "title": "武林外传 第71集"},
+            {"src": "https://bfikuncdn.com/20221123/iNn7gtyW/index.m3u8", "title": "武林外传 第72集"},
+            {"src": "https://bfikuncdn.com/20221123/7UVjeYd5/index.m3u8", "title": "武林外传 第73集"},
+            {"src": "https://bfikuncdn.com/20221123/c56a2i41/index.m3u8", "title": "武林外传 第74集"},
+            {"src": "https://bfikuncdn.com/20221123/lnslxoWD/index.m3u8", "title": "武林外传 第75集"},
+            {"src": "https://bfikuncdn.com/20221123/BpYYDeLy/index.m3u8", "title": "武林外传 第76集"},
+            {"src": "https://bfikuncdn.com/20221123/gNmaHbSj/index.m3u8", "title": "武林外传 第77集"},
+            {"src": "https://bfikuncdn.com/20221123/a9JgaJHH/index.m3u8", "title": "武林外传 第78集"},
+            {"src": "https://bfikuncdn.com/20221123/WKm6raFe/index.m3u8", "title": "武林外传 第79集"},
+            {"src": "https://bfikuncdn.com/20221123/p39cctj5/index.m3u8", "title": "武林外传 第80集"}
+        ];
+    </script>
+    <script src="../assets/player/player.js?v=12"></script>
+</body>
+</html>

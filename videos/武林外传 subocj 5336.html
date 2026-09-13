@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>武林外传</title>
+    <link rel="stylesheet" href="../assets/player/video.css?v=6">
+</head>
+
+<body>
+    <main class="watch-page">
+        <div id="player-toolbar" class="episode-toolbar">
+            <div class="episode-picker">
+                <label for="video-select">选集</label>
+                <select id="video-select" aria-label="选择剧集">
+                </select>
+            </div>
+        </div>
+        <div class="video-container">
+            <video id="my-video" controls playsinline preload="auto">
+            </video>
+        </div>
+    </main>
+    <script>
+
+        var sources = [
+            {"src": "https://play.subokk.com/play/9b6B2qVb/index.m3u8", "title": "武林外传 第1集"},
+            {"src": "https://play.subokk.com/play/Xe00Okye/index.m3u8", "title": "武林外传 第2集"},
+            {"src": "https://play.subokk.com/play/nel2Dogb/index.m3u8", "title": "武林外传 第3集"},
+            {"src": "https://play.subokk.com/play/mepk7vpd/index.m3u8", "title": "武林外传 第4集"},
+            {"src": "https://play.subokk.com/play/DdwKZD1d/index.m3u8", "title": "武林外传 第5集"},
+            {"src": "https://play.subokk.com/play/nel2Dorb/index.m3u8", "title": "武林外传 第6集"},
+            {"src": "https://play.subokk.com/play/mepk7vNd/index.m3u8", "title": "武林外传 第7集"},
+            {"src": "https://play.subokk.com/play/DdwKZDMd/index.m3u8", "title": "武林外传 第8集"},
+            {"src": "https://play.subokk.com/play/9aAMAkPa/index.m3u8", "title": "武林外传 第9集"},
+            {"src": "https://play.subokk.com/play/RdGMgq8a/index.m3u8", "title": "武林外传 第10集"},
+            {"src": "https://play.subokk.com/play/1aMJoz5b/index.m3u8", "title": "武林外传 第11集"},
+            {"src": "https://play.subokk.com/play/qaQ6vELb/index.m3u8", "title": "武林外传 第12集"},
+            {"src": "https://play.subokk.com/play/BeXrnOAb/index.m3u8", "title": "武林外传 第13集"},
+            {"src": "https://play.subokk.com/play/rb27OBNd/index.m3u8", "title": "武林外传 第14集"},
+            {"src": "https://play.subokk.com/play/9b6B2Jlb/index.m3u8", "title": "武林外传 第15集"},
+            {"src": "https://play.subokk.com/play/Xe00OzKe/index.m3u8", "title": "武林外传 第16集"},
+            {"src": "https://play.subokk.com/play/nel2D4rb/index.m3u8", "title": "武林外传 第17集"},
+            {"src": "https://play.subokk.com/play/mepk75Nd/index.m3u8", "title": "武林外传 第18集"},
+            {"src": "https://play.subokk.com/play/DdwKZ4Md/index.m3u8", "title": "武林外传 第19集"},
+            {"src": "https://play.subokk.com/play/9aAMAZPa/index.m3u8", "title": "武林外传 第20集"},
+            {"src": "https://play.subokk.com/play/1aMJov5b/index.m3u8", "title": "武林外传 第21集"},
+            {"src": "https://play.subokk.com/play/qaQ6vzLb/index.m3u8", "title": "武林外传 第22集"},
+            {"src": "https://play.subokk.com/play/BeXrnKAb/index.m3u8", "title": "武林外传 第23集"},
+            {"src": "https://play.subokk.com/play/rb27OZNd/index.m3u8", "title": "武林外传 第24集"},
+            {"src": "https://play.subokk.com/play/9b6B21lb/index.m3u8", "title": "武林外传 第25集"},
+            {"src": "https://play.subokk.com/play/Xe00OZKe/index.m3u8", "title": "武林外传 第26集"},
+            {"src": "https://play.subokk.com/play/nel2Dwrb/index.m3u8", "title": "武林外传 第27集"},
+            {"src": "https://play.subokk.com/play/mepk7ANd/index.m3u8", "title": "武林外传 第28集"},
+            {"src": "https://play.subokk.com/play/DdwKZLMd/index.m3u8", "title": "武林外传 第29集"},
+            {"src": "https://play.subokk.com/play/nel2D15b/index.m3u8", "title": "武林外传 第30集"},
+            {"src": "https://play.subokk.com/play/mepk712d/index.m3u8", "title": "武林外传 第31集"},
+            {"src": "https://play.subokk.com/play/DdwKZ1Rd/index.m3u8", "title": "武林外传 第32集"},
+            {"src": "https://play.subokk.com/play/9aAMApOa/index.m3u8", "title": "武林外传 第33集"},
+            {"src": "https://play.subokk.com/play/RdGMg07a/index.m3u8", "title": "武林外传 第34集"},
+            {"src": "https://play.subokk.com/play/1aMJoGAb/index.m3u8", "title": "武林外传 第35集"},
+            {"src": "https://play.subokk.com/play/qaQ6vMlb/index.m3u8", "title": "武林外传 第36集"},
+            {"src": "https://play.subokk.com/play/BeXrnWWb/index.m3u8", "title": "武林外传 第37集"},
+            {"src": "https://play.subokk.com/play/rb27OMKd/index.m3u8", "title": "武林外传 第38集"},
+            {"src": "https://play.subokk.com/play/9b6B2Qnb/index.m3u8", "title": "武林外传 第39集"},
+            {"src": "https://play.subokk.com/play/Xe00OKve/index.m3u8", "title": "武林外传 第40集"},
+            {"src": "https://play.subokk.com/play/nel2D35b/index.m3u8", "title": "武林外传 第41集"},
+            {"src": "https://play.subokk.com/play/mepk732d/index.m3u8", "title": "武林外传 第42集"},
+            {"src": "https://play.subokk.com/play/DdwKZ3Rd/index.m3u8", "title": "武林外传 第43集"},
+            {"src": "https://play.subokk.com/play/9aAMAVOa/index.m3u8", "title": "武林外传 第44集"},
+            {"src": "https://play.subokk.com/play/RdGMgl7a/index.m3u8", "title": "武林外传 第45集"},
+            {"src": "https://play.subokk.com/play/1aMJorAb/index.m3u8", "title": "武林外传 第46集"},
+            {"src": "https://play.subokk.com/play/qaQ6vylb/index.m3u8", "title": "武林外传 第47集"},
+            {"src": "https://play.subokk.com/play/BeXrnJWb/index.m3u8", "title": "武林外传 第48集"},
+            {"src": "https://play.subokk.com/play/rb27O0Kd/index.m3u8", "title": "武林外传 第49集"},
+            {"src": "https://play.subokk.com/play/9b6B2Enb/index.m3u8", "title": "武林外传 第50集"},
+            {"src": "https://play.subokk.com/play/Xe00Oxve/index.m3u8", "title": "武林外传 第51集"},
+            {"src": "https://play.subokk.com/play/nel2Dn5b/index.m3u8", "title": "武林外传 第52集"},
+            {"src": "https://play.subokk.com/play/mepk702d/index.m3u8", "title": "武林外传 第53集"},
+            {"src": "https://play.subokk.com/play/DdwKZBRd/index.m3u8", "title": "武林外传 第54集"},
+            {"src": "https://play.subokk.com/play/nel2Dn6b/index.m3u8", "title": "武林外传 第55集"},
+            {"src": "https://play.subokk.com/play/mepk706d/index.m3u8", "title": "武林外传 第56集"},
+            {"src": "https://play.subokk.com/play/DdwKZBwd/index.m3u8", "title": "武林外传 第57集"},
+            {"src": "https://play.subokk.com/play/9aAMA5za/index.m3u8", "title": "武林外传 第58集"},
+            {"src": "https://play.subokk.com/play/RdGMgj0a/index.m3u8", "title": "武林外传 第59集"},
+            {"src": "https://play.subokk.com/play/1aMJop3b/index.m3u8", "title": "武林外传 第60集"},
+            {"src": "https://play.subokk.com/play/qaQ6vwYb/index.m3u8", "title": "武林外传 第61集"},
+            {"src": "https://play.subokk.com/play/BeXrnEmb/index.m3u8", "title": "武林外传 第62集"},
+            {"src": "https://play.subokk.com/play/rb27OVvd/index.m3u8", "title": "武林外传 第63集"},
+            {"src": "https://play.subokk.com/play/9b6B2Z9b/index.m3u8", "title": "武林外传 第64集"},
+            {"src": "https://play.subokk.com/play/Xe00OQXe/index.m3u8", "title": "武林外传 第65集"},
+            {"src": "https://play.subokk.com/play/nel2DG6b/index.m3u8", "title": "武林外传 第66集"},
+            {"src": "https://play.subokk.com/play/mepk7M6d/index.m3u8", "title": "武林外传 第67集"},
+            {"src": "https://play.subokk.com/play/DdwKZWwd/index.m3u8", "title": "武林外传 第68集"},
+            {"src": "https://play.subokk.com/play/9aAMA4za/index.m3u8", "title": "武林外传 第69集"},
+            {"src": "https://play.subokk.com/play/RdGMg40a/index.m3u8", "title": "武林外传 第70集"},
+            {"src": "https://play.subokk.com/play/1aMJo43b/index.m3u8", "title": "武林外传 第71集"},
+            {"src": "https://play.subokk.com/play/qaQ6v4Yb/index.m3u8", "title": "武林外传 第72集"},
+            {"src": "https://play.subokk.com/play/BeXrn4mb/index.m3u8", "title": "武林外传 第73集"},
+            {"src": "https://play.subokk.com/play/rb27OKvd/index.m3u8", "title": "武林外传 第74集"},
+            {"src": "https://play.subokk.com/play/9b6B2O9b/index.m3u8", "title": "武林外传 第75集"},
+            {"src": "https://play.subokk.com/play/Xe00OGXe/index.m3u8", "title": "武林外传 第76集"},
+            {"src": "https://play.subokk.com/play/nel2Dr6b/index.m3u8", "title": "武林外传 第77集"},
+            {"src": "https://play.subokk.com/play/mepk7y6d/index.m3u8", "title": "武林外传 第78集"},
+            {"src": "https://play.subokk.com/play/DdwKZJwd/index.m3u8", "title": "武林外传 第79集"},
+            {"src": "https://play.subokk.com/play/nel2Drlb/index.m3u8", "title": "武林外传 第80集"},
+            {"src": "https://play.subokk.com/play/mepk7y1d/index.m3u8", "title": "武林外传 第81集"}
+        ];
+    </script>
+    <script src="../assets/player/player.js?v=12"></script>
+</body>
+</html>
