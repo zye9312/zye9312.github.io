@@ -110,11 +110,26 @@ button {
   transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
 }
 
+#refresh-button {
+  min-height: 34px;
+  padding: 6px 11px;
+  border-color: #303746;
+  color: #9ba5b7;
+  background: transparent;
+  font-size: 13px;
+}
+
 #refresh-button:hover,
 #random-button:hover,
 #youtube_src:hover {
   border-color: #6f8fff;
   background: #35415f;
+}
+
+#refresh-button:hover {
+  border-color: #53617b;
+  color: #d5dbea;
+  background: rgba(40, 49, 72, 0.45);
 }
 
 #refresh-button:active,
