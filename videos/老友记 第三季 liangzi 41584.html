@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老友记 第三季</title>
+    <link rel="stylesheet" href="../assets/player/video.css?v=6">
+</head>
+
+<body>
+    <main class="watch-page">
+        <div id="player-toolbar" class="episode-toolbar">
+            <div class="episode-picker">
+                <label for="video-select">选集</label>
+                <select id="video-select" aria-label="选择剧集">
+                </select>
+            </div>
+        </div>
+        <div class="video-container">
+            <video id="my-video" controls playsinline preload="auto">
+            </video>
+        </div>
+    </main>
+    <script>
+
+        var sources = [
+            {"src": "https://vip.lz-cdn16.com/20230703/30517_fdbb145e/index.m3u8", "title": "老友记 第三季 第01集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30518_a22067a1/index.m3u8", "title": "老友记 第三季 第02集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30519_9fb6b335/index.m3u8", "title": "老友记 第三季 第03集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30524_e9e35628/index.m3u8", "title": "老友记 第三季 第04集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30521_9d9c0965/index.m3u8", "title": "老友记 第三季 第05集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30523_e4c921ac/index.m3u8", "title": "老友记 第三季 第06集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30522_2f52a306/index.m3u8", "title": "老友记 第三季 第07集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30525_d22f32de/index.m3u8", "title": "老友记 第三季 第08集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30526_0b4cc26c/index.m3u8", "title": "老友记 第三季 第09集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30528_f9630e3c/index.m3u8", "title": "老友记 第三季 第10集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30527_ecb11965/index.m3u8", "title": "老友记 第三季 第11集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30533_b554e2fb/index.m3u8", "title": "老友记 第三季 第12集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30530_9deb2760/index.m3u8", "title": "老友记 第三季 第13集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30531_37b5d171/index.m3u8", "title": "老友记 第三季 第14集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30529_f1a84802/index.m3u8", "title": "老友记 第三季 第15集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30532_49b46c4e/index.m3u8", "title": "老友记 第三季 第16集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30534_cbe7ebf3/index.m3u8", "title": "老友记 第三季 第17集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30537_349019b0/index.m3u8", "title": "老友记 第三季 第18集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30538_09344ff5/index.m3u8", "title": "老友记 第三季 第19集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30536_5c84104b/index.m3u8", "title": "老友记 第三季 第20集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30535_1ea82226/index.m3u8", "title": "老友记 第三季 第21集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30539_5b03225a/index.m3u8", "title": "老友记 第三季 第22集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30540_b746f9cc/index.m3u8", "title": "老友记 第三季 第23集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30542_931421b9/index.m3u8", "title": "老友记 第三季 第24集"},
+            {"src": "https://vip.lz-cdn16.com/20230703/30541_889e7b2a/index.m3u8", "title": "老友记 第三季 第25集"}
+        ];
+    </script>
+    <script src="../assets/player/player.js?v=12"></script>
+</body>
+</html>
