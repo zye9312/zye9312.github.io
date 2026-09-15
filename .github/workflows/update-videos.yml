@@ -2,10 +2,10 @@ name: Update TV videos
 
 on:
   schedule:
-    # 20:00 Asia/Shanghai = 12:00 UTC, every day.
-    - cron: "0 12 * * *"
-    # 14:00 Asia/Shanghai = 06:00 UTC, Monday and Tuesday.
-    - cron: "0 6 * * 1,2"
+    # 20:05 Asia/Shanghai = 12:05 UTC, every day.
+    - cron: "5 12 * * *"
+    # 14:05 Asia/Shanghai = 06:05 UTC, Monday and Tuesday.
+    - cron: "5 6 * * 1,2"
   workflow_dispatch:
     inputs:
       show:
@@ -47,7 +47,7 @@ jobs:
         run: |
           if [ -n "$MANUAL_SHOW" ]; then
             echo "name=$MANUAL_SHOW" >> "$GITHUB_OUTPUT"
-          elif [ "$EVENT_SCHEDULE" = "0 12 * * *" ]; then
+          elif [ "$EVENT_SCHEDULE" = "5 12 * * *" ]; then
             echo "name=兰香如故" >> "$GITHUB_OUTPUT"
           else
             echo "name=心动的信号第9季" >> "$GITHUB_OUTPUT"
