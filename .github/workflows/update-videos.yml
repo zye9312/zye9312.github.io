@@ -4,8 +4,8 @@ on:
   schedule:
     # 20:05 Asia/Shanghai = 12:05 UTC, every day.
     - cron: "5 12 * * *"
-    # 14:05 Asia/Shanghai = 06:05 UTC, Monday and Tuesday.
-    - cron: "5 6 * * 1,2"
+    # 16:05 Asia/Shanghai = 08:05 UTC, Monday and Tuesday.
+    - cron: "5 8 * * 1,2"
   workflow_dispatch:
     inputs:
       show:
