@@ -28,6 +28,7 @@ jobs:
         with:
           repository: zye9312/tv2html
           path: tv2html
+          token: ${{ secrets.TV2HTML_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
