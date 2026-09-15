@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兰香如故</title>
+    <link rel="stylesheet" href="../assets/player/video.css?v=6">
+</head>
+
+<body>
+    <main class="watch-page">
+        <div id="player-toolbar" class="episode-toolbar">
+            <div class="episode-picker">
+                <label for="video-select">选集</label>
+                <select id="video-select" aria-label="选择剧集">
+                </select>
+            </div>
+        </div>
+        <div class="video-container">
+            <video id="my-video" controls playsinline preload="auto">
+            </video>
+        </div>
+    </main>
+    <script>
+
+        var sources = [
+            {"src": "https://vid.dbokutv.com/20260911/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHaTcyo5xOy6ejR7XoPoqmCIqmCZarDp4sCpGkRN0q/chunklist.m3u8", "title": "兰香如故 第1集"},
+            {"src": "https://vid.dbokutv.com/20260911/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlR7XgBMnuScSjC38jC3CpGZSnCpGqBcrmD0/chunklist.m3u8", "title": "兰香如故 第2集"},
+            {"src": "https://vid.dbokutv.com/20260911/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtbsRsGlR7XgBMnuScSjC3CjC38vCJWoGJCnBcrmD0/chunklist.m3u8", "title": "兰香如故 第3集"},
+            {"src": "https://vid.dbokutv.com/20260911/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtbsRsGlR7XgBMnuScSjC3GjC38rE3KuDJ8qBcrmD0/chunklist.m3u8", "title": "兰香如故 第4集"},
+            {"src": "https://vid.dbokutv.com/20260912/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsvsRsGlR7XgBMnuScSjC3KjC38uHJL2DaD2BcrmD0/chunklist.m3u8", "title": "兰香如故 第5集"},
+            {"src": "https://vid.dbokutv.com/20260912/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsfsRsGlR7XgBMnuScSjC3OjC3CvCK8pD356BcrmD0/chunklist.m3u8", "title": "兰香如故 第6集"},
+            {"src": "https://vid.dbokutv.com/20260913/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xOy6ejR7XoPoqmDoqmCa4vGZSsCJSkRN0q/chunklist.m3u8", "title": "兰香如故 第7集"},
+            {"src": "https://vid.dbokutv.com/20260913/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtTsRsGlR7XgBMnuScSjC3WjC38uDa4oCZb4BcrmD0/chunklist.m3u8", "title": "兰香如故 第8集"},
+            {"src": "https://vid.dbokutv.com/20260914/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtPsRsGlR7XgBMnuScSjC3ajC356GKOrE495BcrmD0/chunklist.m3u8", "title": "兰香如故 第9集"},
+            {"src": "https://vid.dbokutv.com/20260914/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xOy6ejR7XoPoqnC2qmCJ92EKL6DZakRN0q/chunklist.m3u8", "title": "兰香如故 第10集"}
+        ];
+    </script>
+    <script src="../assets/player/player.js?v=12"></script>
+</body>
+</html>

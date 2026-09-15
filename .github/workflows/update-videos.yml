@@ -1,0 +1,48 @@
+name: Update TV videos
+
+on:
+  schedule:
+    # 20:00 Asia/Shanghai = 12:00 UTC
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website repository
+        uses: actions/checkout@v4
+
+      - name: Checkout tv2html repository
+        uses: actions/checkout@v4
+        with:
+          repository: zye9312/tv2html
+          path: tv2html
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install tv2html dependencies
+        run: python -m pip install -r tv2html/requirements.txt
+
+      - name: Update and validate pages
+        env:
+          TV2HTML_DIR: ${{ github.workspace }}/tv2html
+        run: bash scripts/update_videos.sh
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html videos
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Update TV episodes"
+            git push
+          fi
