@@ -1,11 +1,6 @@
 name: Update TV videos
 
 on:
-  schedule:
-    # 20:05 Asia/Shanghai = 12:05 UTC, every day.
-    - cron: "5 12 * * *"
-    # 16:05 Asia/Shanghai = 08:05 UTC, Monday and Tuesday.
-    - cron: "5 8 * * 1,2"
   workflow_dispatch:
     inputs:
       show:
@@ -39,16 +34,13 @@ jobs:
       - name: Install tv2html dependencies
         run: python -m pip install -r tv2html/requirements.txt
 
-      - name: Choose show for schedule
+      - name: Choose show
         id: show
         env:
           MANUAL_SHOW: ${{ inputs.show }}
-          EVENT_SCHEDULE: ${{ github.event.schedule }}
         run: |
           if [ -n "$MANUAL_SHOW" ]; then
             echo "name=$MANUAL_SHOW" >> "$GITHUB_OUTPUT"
-          elif [ "$EVENT_SCHEDULE" = "5 12 * * *" ]; then
-            echo "name=兰香如故" >> "$GITHUB_OUTPUT"
           else
             echo "name=心动的信号第9季" >> "$GITHUB_OUTPUT"
           fi
