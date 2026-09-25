@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密室大逃脱大神版第8季</title>
+    <link rel="stylesheet" href="../assets/player/video.css?v=6">
+</head>
+
+<body>
+    <main class="watch-page">
+        <div id="player-toolbar" class="episode-toolbar">
+            <div class="episode-picker">
+                <label for="video-select">选集</label>
+                <select id="video-select" aria-label="选择剧集">
+                </select>
+            </div>
+        </div>
+        <div class="video-container">
+            <video id="my-video" controls playsinline preload="auto">
+            </video>
+        </div>
+    </main>
+    <script>
+
+        var sources = [
+            {"src": "https://vid.dbokutv.com/20260708/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0tC3XZSMfeSoqmCZKuD44tC3OkRN0q/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260708(超前聚会上)"},
+            {"src": "https://vid.dbokutv.com/20260708/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xqyIrjSsHqT6HpOcGuQYqoC38sC3SmE6DnQcXuBJ0oC34oC34mGovjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260708(超前聚会下)"},
+            {"src": "https://vid.dbokutv.com/20260721/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHaTcyo5xqyIrjSsHqT6HpOcGuQYqoC38sC3SoCMDnOsGjC34pD3WpGaD4BcrmD0/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260721(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260722/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xqyIrjSsHqT6HpOcGuQYqoC38sC3SoCcHpOcGnSIqmCpWuGKL2Ca4kRN0q/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260722(大神版第1期)"},
+            {"src": "https://vid.dbokutv.com/20260724/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0tCZ9aSs9aCN5uBJ0pEJ12H34nCYvjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260722(大神版第1期下)"},
+            {"src": "https://vid.dbokutv.com/20260724/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0tCZHGR7LpOYqmCJ94HKGtHZOkRN0q/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260724(Plus版)"},
+            {"src": "https://vid.dbokutv.com/20260728/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0tCZXZSMDaBJ0mGZOoH4L3DovjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260728(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260729/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xqyIrjSsHqT6HpOcGuQYqoC38sC3SoEMHpOcGoSNCjC316GJL5HJ8sBcrmD0/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260729(大神版第2期上)"},
+            {"src": "https://vid.dbokutv.com/20260729/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0tCZbaSs9aCd5uBJ0oDqKmDp4tGovjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260729(大神版第2期下)"},
+            {"src": "https://vid.dbokutv.com/20260731/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtbsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0tCp5GR7LpOYqmCp4sDZP2DJOkRN0q/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260731(Plus版)"},
+            {"src": "https://vid.dbokutv.com/20260803/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtLsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0uC3DuSd1aBJ0oCZ14HJanC2vjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260803(夏日派对)"},
+            {"src": "https://vid.dbokutv.com/20260804/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xqyIrjSsHqT6HpOcGuQYqoC38sC3WmD6DnOsGjC353EJb2GaP3BcrmD0/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260804(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260805/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0uC3LaSs9aCt5pBJ0oD48sDKGtC2vjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260805(大神版第3期上)"},
+            {"src": "https://vid.dbokutv.com/20260805/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0uC3LaSs9aCt5uBJ0pEJT5GZ0uDYvjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260805(大神版第3期下)"},
+            {"src": "https://vid.dbokutv.com/20260807/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHaTcyo5xqyIrjSsHqT6HpOcGuQYqoC38sC3WmDr1iTNDYBJ0pD3H5DJGpE2vjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260807(Plus版)"},
+            {"src": "https://vid.dbokutv.com/20260811/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsjsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0uCJ5ZSMDaBJ0nHJCmC4CnCovjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260811(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260812/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0uCJ9aSs9aD75pBJ0oHJT2EJCrHIvjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260812(大神版第4期上)"},
+            {"src": "https://vid.dbokutv.com/20260812/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0uCJ9aSs9aD75uBJ0pCa4oCqOrHIvjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260812(大神版第4期下)"},
+            {"src": "https://vid.dbokutv.com/20260814/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsTsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0uCJHGR7LpOYqmCJ4sEJT6C48kRN0q/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260814(Plus版)"},
+            {"src": "https://vid.dbokutv.com/20260818/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHbTcyo5xqyIrjSsHqT6HpOcGuQYqoC38sC3WnE6DnOsGjC34nDa8tGZP6BcrmD0/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260818(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260819/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHbTcyo5xqyIrjSsHqT6HpOcGuQYqoC38sC3WnEMHpOcGrSNCjC38sC38pDZ4nBcrmD0/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260819(大神版第5期上)"},
+            {"src": "https://vid.dbokutv.com/20260819/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0uCJbaSs9aDN5uBJ0pCJ56CKD5C2vjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260819(大神版第5期下)"},
+            {"src": "https://vid.dbokutv.com/20260821/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHcTcyo5xqyIrjSsHqT6HpOcGuQYqoC38sC3WoCL1iTNDYBJ0oH3KsCJOvEIvjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260821(Plus版)"},
+            {"src": "https://vid.dbokutv.com/20260825/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0uCZLZSMDaBJ0pDqCvDZWpCovjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260825(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260826/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHaTcyo5xqyIrjSsHqT6HpOcGuQYqoC38sC3WoDcHpOcGsSNCjC351DqCuHKCtBcrmD0/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260826(大神版第6期上)"},
+            {"src": "https://vid.dbokutv.com/20260826/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0uCZPaSs9aDd5uBJ0mGZGtGJD5DovjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260826(大神版第6期下)"},
+            {"src": "https://vid.dbokutv.com/20260828/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0uCZXGR7LpOYqmCZGqHZWvD48kRN0q/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260828(Plus版)"},
+            {"src": "https://vid.dbokutv.com/20260901/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsjsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0vC35ZSMDaBJ0oC38sHJOmC2vjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260901(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260902/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtTsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0vC39aSs9aDt5pBJ0nC3KrGpD2GYvjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260902(大神版第7期上)"},
+            {"src": "https://vid.dbokutv.com/20260902/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0vC39aSs9aDt5uBJ0pDp8oDJaqC2vjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260902(大神版第7期下)"},
+            {"src": "https://vid.dbokutv.com/20260904/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsXsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0vC3HGR7LpOYqmCJX5CJH4DKCkRN0q/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260904(Plus版)"},
+            {"src": "https://vid.dbokutv.com/20260908/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0vC3XZSMDaBJ0pCpH5CJ54DYvjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260908(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260909/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHfTcyo5xqyIrjSsHqT6HpOcGuQYqoC38sC3amEMHpOcGuSNCjC315GZ4pDJ14BcrmD0/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260909(大神版第8期上)"},
+            {"src": "https://vid.dbokutv.com/20260909/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xqyIrjSsHqT6HpOcGuQYqoC38sC3amEMHpOcGuSNWjC3CqD3P1D44sBcrmD0/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260909(大神版第8期下)"},
+            {"src": "https://vid.dbokutv.com/20260911/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsTsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0vCJ5GR7LpOYqmCa92DJX6D3OkRN0q/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260911(Plus版)"},
+            {"src": "https://vid.dbokutv.com/20260915/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHaTcyo5xqyIrjSsHqT6HpOcGuQYqoC38sC3anDMDnOsGjC34uCaL5Gp0pBcrmD0/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260915(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260916/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsTsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0vCJPaSs9aEN5pBJ0mHJ0uC3GnGYvjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260916(大神版第9期上)"},
+            {"src": "https://vid.dbokutv.com/20260916/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsyxDx8NlJoMjhcoEZeoER4o73KMcHWP6nWSc9ioER4o7BYy2qmCZ4vGZ0vHJKkRN0q/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260916(大神版第9期下)"},
+            {"src": "https://vid.dbokutv.com/20260918/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0vCJXGR7LpOYqmCKCsDJ4mE4CkRN0q/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260918(Plus版)"},
+            {"src": "https://vid.dbokutv.com/20260922/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtfsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0vCZ9ZSMDaBJ0mGpOpGpD4DovjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260922(超前彩蛋)"},
+            {"src": "https://vid.dbokutv.com/20260923/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsnsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0vCZDaSs9aCJ1nSoqmCZCmDaKpDJ8kRN0q/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260923(大神版第10期上)"},
+            {"src": "https://vid.dbokutv.com/20260923/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlUdajRNDaT7HaSs9aE6ejCZ0oDZ0vCZDaSs9aCJ1nU2qmCa51GpKmCqKkRN0q/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260923(大神版第10期下)"},
+            {"src": "https://vid.dbokutv.com/20260925/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHaTcyo5xqyIrjSsHqT6HpOcGuQYqoC38sC3aoDL1iTNDYBJ0pE3SrHJWqDIvjS34/chunklist.m3u8", "title": "密室大逃脱大神版第8季 20260925(Plus版)"}
+        ];
+    </script>
+    <script src="../assets/player/player.js?v=12"></script>
+</body>
+</html>
