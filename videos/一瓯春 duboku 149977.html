@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一瓯春</title>
+    <link rel="stylesheet" href="../assets/player/video.css?v=6">
+</head>
+
+<body>
+    <main class="watch-page">
+        <div id="player-toolbar" class="episode-toolbar">
+            <div class="episode-picker">
+                <label for="video-select">选集</label>
+                <select id="video-select" aria-label="选择剧集">
+                </select>
+            </div>
+        </div>
+        <div class="video-container">
+            <video id="my-video" controls playsinline preload="auto">
+            </video>
+        </div>
+    </main>
+    <script>
+
+        var sources = [
+            {"src": "https://vid.dbokutv.com/20260917/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlR7XgBNblOoqmCIqmC3P2DaCmDpOkRN0q/chunklist.m3u8", "title": "一瓯春 第1集"},
+            {"src": "https://vid.dbokutv.com/20260917/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlR7XgBNblOoqmCYqmCp51E3WoCZWkRN0q/chunklist.m3u8", "title": "一瓯春 第2集"},
+            {"src": "https://vid.dbokutv.com/20260917/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlR7XgBNblOoqmCoqmC3OtC4P3EKGkRN0q/chunklist.m3u8", "title": "一瓯春 第3集"},
+            {"src": "https://vid.dbokutv.com/20260917/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtPsRsGlR7XgBNblOoqmD2qmC4OqCZGrDpCkRN0q/chunklist.m3u8", "title": "一瓯春 第4集"},
+            {"src": "https://vid.dbokutv.com/20260917/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtPsRsGlR7XgBNblOoqmDIqmC3SsGp0qGaKkRN0q/chunklist.m3u8", "title": "一瓯春 第5集"},
+            {"src": "https://vid.dbokutv.com/20260917/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsbsRsGlR7XgBNblOoqmDYqmCJWmH3KqHZakRN0q/chunklist.m3u8", "title": "一瓯春 第6集"},
+            {"src": "https://vid.dbokutv.com/20260918/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt1sRsGlR7XgBNblOoqmDoqmCaP3DpWrE3KkRN0q/chunklist.m3u8", "title": "一瓯春 第7集"},
+            {"src": "https://vid.dbokutv.com/20260918/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHcTcyo5xOy6ejUMynbfWS5fWO8XoXcQ6S8nSsk1K/chunklist.m3u8", "title": "一瓯春 第8集"},
+            {"src": "https://vid.dbokutv.com/20260919/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlR7XgBNblOoqmEIqmC4D2CpKrHJ0kRN0q/chunklist.m3u8", "title": "一瓯春 第9集"},
+            {"src": "https://vid.dbokutv.com/20260919/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsrsRsGlR7XgBNblOoqnC2qmC4OpHZCpDaGkRN0q/chunklist.m3u8", "title": "一瓯春 第10集"},
+            {"src": "https://vid.dbokutv.com/20260920/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejUMynbfYObfWPcg6Y7AAR61Ssk1K/chunklist.m3u8", "title": "一瓯春 第11集"},
+            {"src": "https://vid.dbokutv.com/20260920/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHaTcyo5xOy6ejUMynbfYP5fWO8HkZ89aS6fSsk1K/chunklist.m3u8", "title": "一瓯春 第12集"},
+            {"src": "https://vid.dbokutv.com/20260921/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBNblOoqnCoqmCpWvHJ8uHZGkRN0q/chunklist.m3u8", "title": "一瓯春 第13集"},
+            {"src": "https://vid.dbokutv.com/20260921/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtPsRsGlR7XgBNblOoqnD2qmCJKuCp12GZOkRN0q/chunklist.m3u8", "title": "一瓯春 第14集"},
+            {"src": "https://vid.dbokutv.com/20260922/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHcTcyo5xOy6ejUMynbfYQbfWP8QAXePWWePSsk1K/chunklist.m3u8", "title": "一瓯春 第15集"},
+            {"src": "https://vid.dbokutv.com/20260923/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsvsRsGlR7XgBNblOoqnDYqmCp11CJ56H30kRN0q/chunklist.m3u8", "title": "一瓯春 第16集"},
+            {"src": "https://vid.dbokutv.com/20260924/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBNblOoqnDoqmC48vDZWtHJCkRN0q/chunklist.m3u8", "title": "一瓯春 第17集"},
+            {"src": "https://vid.dbokutv.com/20260925/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsLsRsGlR7XgBNblOoqnE2qmCq4pGJP3DZCkRN0q/chunklist.m3u8", "title": "一瓯春 第18集"},
+            {"src": "https://vid.dbokutv.com/20260925/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlR7XgBNblOoqnEIqmCpOrD3T3C3OkRN0q/chunklist.m3u8", "title": "一瓯春 第19集"},
+            {"src": "https://vid.dbokutv.com/20260926/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHbTcyo5xOy6ejUMynbfaO5fWPd1YZ6PoZ6HSsk1K/chunklist.m3u8", "title": "一瓯春 第20集"},
+            {"src": "https://vid.dbokutv.com/20260926/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBNblOoqoCIqmCKP6Gq95HZSkRN0q/chunklist.m3u8", "title": "一瓯春 第21集"}
+        ];
+    </script>
+    <script src="../assets/player/player.js?v=12"></script>
+</body>
+</html>

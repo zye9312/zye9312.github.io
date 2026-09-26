@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我不是大师</title>
+    <link rel="stylesheet" href="../assets/player/video.css?v=6">
+</head>
+
+<body>
+    <main class="watch-page">
+        <div id="player-toolbar" class="episode-toolbar">
+            <div class="episode-picker">
+                <label for="video-select">选集</label>
+                <select id="video-select" aria-label="选择剧集">
+                </select>
+            </div>
+        </div>
+        <div class="video-container">
+            <video id="my-video" controls playsinline preload="auto">
+            </video>
+        </div>
+    </main>
+    <script>
+
+        var sources = [
+            {"src": "https://vid.dbokutv.com/20260924/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBt9sRsGlR7XgBNTYSsHpBJ0nBJ0oEKOnC396H2vjS34/chunklist.m3u8", "title": "我不是大师 第1集"},
+            {"src": "https://vid.dbokutv.com/20260924/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBNTYSsHpBJ0oBJ0oGZ0oGq4mH2vjS34/chunklist.m3u8", "title": "我不是大师 第2集"},
+            {"src": "https://vid.dbokutv.com/20260924/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHdTcyo5xOy6ejTs9pP7CjC3CjC34uGaCtD4KvBcrmD0/chunklist.m3u8", "title": "我不是大师 第3集"},
+            {"src": "https://vid.dbokutv.com/20260924/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHcTcyo5xOy6ejTs9pP7CjC3GjC394D3KrCZOnBcrmD0/chunklist.m3u8", "title": "我不是大师 第4集"},
+            {"src": "https://vid.dbokutv.com/20260925/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtbsRsGlR7XgBNTYSsHpBJ0rBJ0nEJOqH3StDovjS34/chunklist.m3u8", "title": "我不是大师 第5集"},
+            {"src": "https://vid.dbokutv.com/20260925/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsHeTcyo5xOy6ejTs9pP7CjC3OjC38vCKCtE3WmBcrmD0/chunklist.m3u8", "title": "我不是大师 第6集"},
+            {"src": "https://vid.dbokutv.com/20260926/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBtXsRsGlR7XgBNTYSsHpBJ0tBJ0mGKKpHKGnH2vjS34/chunklist.m3u8", "title": "我不是大师 第7集"},
+            {"src": "https://vid.dbokutv.com/20260926/ppotb62-S71lT2yliZApDBSvkYzBsrmD3fpCJ4nBsPsRsGlR7XgBNTYSsHpBJ0uBJ0nCpD2DJOoGYvjS34/chunklist.m3u8", "title": "我不是大师 第8集"}
+        ];
+    </script>
+    <script src="../assets/player/player.js?v=12"></script>
+</body>
+</html>
