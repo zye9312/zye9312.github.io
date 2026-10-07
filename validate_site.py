@@ -57,7 +57,16 @@ def validate_video_page(path: Path):
         if not isinstance(title, str) or not title.strip():
             errors.append(f"{path.name}: episode {index + 1} has no title")
         parsed = urlparse(url) if isinstance(url, str) else None
-        if not parsed or parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        remote_url = parsed and parsed.scheme in {"http", "https"} and parsed.netloc
+        local_playlist = False
+        if parsed and not parsed.scheme and not parsed.netloc and parsed.path:
+            target = (path.parent / unquote(parsed.path)).resolve()
+            local_playlist = (
+                target.is_relative_to(PROJECT_PATH)
+                and target.suffix == ".m3u8"
+                and target.is_file()
+            )
+        if not remote_url and not local_playlist:
             errors.append(f"{path.name}: episode {index + 1} has an invalid URL")
 
     for asset in REQUIRED_ASSETS:
